@@ -63,14 +63,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cactus.cs" />
-    <Compile Include="Models\Other.cs" />
     <Compile Include="Models\Plant.cs" />
-    <Compile Include="Models\Succulents.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Interface\IConnectionCreater.cs" />
+    <Compile Include="Service\Interface\IPlantService.cs" />
     <Compile Include="Service\Simple\SimpleConnectionCreater.cs" />
+    <Compile Include="Service\Simple\SimplePlantService.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

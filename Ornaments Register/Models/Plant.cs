@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ornaments_Register.Models
 {
-    public abstract class Plant
+    public class Plant
     {
         public string Type { get; set; }
         public string Genus { get; set; }
