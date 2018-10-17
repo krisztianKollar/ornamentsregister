@@ -57,27 +57,103 @@ namespace Ornaments_Register
 
         private void rbCacti_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
 
         private void rbSucc_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
 
         private void rbOther_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
 
         private void rbAll_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void cactiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void furtherSucculentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void otherPlantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void viewAllPlantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
     }
 }

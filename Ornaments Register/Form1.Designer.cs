@@ -58,11 +58,26 @@
             this.labSp = new System.Windows.Forms.Label();
             this.labGen = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.viewPlantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cactiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.furtherSucculentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otherPlantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewAllPlantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadPictureForPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subspeciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fieldNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.habitatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.synonymDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.replantedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -76,16 +91,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subspeciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fieldNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.habitatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.synonymDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.replantedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -276,6 +281,7 @@
             // 
             // cboxGen
             // 
+            this.cboxGen.AllowDrop = true;
             this.cboxGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
             this.cboxGen.FormattingEnabled = true;
             this.cboxGen.Location = new System.Drawing.Point(118, 17);
@@ -368,15 +374,55 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewPlantsToolStripMenuItem,
             this.createNewPlantToolStripMenuItem,
             this.saveActualPlantToolStripMenuItem,
             this.deleteActualPlantToolStripMenuItem,
             this.uploadPictureForPlantToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1157, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // viewPlantsToolStripMenuItem
+            // 
+            this.viewPlantsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cactiToolStripMenuItem,
+            this.furtherSucculentsToolStripMenuItem,
+            this.otherPlantsToolStripMenuItem,
+            this.viewAllPlantsToolStripMenuItem});
+            this.viewPlantsToolStripMenuItem.Name = "viewPlantsToolStripMenuItem";
+            this.viewPlantsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.viewPlantsToolStripMenuItem.Text = "View Plants";
+            // 
+            // cactiToolStripMenuItem
+            // 
+            this.cactiToolStripMenuItem.Name = "cactiToolStripMenuItem";
+            this.cactiToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.cactiToolStripMenuItem.Text = "View cacti";
+            this.cactiToolStripMenuItem.Click += new System.EventHandler(this.cactiToolStripMenuItem_Click);
+            // 
+            // furtherSucculentsToolStripMenuItem
+            // 
+            this.furtherSucculentsToolStripMenuItem.Name = "furtherSucculentsToolStripMenuItem";
+            this.furtherSucculentsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.furtherSucculentsToolStripMenuItem.Text = "View further succulents";
+            this.furtherSucculentsToolStripMenuItem.Click += new System.EventHandler(this.furtherSucculentsToolStripMenuItem_Click);
+            // 
+            // otherPlantsToolStripMenuItem
+            // 
+            this.otherPlantsToolStripMenuItem.Name = "otherPlantsToolStripMenuItem";
+            this.otherPlantsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.otherPlantsToolStripMenuItem.Text = "View other plants";
+            this.otherPlantsToolStripMenuItem.Click += new System.EventHandler(this.otherPlantsToolStripMenuItem_Click);
+            // 
+            // viewAllPlantsToolStripMenuItem
+            // 
+            this.viewAllPlantsToolStripMenuItem.Name = "viewAllPlantsToolStripMenuItem";
+            this.viewAllPlantsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.viewAllPlantsToolStripMenuItem.Text = "View all plants";
+            this.viewAllPlantsToolStripMenuItem.Click += new System.EventHandler(this.viewAllPlantsToolStripMenuItem_Click);
             // 
             // createNewPlantToolStripMenuItem
             // 
@@ -429,6 +475,73 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1125, 248);
             this.dataGridView1.TabIndex = 4;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // genusDataGridViewTextBoxColumn
+            // 
+            this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
+            this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
+            this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
+            this.genusDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // speciesDataGridViewTextBoxColumn
+            // 
+            this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
+            this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
+            this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
+            this.speciesDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // subspeciesDataGridViewTextBoxColumn
+            // 
+            this.subspeciesDataGridViewTextBoxColumn.DataPropertyName = "Subspecies";
+            this.subspeciesDataGridViewTextBoxColumn.HeaderText = "Subspecies";
+            this.subspeciesDataGridViewTextBoxColumn.Name = "subspeciesDataGridViewTextBoxColumn";
+            this.subspeciesDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // fieldNumberDataGridViewTextBoxColumn
+            // 
+            this.fieldNumberDataGridViewTextBoxColumn.DataPropertyName = "FieldNumber";
+            this.fieldNumberDataGridViewTextBoxColumn.HeaderText = "FieldNumber";
+            this.fieldNumberDataGridViewTextBoxColumn.Name = "fieldNumberDataGridViewTextBoxColumn";
+            // 
+            // habitatDataGridViewTextBoxColumn
+            // 
+            this.habitatDataGridViewTextBoxColumn.DataPropertyName = "Habitat";
+            this.habitatDataGridViewTextBoxColumn.HeaderText = "Habitat";
+            this.habitatDataGridViewTextBoxColumn.Name = "habitatDataGridViewTextBoxColumn";
+            this.habitatDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // synonymDataGridViewTextBoxColumn
+            // 
+            this.synonymDataGridViewTextBoxColumn.DataPropertyName = "Synonym";
+            this.synonymDataGridViewTextBoxColumn.HeaderText = "Synonym";
+            this.synonymDataGridViewTextBoxColumn.Name = "synonymDataGridViewTextBoxColumn";
+            // 
+            // sourceDataGridViewTextBoxColumn
+            // 
+            this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
+            this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
+            this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
+            this.sourceDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // replantedDataGridViewTextBoxColumn
+            // 
+            this.replantedDataGridViewTextBoxColumn.DataPropertyName = "Replanted";
+            this.replantedDataGridViewTextBoxColumn.HeaderText = "Replanted";
+            this.replantedDataGridViewTextBoxColumn.Name = "replantedDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Notes";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Notes";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 42;
             // 
             // bindingNavigator1
             // 
@@ -549,73 +662,6 @@
             // 
             this.plantsTableAdapter.ClearBeforeFill = true;
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // genusDataGridViewTextBoxColumn
-            // 
-            this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
-            this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
-            this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
-            this.genusDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // speciesDataGridViewTextBoxColumn
-            // 
-            this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
-            this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
-            this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
-            this.speciesDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // subspeciesDataGridViewTextBoxColumn
-            // 
-            this.subspeciesDataGridViewTextBoxColumn.DataPropertyName = "Subspecies";
-            this.subspeciesDataGridViewTextBoxColumn.HeaderText = "Subspecies";
-            this.subspeciesDataGridViewTextBoxColumn.Name = "subspeciesDataGridViewTextBoxColumn";
-            this.subspeciesDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // fieldNumberDataGridViewTextBoxColumn
-            // 
-            this.fieldNumberDataGridViewTextBoxColumn.DataPropertyName = "FieldNumber";
-            this.fieldNumberDataGridViewTextBoxColumn.HeaderText = "FieldNumber";
-            this.fieldNumberDataGridViewTextBoxColumn.Name = "fieldNumberDataGridViewTextBoxColumn";
-            // 
-            // habitatDataGridViewTextBoxColumn
-            // 
-            this.habitatDataGridViewTextBoxColumn.DataPropertyName = "Habitat";
-            this.habitatDataGridViewTextBoxColumn.HeaderText = "Habitat";
-            this.habitatDataGridViewTextBoxColumn.Name = "habitatDataGridViewTextBoxColumn";
-            this.habitatDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // synonymDataGridViewTextBoxColumn
-            // 
-            this.synonymDataGridViewTextBoxColumn.DataPropertyName = "Synonym";
-            this.synonymDataGridViewTextBoxColumn.HeaderText = "Synonym";
-            this.synonymDataGridViewTextBoxColumn.Name = "synonymDataGridViewTextBoxColumn";
-            // 
-            // sourceDataGridViewTextBoxColumn
-            // 
-            this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
-            this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
-            this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
-            this.sourceDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // replantedDataGridViewTextBoxColumn
-            // 
-            this.replantedDataGridViewTextBoxColumn.DataPropertyName = "Replanted";
-            this.replantedDataGridViewTextBoxColumn.HeaderText = "Replanted";
-            this.replantedDataGridViewTextBoxColumn.Name = "replantedDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Notes";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Notes";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 42;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,7 +671,7 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1147, 545);
+            this.ClientSize = new System.Drawing.Size(1157, 545);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -709,6 +755,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sourceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn replantedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ToolStripMenuItem viewPlantsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cactiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem furtherSucculentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem otherPlantsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewAllPlantsToolStripMenuItem;
     }
 }
 

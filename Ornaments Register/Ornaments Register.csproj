@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="Dao\Interface\IPlantDao.cs" />
     <Compile Include="Dao\Simple\SimplePlantDao.cs" />
+    <Compile Include="DataSetForPlantReg.cs">
+      <DependentUpon>DataSetForPlantReg.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetForPlantReg.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
