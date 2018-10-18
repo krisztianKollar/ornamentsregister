@@ -91,6 +91,10 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboxType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -104,6 +108,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cboxType);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.rbAll);
             this.groupBox1.Controls.Add(this.rbOther);
             this.groupBox1.Controls.Add(this.rbSucc);
@@ -215,9 +223,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(807, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(807, 93);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(318, 189);
+            this.pictureBox1.Size = new System.Drawing.Size(318, 113);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
@@ -666,6 +674,41 @@
             // 
             this.plantsTableAdapter.ClearBeforeFill = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(807, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Type";
+            // 
+            // cboxType
+            // 
+            this.cboxType.DataSource = this.plantsBindingSource;
+            this.cboxType.DisplayMember = "Type";
+            this.cboxType.FormattingEnabled = true;
+            this.cboxType.Location = new System.Drawing.Point(879, 9);
+            this.cboxType.Name = "cboxType";
+            this.cboxType.Size = new System.Drawing.Size(121, 21);
+            this.cboxType.TabIndex = 25;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(807, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Search";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(879, 41);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.TabIndex = 27;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -764,6 +807,10 @@
         private System.Windows.Forms.ToolStripMenuItem furtherSucculentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem otherPlantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewAllPlantsToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboxType;
+        private System.Windows.Forms.Label label1;
     }
 }
 
