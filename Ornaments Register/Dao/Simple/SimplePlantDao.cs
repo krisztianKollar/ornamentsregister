@@ -114,7 +114,32 @@ namespace Ornaments_Register.Dao.Simple
 
         public void InsertPlant(Plant plant)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SqlConnection conn = ConnectionCreater.connect())
+                {
+                    conn.Open();
+                    string sql = "INSERT INTO plants (Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type)" +
+                        " VALUES (@genus, @species, @subspecies, @fieldnumber, @habitat, @synonym, @source, @replanted, @notes, @type)";
+                    SqlCommand insertCommand = new SqlCommand(sql, conn);
+
+                    insertCommand.Parameters.Add(new SqlParameter("genus", plant.Genus));
+                    insertCommand.Parameters.Add(new SqlParameter("species", plant.Species));
+                    insertCommand.Parameters.Add(new SqlParameter("subspecies", plant.Subspecies));
+                    insertCommand.Parameters.Add(new SqlParameter("fieldnumber", plant.FieldNumber));
+                    insertCommand.Parameters.Add(new SqlParameter("habitat", plant.Habitat));
+                    insertCommand.Parameters.Add(new SqlParameter("synonym", plant.Synonym));
+                    insertCommand.Parameters.Add(new SqlParameter("source", plant.Source));
+                    insertCommand.Parameters.Add(new SqlParameter("replanted", plant.Replanted));
+                    insertCommand.Parameters.Add(new SqlParameter("notes", plant.Notes));
+                    insertCommand.Parameters.Add(new SqlParameter("type", plant.Type));
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            };
         }
 
         public void UpdatePlant(Plant plant)

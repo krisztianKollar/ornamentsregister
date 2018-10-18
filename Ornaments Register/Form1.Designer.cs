@@ -273,6 +273,8 @@
             // 
             // txtSp
             // 
+            this.txtSp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtSp.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Species", true));
             this.txtSp.Location = new System.Drawing.Point(504, 17);
             this.txtSp.Name = "txtSp";
@@ -283,6 +285,8 @@
             // 
             this.cboxGen.AllowDrop = true;
             this.cboxGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
+            this.cboxGen.DataSource = this.plantsBindingSource;
+            this.cboxGen.DisplayMember = "Genus";
             this.cboxGen.FormattingEnabled = true;
             this.cboxGen.Location = new System.Drawing.Point(118, 17);
             this.cboxGen.Name = "cboxGen";
@@ -331,9 +335,9 @@
             this.labHabit.AutoSize = true;
             this.labHabit.Location = new System.Drawing.Point(7, 77);
             this.labHabit.Name = "labHabit";
-            this.labHabit.Size = new System.Drawing.Size(114, 13);
+            this.labHabit.Size = new System.Drawing.Size(73, 13);
             this.labHabit.TabIndex = 4;
-            this.labHabit.Text = "Habitat information";
+            this.labHabit.Text = "Habitat info";
             // 
             // labFieldNo4
             // 

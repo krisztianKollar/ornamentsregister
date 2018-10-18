@@ -23,6 +23,8 @@ namespace Ornaments_Register
         {
             // TODO: This line of code loads data into the 'dataSetForPlantReg.Plants' table. You can move, or remove it, as needed.
             this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
+
+            
         }
 
         private void CboxGen_SelectedIndexChanged(object sender, EventArgs e)

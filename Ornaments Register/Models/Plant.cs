@@ -8,7 +8,7 @@ namespace Ornaments_Register.Models
 {
     public class Plant
     {
-        public string Type { get; set; }
+        public int Id { get; set; }
         public string Genus { get; set; }
         public string Species { get; set; }
         public string Subspecies { get; set; }
@@ -18,7 +18,7 @@ namespace Ornaments_Register.Models
         public string Source { get; set; }
         public string Replanted { get; set; }
         public string Notes { get; set; }
-        public int Id { get; set; }
+        public string Type { get; set; }
 
 
         public Plant(string type, string genus, string species, int id)
