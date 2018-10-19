@@ -15,17 +15,49 @@ namespace Ornaments_Register
 {
     public partial class Form1 : Form
     {
+        IConnectionCreater connectionCreater;
+
+
         public Form1()
         {
             InitializeComponent();
+       
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             // TODO: This line of code loads data into the 'dataSetForPlantReg.Plants' table. You can move, or remove it, as needed.
             this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
+            //dataGridView1.DataSource = this.PopulateDataGridView();
 
-            
+
+        }
+
+        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            //dataGridView1.DataSource = this.PopulateDataGridView();
+            this.plantsTableAdapter.SearchGenus(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+        }
+
+        private DataTable PopulateDataGridView()
+        {
+            string query = "SELECT Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type FROM Plants " +
+                "WHERE Genus LIKE '%' + @Genus + '%' OR @Genus = ''";
+            connectionCreater = new SimpleConnectionCreater();
+            //using (SqlConnection con = new SqlConnection(connectionCreater.connect().ConnectionString)) 
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connectionCreater.connect()))
+                {
+                    cmd.Parameters.AddWithValue("@Genus", txtSearch.Text.Trim());
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
         }
 
         private void CboxGen_SelectedIndexChanged(object sender, EventArgs e)

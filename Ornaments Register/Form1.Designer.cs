@@ -31,14 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboxType = new System.Windows.Forms.ComboBox();
+            this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
+            this.label1 = new System.Windows.Forms.Label();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbOther = new System.Windows.Forms.RadioButton();
             this.rbSucc = new System.Windows.Forms.RadioButton();
             this.rbCacti = new System.Windows.Forms.RadioButton();
             this.labShow = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSubsp = new System.Windows.Forms.TextBox();
             this.txtReplanted = new System.Windows.Forms.TextBox();
@@ -91,10 +95,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboxType = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -144,6 +144,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plant Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(879, 41);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(121, 20);
+            this.txtSearch.TabIndex = 27;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(807, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Search";
+            // 
+            // cboxType
+            // 
+            this.cboxType.DataSource = this.plantsBindingSource;
+            this.cboxType.DisplayMember = "Type";
+            this.cboxType.FormattingEnabled = true;
+            this.cboxType.Location = new System.Drawing.Point(879, 9);
+            this.cboxType.Name = "cboxType";
+            this.cboxType.Size = new System.Drawing.Size(121, 21);
+            this.cboxType.TabIndex = 25;
+            // 
+            // plantsBindingSource
+            // 
+            this.plantsBindingSource.DataMember = "Plants";
+            this.plantsBindingSource.DataSource = this.dataSetForPlantReg;
+            // 
+            // dataSetForPlantReg
+            // 
+            this.dataSetForPlantReg.DataSetName = "DataSetForPlantReg";
+            this.dataSetForPlantReg.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(807, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Type";
             // 
             // rbAll
             // 
@@ -210,16 +256,6 @@
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(654, 50);
             this.txtNotes.TabIndex = 17;
-            // 
-            // plantsBindingSource
-            // 
-            this.plantsBindingSource.DataMember = "Plants";
-            this.plantsBindingSource.DataSource = this.dataSetForPlantReg;
-            // 
-            // dataSetForPlantReg
-            // 
-            this.dataSetForPlantReg.DataSetName = "DataSetForPlantReg";
-            this.dataSetForPlantReg.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pictureBox1
             // 
@@ -673,41 +709,6 @@
             // plantsTableAdapter
             // 
             this.plantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(807, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Type";
-            // 
-            // cboxType
-            // 
-            this.cboxType.DataSource = this.plantsBindingSource;
-            this.cboxType.DisplayMember = "Type";
-            this.cboxType.FormattingEnabled = true;
-            this.cboxType.Location = new System.Drawing.Point(879, 9);
-            this.cboxType.Name = "cboxType";
-            this.cboxType.Size = new System.Drawing.Size(121, 21);
-            this.cboxType.TabIndex = 25;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(807, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Search";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(879, 41);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 20);
-            this.txtSearch.TabIndex = 27;
             // 
             // Form1
             // 

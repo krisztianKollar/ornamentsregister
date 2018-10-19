@@ -11,12 +11,15 @@ namespace Ornaments_Register.Service.Simple
 {
     class SimpleConnectionCreater : IConnectionCreater
     {
-        string connString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        string connString = ConfigurationManager.ConnectionStrings["plantsConnectionString"].ConnectionString;
+      
 
         public SqlConnection connect()
         {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = connString;
+            SqlConnection conn = new SqlConnection
+            {
+                ConnectionString = connString
+            };
             return conn;
         }
     }
