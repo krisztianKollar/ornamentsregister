@@ -61,6 +61,7 @@ namespace Ornaments_Register.Dao.Simple
             }
             catch (SqlException e)
             {
+                System.Windows.Forms.MessageBox.Show(e.Message);
             }
             return plants; 
         }
@@ -87,6 +88,7 @@ namespace Ornaments_Register.Dao.Simple
             }
             catch (SqlException e)
             {
+                System.Windows.Forms.MessageBox.Show(e.Message);
             }
             return plants;
         }
@@ -108,6 +110,7 @@ namespace Ornaments_Register.Dao.Simple
             }
             catch (SqlException e)
             {
+                System.Windows.Forms.MessageBox.Show(e.Message);
             }
             return plant;
         }

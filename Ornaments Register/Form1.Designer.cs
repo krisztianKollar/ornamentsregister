@@ -1,6 +1,6 @@
 ﻿namespace Ornaments_Register
 {
-    partial class Form1
+    partial class PlantsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboxType = new System.Windows.Forms.ComboBox();
-            this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
             this.label1 = new System.Windows.Forms.Label();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbOther = new System.Windows.Forms.RadioButton();
@@ -52,6 +54,7 @@
             this.txtFieldNo = new System.Windows.Forms.TextBox();
             this.txtSp = new System.Windows.Forms.TextBox();
             this.cboxGen = new System.Windows.Forms.ComboBox();
+            this.genusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labNotes = new System.Windows.Forms.Label();
             this.labSource = new System.Windows.Forms.Label();
             this.labReplanted = new System.Windows.Forms.Label();
@@ -95,10 +98,12 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
+            this.genusTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.GenusTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.genusBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -108,6 +113,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtID);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cboxType);
@@ -143,34 +150,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plant Details";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // txtSearch
+            // txtID
             // 
-            this.txtSearch.Location = new System.Drawing.Point(879, 41);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(121, 20);
-            this.txtSearch.TabIndex = 27;
-            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(807, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Search";
-            // 
-            // cboxType
-            // 
-            this.cboxType.DataSource = this.plantsBindingSource;
-            this.cboxType.DisplayMember = "Type";
-            this.cboxType.FormattingEnabled = true;
-            this.cboxType.Location = new System.Drawing.Point(879, 9);
-            this.cboxType.Name = "cboxType";
-            this.cboxType.Size = new System.Drawing.Size(121, 21);
-            this.cboxType.TabIndex = 25;
+            this.txtID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "ID", true));
+            this.txtID.Location = new System.Drawing.Point(635, 137);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(121, 20);
+            this.txtID.TabIndex = 29;
             // 
             // plantsBindingSource
             // 
@@ -182,10 +169,47 @@
             this.dataSetForPlantReg.DataSetName = "DataSetForPlantReg";
             this.dataSetForPlantReg.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(578, 141);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "ID";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(635, 196);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(121, 20);
+            this.txtSearch.TabIndex = 27;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(575, 200);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Search";
+            // 
+            // cboxType
+            // 
+            this.cboxType.DataSource = this.plantsBindingSource;
+            this.cboxType.DisplayMember = "Type";
+            this.cboxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxType.FormattingEnabled = true;
+            this.cboxType.Location = new System.Drawing.Point(635, 167);
+            this.cboxType.Name = "cboxType";
+            this.cboxType.Size = new System.Drawing.Size(121, 21);
+            this.cboxType.TabIndex = 25;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(807, 17);
+            this.label1.Location = new System.Drawing.Point(575, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 24;
@@ -194,90 +218,89 @@
             // rbAll
             // 
             this.rbAll.AutoSize = true;
-            this.rbAll.Location = new System.Drawing.Point(657, 194);
+            this.rbAll.Location = new System.Drawing.Point(432, 198);
             this.rbAll.Name = "rbAll";
             this.rbAll.Size = new System.Drawing.Size(115, 17);
             this.rbAll.TabIndex = 23;
             this.rbAll.TabStop = true;
             this.rbAll.Text = "All of the Plants";
             this.rbAll.UseVisualStyleBackColor = true;
-            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
+            this.rbAll.CheckedChanged += new System.EventHandler(this.RbAll_CheckedChanged);
             // 
             // rbOther
             // 
             this.rbOther.AutoSize = true;
-            this.rbOther.Location = new System.Drawing.Point(537, 194);
+            this.rbOther.Location = new System.Drawing.Point(321, 198);
             this.rbOther.Name = "rbOther";
             this.rbOther.Size = new System.Drawing.Size(95, 17);
             this.rbOther.TabIndex = 22;
             this.rbOther.TabStop = true;
             this.rbOther.Text = "Other Plants";
             this.rbOther.UseVisualStyleBackColor = true;
-            this.rbOther.CheckedChanged += new System.EventHandler(this.rbOther_CheckedChanged);
+            this.rbOther.CheckedChanged += new System.EventHandler(this.RbOther_CheckedChanged);
             // 
             // rbSucc
             // 
             this.rbSucc.AutoSize = true;
-            this.rbSucc.Location = new System.Drawing.Point(380, 194);
+            this.rbSucc.Location = new System.Drawing.Point(173, 198);
             this.rbSucc.Name = "rbSucc";
             this.rbSucc.Size = new System.Drawing.Size(132, 17);
             this.rbSucc.TabIndex = 21;
             this.rbSucc.TabStop = true;
             this.rbSucc.Text = "Further Succulents";
             this.rbSucc.UseVisualStyleBackColor = true;
-            this.rbSucc.CheckedChanged += new System.EventHandler(this.rbSucc_CheckedChanged);
+            this.rbSucc.CheckedChanged += new System.EventHandler(this.RbSucc_CheckedChanged);
             // 
             // rbCacti
             // 
             this.rbCacti.AutoSize = true;
-            this.rbCacti.Location = new System.Drawing.Point(301, 194);
+            this.rbCacti.Location = new System.Drawing.Point(103, 198);
             this.rbCacti.Name = "rbCacti";
             this.rbCacti.Size = new System.Drawing.Size(54, 17);
             this.rbCacti.TabIndex = 20;
             this.rbCacti.TabStop = true;
             this.rbCacti.Text = "Cacti";
             this.rbCacti.UseVisualStyleBackColor = true;
-            this.rbCacti.CheckedChanged += new System.EventHandler(this.rbCacti_CheckedChanged);
+            this.rbCacti.CheckedChanged += new System.EventHandler(this.RbCacti_CheckedChanged);
             // 
             // labShow
             // 
             this.labShow.AutoSize = true;
-            this.labShow.Location = new System.Drawing.Point(10, 194);
+            this.labShow.Location = new System.Drawing.Point(10, 200);
             this.labShow.Name = "labShow";
-            this.labShow.Size = new System.Drawing.Size(266, 13);
+            this.labShow.Size = new System.Drawing.Size(77, 13);
             this.labShow.TabIndex = 19;
-            this.labShow.Text = "What plants would you like to see on the list?";
+            this.labShow.Text = "Filter plants:";
             // 
             // txtNotes
             // 
             this.txtNotes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Notes", true));
-            this.txtNotes.Location = new System.Drawing.Point(118, 136);
+            this.txtNotes.Location = new System.Drawing.Point(102, 136);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(654, 50);
+            this.txtNotes.Size = new System.Drawing.Size(445, 50);
             this.txtNotes.TabIndex = 17;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(807, 93);
+            this.pictureBox1.Location = new System.Drawing.Point(807, 17);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(318, 113);
+            this.pictureBox1.Size = new System.Drawing.Size(318, 197);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
             // txtSubsp
             // 
             this.txtSubsp.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Subspecies", true));
-            this.txtSubsp.Location = new System.Drawing.Point(118, 47);
+            this.txtSubsp.Location = new System.Drawing.Point(102, 47);
             this.txtSubsp.Name = "txtSubsp";
             this.txtSubsp.Size = new System.Drawing.Size(268, 20);
             this.txtSubsp.TabIndex = 11;
-            this.txtSubsp.TextChanged += new System.EventHandler(this.TxtSubsp_TextChanged);
             // 
             // txtReplanted
             // 
             this.txtReplanted.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Replanted", true));
-            this.txtReplanted.Location = new System.Drawing.Point(504, 104);
+            this.txtReplanted.Location = new System.Drawing.Point(488, 104);
             this.txtReplanted.Name = "txtReplanted";
             this.txtReplanted.Size = new System.Drawing.Size(268, 20);
             this.txtReplanted.TabIndex = 16;
@@ -285,7 +308,7 @@
             // txtSource
             // 
             this.txtSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Source", true));
-            this.txtSource.Location = new System.Drawing.Point(118, 105);
+            this.txtSource.Location = new System.Drawing.Point(102, 105);
             this.txtSource.Margin = new System.Windows.Forms.Padding(10);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(268, 20);
@@ -294,7 +317,7 @@
             // txtSyn
             // 
             this.txtSyn.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Synonym", true));
-            this.txtSyn.Location = new System.Drawing.Point(504, 75);
+            this.txtSyn.Location = new System.Drawing.Point(488, 75);
             this.txtSyn.Name = "txtSyn";
             this.txtSyn.Size = new System.Drawing.Size(268, 20);
             this.txtSyn.TabIndex = 14;
@@ -302,7 +325,7 @@
             // txtHabit
             // 
             this.txtHabit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Habitat", true));
-            this.txtHabit.Location = new System.Drawing.Point(118, 76);
+            this.txtHabit.Location = new System.Drawing.Point(102, 76);
             this.txtHabit.Name = "txtHabit";
             this.txtHabit.Size = new System.Drawing.Size(268, 20);
             this.txtHabit.TabIndex = 13;
@@ -310,7 +333,7 @@
             // txtFieldNo
             // 
             this.txtFieldNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "FieldNumber", true));
-            this.txtFieldNo.Location = new System.Drawing.Point(504, 46);
+            this.txtFieldNo.Location = new System.Drawing.Point(488, 46);
             this.txtFieldNo.Name = "txtFieldNo";
             this.txtFieldNo.Size = new System.Drawing.Size(268, 20);
             this.txtFieldNo.TabIndex = 12;
@@ -320,7 +343,7 @@
             this.txtSp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtSp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtSp.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Species", true));
-            this.txtSp.Location = new System.Drawing.Point(504, 17);
+            this.txtSp.Location = new System.Drawing.Point(488, 17);
             this.txtSp.Name = "txtSp";
             this.txtSp.Size = new System.Drawing.Size(268, 20);
             this.txtSp.TabIndex = 10;
@@ -329,14 +352,14 @@
             // 
             this.cboxGen.AllowDrop = true;
             this.cboxGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
-            this.cboxGen.DataSource = this.plantsBindingSource;
+            this.cboxGen.DataSource = this.genusBindingSource;
             this.cboxGen.DisplayMember = "Genus";
             this.cboxGen.FormattingEnabled = true;
-            this.cboxGen.Location = new System.Drawing.Point(118, 17);
+            this.cboxGen.Location = new System.Drawing.Point(102, 17);
             this.cboxGen.Name = "cboxGen";
             this.cboxGen.Size = new System.Drawing.Size(268, 21);
             this.cboxGen.TabIndex = 9;
-            this.cboxGen.SelectedIndexChanged += new System.EventHandler(this.CboxGen_SelectedIndexChanged);
+            this.cboxGen.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
             // 
             // labNotes
             // 
@@ -359,7 +382,7 @@
             // labReplanted
             // 
             this.labReplanted.AutoSize = true;
-            this.labReplanted.Location = new System.Drawing.Point(422, 105);
+            this.labReplanted.Location = new System.Drawing.Point(406, 105);
             this.labReplanted.Name = "labReplanted";
             this.labReplanted.Size = new System.Drawing.Size(65, 13);
             this.labReplanted.TabIndex = 6;
@@ -368,7 +391,7 @@
             // labSyn
             // 
             this.labSyn.AutoSize = true;
-            this.labSyn.Location = new System.Drawing.Point(422, 77);
+            this.labSyn.Location = new System.Drawing.Point(406, 77);
             this.labSyn.Name = "labSyn";
             this.labSyn.Size = new System.Drawing.Size(57, 13);
             this.labSyn.TabIndex = 5;
@@ -386,7 +409,7 @@
             // labFieldNo4
             // 
             this.labFieldNo4.AutoSize = true;
-            this.labFieldNo4.Location = new System.Drawing.Point(422, 49);
+            this.labFieldNo4.Location = new System.Drawing.Point(406, 49);
             this.labFieldNo4.Name = "labFieldNo4";
             this.labFieldNo4.Size = new System.Drawing.Size(81, 13);
             this.labFieldNo4.TabIndex = 3;
@@ -404,7 +427,7 @@
             // labSp
             // 
             this.labSp.AutoSize = true;
-            this.labSp.Location = new System.Drawing.Point(422, 21);
+            this.labSp.Location = new System.Drawing.Point(406, 21);
             this.labSp.Name = "labSp";
             this.labSp.Size = new System.Drawing.Size(52, 13);
             this.labSp.TabIndex = 1;
@@ -449,60 +472,64 @@
             this.cactiToolStripMenuItem.Name = "cactiToolStripMenuItem";
             this.cactiToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.cactiToolStripMenuItem.Text = "View cacti";
-            this.cactiToolStripMenuItem.Click += new System.EventHandler(this.cactiToolStripMenuItem_Click);
+            this.cactiToolStripMenuItem.Click += new System.EventHandler(this.CactiToolStripMenuItem_Click);
             // 
             // furtherSucculentsToolStripMenuItem
             // 
             this.furtherSucculentsToolStripMenuItem.Name = "furtherSucculentsToolStripMenuItem";
             this.furtherSucculentsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.furtherSucculentsToolStripMenuItem.Text = "View further succulents";
-            this.furtherSucculentsToolStripMenuItem.Click += new System.EventHandler(this.furtherSucculentsToolStripMenuItem_Click);
+            this.furtherSucculentsToolStripMenuItem.Click += new System.EventHandler(this.FurtherSucculentsToolStripMenuItem_Click);
             // 
             // otherPlantsToolStripMenuItem
             // 
             this.otherPlantsToolStripMenuItem.Name = "otherPlantsToolStripMenuItem";
             this.otherPlantsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.otherPlantsToolStripMenuItem.Text = "View other plants";
-            this.otherPlantsToolStripMenuItem.Click += new System.EventHandler(this.otherPlantsToolStripMenuItem_Click);
+            this.otherPlantsToolStripMenuItem.Click += new System.EventHandler(this.OtherPlantsToolStripMenuItem_Click);
             // 
             // viewAllPlantsToolStripMenuItem
             // 
             this.viewAllPlantsToolStripMenuItem.Name = "viewAllPlantsToolStripMenuItem";
             this.viewAllPlantsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.viewAllPlantsToolStripMenuItem.Text = "View all plants";
-            this.viewAllPlantsToolStripMenuItem.Click += new System.EventHandler(this.viewAllPlantsToolStripMenuItem_Click);
+            this.viewAllPlantsToolStripMenuItem.Click += new System.EventHandler(this.ViewAllPlantsToolStripMenuItem_Click);
             // 
             // createNewPlantToolStripMenuItem
             // 
             this.createNewPlantToolStripMenuItem.Name = "createNewPlantToolStripMenuItem";
             this.createNewPlantToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.createNewPlantToolStripMenuItem.Text = "Create new plant";
-            this.createNewPlantToolStripMenuItem.Click += new System.EventHandler(this.createNewPlantToolStripMenuItem_Click);
+            this.createNewPlantToolStripMenuItem.Click += new System.EventHandler(this.CreateNewPlantToolStripMenuItem_Click);
             // 
             // saveActualPlantToolStripMenuItem
             // 
             this.saveActualPlantToolStripMenuItem.Name = "saveActualPlantToolStripMenuItem";
             this.saveActualPlantToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.saveActualPlantToolStripMenuItem.Text = "Save actual plant";
-            this.saveActualPlantToolStripMenuItem.Click += new System.EventHandler(this.saveActualPlantToolStripMenuItem_Click);
+            this.saveActualPlantToolStripMenuItem.Click += new System.EventHandler(this.SaveActualPlantToolStripMenuItem_Click);
             // 
             // deleteActualPlantToolStripMenuItem
             // 
             this.deleteActualPlantToolStripMenuItem.Name = "deleteActualPlantToolStripMenuItem";
             this.deleteActualPlantToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.deleteActualPlantToolStripMenuItem.Text = "Delete actual plant";
-            this.deleteActualPlantToolStripMenuItem.Click += new System.EventHandler(this.deleteActualPlantToolStripMenuItem_Click);
+            this.deleteActualPlantToolStripMenuItem.Click += new System.EventHandler(this.DeleteActualPlantToolStripMenuItem_Click);
             // 
             // uploadPictureForPlantToolStripMenuItem
             // 
             this.uploadPictureForPlantToolStripMenuItem.Name = "uploadPictureForPlantToolStripMenuItem";
             this.uploadPictureForPlantToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
             this.uploadPictureForPlantToolStripMenuItem.Text = "Upload picture for plant";
-            this.uploadPictureForPlantToolStripMenuItem.Click += new System.EventHandler(this.uploadPictureForPlantToolStripMenuItem_Click);
+            this.uploadPictureForPlantToolStripMenuItem.Click += new System.EventHandler(this.UploadPictureForPlantToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -529,28 +556,24 @@
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.Width = 50;
             // 
             // genusDataGridViewTextBoxColumn
             // 
             this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
             this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
             this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
-            this.genusDataGridViewTextBoxColumn.Width = 200;
             // 
             // speciesDataGridViewTextBoxColumn
             // 
             this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
             this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
             this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
-            this.speciesDataGridViewTextBoxColumn.Width = 200;
             // 
             // subspeciesDataGridViewTextBoxColumn
             // 
             this.subspeciesDataGridViewTextBoxColumn.DataPropertyName = "Subspecies";
             this.subspeciesDataGridViewTextBoxColumn.HeaderText = "Subspecies";
             this.subspeciesDataGridViewTextBoxColumn.Name = "subspeciesDataGridViewTextBoxColumn";
-            this.subspeciesDataGridViewTextBoxColumn.Width = 150;
             // 
             // fieldNumberDataGridViewTextBoxColumn
             // 
@@ -563,7 +586,6 @@
             this.habitatDataGridViewTextBoxColumn.DataPropertyName = "Habitat";
             this.habitatDataGridViewTextBoxColumn.HeaderText = "Habitat";
             this.habitatDataGridViewTextBoxColumn.Name = "habitatDataGridViewTextBoxColumn";
-            this.habitatDataGridViewTextBoxColumn.Width = 110;
             // 
             // synonymDataGridViewTextBoxColumn
             // 
@@ -576,7 +598,6 @@
             this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
             this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
             this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
-            this.sourceDataGridViewTextBoxColumn.Width = 70;
             // 
             // replantedDataGridViewTextBoxColumn
             // 
@@ -589,7 +610,6 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Notes";
             this.dataGridViewTextBoxColumn1.HeaderText = "Notes";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 42;
             // 
             // bindingNavigator1
             // 
@@ -598,6 +618,7 @@
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
+            this.bindingNavigator1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -617,14 +638,14 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(255, 25);
+            this.bindingNavigator1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.bindingNavigator1.Size = new System.Drawing.Size(277, 25);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
             this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
@@ -640,7 +661,6 @@
             // bindingNavigatorDeleteItem
             // 
             this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
@@ -649,7 +669,6 @@
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
@@ -658,7 +677,6 @@
             // bindingNavigatorMovePreviousItem
             // 
             this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
@@ -686,7 +704,6 @@
             // bindingNavigatorMoveNextItem
             // 
             this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
@@ -695,7 +712,6 @@
             // bindingNavigatorMoveLastItem
             // 
             this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
@@ -710,7 +726,11 @@
             // 
             this.plantsTableAdapter.ClearBeforeFill = true;
             // 
-            // Form1
+            // genusTableAdapter
+            // 
+            this.genusTableAdapter.ClearBeforeFill = true;
+            // 
+            // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -725,14 +745,15 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "Form1";
+            this.Name = "PlantsForm";
             this.Text = "Welcome to the Ornamental Plant Register!";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.PlantsForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.genusBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -772,7 +793,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteActualPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadPictureForPlantToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbOther;
         private System.Windows.Forms.RadioButton rbSucc;
@@ -812,6 +832,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboxType;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.BindingSource genusBindingSource;
+        private DataSetForPlantRegTableAdapters.GenusTableAdapter genusTableAdapter;
     }
 }
 

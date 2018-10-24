@@ -13,84 +13,88 @@ using Ornaments_Register.Service.Simple;
 
 namespace Ornaments_Register
 {
-    public partial class Form1 : Form
+    public partial class PlantsForm : Form
     {
         IConnectionCreater connectionCreater;
 
 
-        public Form1()
+        public PlantsForm()
         {
             InitializeComponent();
        
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void PlantsForm_Load(object sender, EventArgs e)
         {
-            
+            // TODO: This line of code loads data into the 'dataSetForPlantReg1.Genus' table. You can move, or remove it, as needed.
+            this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
+
             // TODO: This line of code loads data into the 'dataSetForPlantReg.Plants' table. You can move, or remove it, as needed.
             this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
-            //dataGridView1.DataSource = this.PopulateDataGridView();
-
 
         }
 
-        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            //dataGridView1.DataSource = this.PopulateDataGridView();
-            this.plantsTableAdapter.SearchGenus(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+            this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
         }
 
-        private DataTable PopulateDataGridView()
+        private void CboxGen_KeyUp(object sender, KeyEventArgs e)
         {
-            string query = "SELECT Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type FROM Plants " +
-                "WHERE Genus LIKE '%' + @Genus + '%' OR @Genus = ''";
-            connectionCreater = new SimpleConnectionCreater();
-            //using (SqlConnection con = new SqlConnection(connectionCreater.connect().ConnectionString)) 
+            this.genusTableAdapter.SearchGenusInGenus("%" + cboxGen.Text.Trim() + "%");
+        }
+
+        private int GetNextID()
+        {
+            return Convert.ToInt32(this.plantsTableAdapter.GetLastID()) + 1;
+        }
+
+        private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cboxGen.Text = "";
+            txtSp.Text = "";
+            txtSubsp.Text = "";
+            txtFieldNo.Text = "";
+            txtHabit.Text = "";
+            txtSyn.Text = "";
+            txtSource.Text = "";
+            txtReplanted.Text = "";
+            txtNotes.Text = "";
+            cboxType.Text = "";
+            txtID.Text = GetNextID().ToString();
+        }
+
+        private void SaveActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {               
+            this.plantsTableAdapter.InsertPlant(Convert.ToInt32(txtID.Text.Trim()), cboxGen.Text.Trim(), txtSp.Text.Trim(), txtSubsp.Text.Trim(), txtFieldNo.Text.Trim(), txtHabit.Text.Trim(), txtSyn.Text.Trim(), txtSource.Text.Trim(), txtReplanted.Text.Trim(), txtNotes.Text.Trim(), cboxType.Text.Trim());
+            // need to refresh datasource
+            }
+            catch (System.Exception ex)
             {
-                using (SqlCommand cmd = new SqlCommand(query, connectionCreater.connect()))
-                {
-                    cmd.Parameters.AddWithValue("@Genus", txtSearch.Text.Trim());
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
-                        return dt;
-                    }
-                }
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
-        private void CboxGen_SelectedIndexChanged(object sender, EventArgs e)
+        private void DeleteActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.plantsTableAdapter.DeletePlant(Convert.ToInt32(txtID.Text.Trim()));
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UploadPictureForPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void TxtSubsp_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void createNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void saveActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void deleteActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void uploadPictureForPlantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbCacti_CheckedChanged(object sender, EventArgs e)
+        private void RbCacti_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -102,7 +106,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void rbSucc_CheckedChanged(object sender, EventArgs e)
+        private void RbSucc_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -114,7 +118,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void rbOther_CheckedChanged(object sender, EventArgs e)
+        private void RbOther_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -126,7 +130,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void rbAll_CheckedChanged(object sender, EventArgs e)
+        private void RbAll_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -138,12 +142,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cactiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CactiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -155,7 +154,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void furtherSucculentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FurtherSucculentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -167,7 +166,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void otherPlantsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OtherPlantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -179,7 +178,7 @@ namespace Ornaments_Register
             }
         }
 
-        private void viewAllPlantsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ViewAllPlantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -190,5 +189,6 @@ namespace Ornaments_Register
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
+
     }
 }
