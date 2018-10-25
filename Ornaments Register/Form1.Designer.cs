@@ -37,7 +37,6 @@
             this.labID = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.labSearch = new System.Windows.Forms.Label();
-            this.cboxType = new System.Windows.Forms.ComboBox();
             this.labType = new System.Windows.Forms.Label();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbOther = new System.Windows.Forms.RadioButton();
@@ -53,8 +52,6 @@
             this.txtHabit = new System.Windows.Forms.TextBox();
             this.txtFieldNo = new System.Windows.Forms.TextBox();
             this.txtSp = new System.Windows.Forms.TextBox();
-            this.cboxGen = new System.Windows.Forms.ComboBox();
-            this.genusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labNotes = new System.Windows.Forms.Label();
             this.labSource = new System.Windows.Forms.Label();
             this.labReplanted = new System.Windows.Forms.Label();
@@ -64,6 +61,7 @@
             this.labSubsp = new System.Windows.Forms.Label();
             this.labSp = new System.Windows.Forms.Label();
             this.labGen = new System.Windows.Forms.Label();
+            this.genusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.viewPlantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cactiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,6 +97,8 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
             this.genusTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.GenusTableAdapter();
+            this.txtGen = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -113,11 +113,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtType);
+            this.groupBox1.Controls.Add(this.txtGen);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Controls.Add(this.labID);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.labSearch);
-            this.groupBox1.Controls.Add(this.cboxType);
             this.groupBox1.Controls.Add(this.labType);
             this.groupBox1.Controls.Add(this.rbAll);
             this.groupBox1.Controls.Add(this.rbOther);
@@ -133,7 +134,6 @@
             this.groupBox1.Controls.Add(this.txtHabit);
             this.groupBox1.Controls.Add(this.txtFieldNo);
             this.groupBox1.Controls.Add(this.txtSp);
-            this.groupBox1.Controls.Add(this.cboxGen);
             this.groupBox1.Controls.Add(this.labNotes);
             this.groupBox1.Controls.Add(this.labSource);
             this.groupBox1.Controls.Add(this.labReplanted);
@@ -157,7 +157,7 @@
             this.txtID.Location = new System.Drawing.Point(635, 137);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(121, 20);
-            this.txtID.TabIndex = 29;
+            this.txtID.TabIndex = 18;
             // 
             // plantsBindingSource
             // 
@@ -183,7 +183,7 @@
             this.txtSearch.Location = new System.Drawing.Point(635, 196);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(121, 20);
-            this.txtSearch.TabIndex = 27;
+            this.txtSearch.TabIndex = 20;
             this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
             // 
             // labSearch
@@ -194,17 +194,6 @@
             this.labSearch.Size = new System.Drawing.Size(47, 13);
             this.labSearch.TabIndex = 26;
             this.labSearch.Text = "Search";
-            // 
-            // cboxType
-            // 
-            this.cboxType.DataSource = this.plantsBindingSource;
-            this.cboxType.DisplayMember = "Type";
-            this.cboxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxType.FormattingEnabled = true;
-            this.cboxType.Location = new System.Drawing.Point(635, 167);
-            this.cboxType.Name = "cboxType";
-            this.cboxType.Size = new System.Drawing.Size(121, 21);
-            this.cboxType.TabIndex = 25;
             // 
             // labType
             // 
@@ -221,7 +210,7 @@
             this.rbAll.Location = new System.Drawing.Point(432, 198);
             this.rbAll.Name = "rbAll";
             this.rbAll.Size = new System.Drawing.Size(115, 17);
-            this.rbAll.TabIndex = 23;
+            this.rbAll.TabIndex = 24;
             this.rbAll.TabStop = true;
             this.rbAll.Text = "All of the Plants";
             this.rbAll.UseVisualStyleBackColor = true;
@@ -233,7 +222,7 @@
             this.rbOther.Location = new System.Drawing.Point(321, 198);
             this.rbOther.Name = "rbOther";
             this.rbOther.Size = new System.Drawing.Size(95, 17);
-            this.rbOther.TabIndex = 22;
+            this.rbOther.TabIndex = 23;
             this.rbOther.TabStop = true;
             this.rbOther.Text = "Other Plants";
             this.rbOther.UseVisualStyleBackColor = true;
@@ -245,7 +234,7 @@
             this.rbSucc.Location = new System.Drawing.Point(173, 198);
             this.rbSucc.Name = "rbSucc";
             this.rbSucc.Size = new System.Drawing.Size(132, 17);
-            this.rbSucc.TabIndex = 21;
+            this.rbSucc.TabIndex = 22;
             this.rbSucc.TabStop = true;
             this.rbSucc.Text = "Further Succulents";
             this.rbSucc.UseVisualStyleBackColor = true;
@@ -257,7 +246,7 @@
             this.rbCacti.Location = new System.Drawing.Point(103, 198);
             this.rbCacti.Name = "rbCacti";
             this.rbCacti.Size = new System.Drawing.Size(54, 17);
-            this.rbCacti.TabIndex = 20;
+            this.rbCacti.TabIndex = 21;
             this.rbCacti.TabStop = true;
             this.rbCacti.Text = "Cacti";
             this.rbCacti.UseVisualStyleBackColor = true;
@@ -347,19 +336,6 @@
             this.txtSp.Name = "txtSp";
             this.txtSp.Size = new System.Drawing.Size(268, 20);
             this.txtSp.TabIndex = 10;
-            // 
-            // cboxGen
-            // 
-            this.cboxGen.AllowDrop = true;
-            this.cboxGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
-            this.cboxGen.DataSource = this.plantsBindingSource;
-            this.cboxGen.DisplayMember = "Genus";
-            this.cboxGen.FormattingEnabled = true;
-            this.cboxGen.Location = new System.Drawing.Point(102, 17);
-            this.cboxGen.Name = "cboxGen";
-            this.cboxGen.Size = new System.Drawing.Size(268, 21);
-            this.cboxGen.TabIndex = 9;
-            this.cboxGen.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
             // 
             // labNotes
             // 
@@ -730,6 +706,22 @@
             // 
             this.genusTableAdapter.ClearBeforeFill = true;
             // 
+            // txtGen
+            // 
+            this.txtGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
+            this.txtGen.Location = new System.Drawing.Point(103, 17);
+            this.txtGen.Name = "txtGen";
+            this.txtGen.Size = new System.Drawing.Size(267, 20);
+            this.txtGen.TabIndex = 9;
+            // 
+            // txtType
+            // 
+            this.txtType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Type", true));
+            this.txtType.Location = new System.Drawing.Point(635, 167);
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(121, 20);
+            this.txtType.TabIndex = 19;
+            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -768,7 +760,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboxGen;
         private System.Windows.Forms.Label labNotes;
         private System.Windows.Forms.Label labSource;
         private System.Windows.Forms.Label labReplanted;
@@ -830,12 +821,13 @@
         private System.Windows.Forms.ToolStripMenuItem viewAllPlantsToolStripMenuItem;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label labSearch;
-        private System.Windows.Forms.ComboBox cboxType;
         private System.Windows.Forms.Label labType;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label labID;
         private System.Windows.Forms.BindingSource genusBindingSource;
         private DataSetForPlantRegTableAdapters.GenusTableAdapter genusTableAdapter;
+        private System.Windows.Forms.TextBox txtType;
+        private System.Windows.Forms.TextBox txtGen;
     }
 }
 

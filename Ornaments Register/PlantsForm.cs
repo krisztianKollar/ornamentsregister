@@ -22,17 +22,22 @@ namespace Ornaments_Register
         public PlantsForm()
         {
             InitializeComponent();
+            AutoCmpltTxtGen();
             AutoCmpltTxtSp();
-
-
+            AutoCmpltTxtSubsp();
+            AutoCmpltTxtFieldNo();
+            AutoCmpltTxtHabit();
+            AutoCmpltTxtSyn();
+            AutoCmpltTxtSource();
+            AutoCmpltTxtReplanted();
+            AutoCmpltTxtNotes();
+            AutoCmpltTxtType();
         }
 
         private void PlantsForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSetForPlantReg1.Genus' table. You can move, or remove it, as needed.
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
 
-            // TODO: This line of code loads data into the 'dataSetForPlantReg.Plants' table. You can move, or remove it, as needed.
             this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
 
         }
@@ -42,55 +47,85 @@ namespace Ornaments_Register
             this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
         }
 
-        private void AutoCmpltTxtSp()
-        {
-            txtSp.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtSp.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
-            //SqlConnection conn = connectionCreater.connect();
-            //string connStr = @"Data Source=C:\Users\takk\develop\ornamentsregister\OrnamentsRegisterDatabase\OrnamentsRegister";
-            //string connStr = "server=Dell; database=OrnamentsRegister;";
-            /*SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-            string sqlString = "SELECT Species FROM Plants";
-            SqlDataAdapter sda = new SqlDataAdapter(sqlString, conn);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                string species = dt.Rows[1]["Species"].ToString();
-                coll.Add(species);
-            }
-            txtSp.AutoCompleteCustomSource = coll;*/
 
+
+        private void AutoCmpltTxtField(string sql, TextBox txtField, string column)
+        {
+            txtField.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtField.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
             try
             {
                 using (SQLiteConnection conn = connectionCreater.connect())
                 {
                     conn.Open();
-                    string sqlString = "SELECT Species FROM Plants";
-                    SQLiteDataAdapter sda = new SQLiteDataAdapter(sqlString, conn);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(sql, conn);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        string species = dt.Rows[1]["Species"].ToString();
-                        coll.Add(species);
+                        string fieldName = dt.Rows[i][column].ToString();
+                        coll.Add(fieldName);
                     }
-                    txtSp.AutoCompleteCustomSource = coll;
+                    txtField.AutoCompleteCustomSource = coll;
                 }
             }
             catch (SqlException e)
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
             }
-
         }
 
-        /*private void CboxGen_KeyUp(object sender, KeyEventArgs e)
+        private void AutoCmpltTxtGen()
         {
-            this.plantsTableAdapter.("%" + cboxGen.Text.Trim() + "%");
-        }*/
+            AutoCmpltTxtField("SELECT Genus FROM Genus", txtGen, "Genus");
+        }
+
+        private void AutoCmpltTxtSp()
+        {
+            AutoCmpltTxtField("SELECT Species FROM Plants", txtSp, "Species");
+        }
+
+        private void AutoCmpltTxtSubsp()
+        {
+            AutoCmpltTxtField("SELECT Subspecies FROM Plants", txtSubsp, "Subspecies");
+        }
+
+        private void AutoCmpltTxtFieldNo()
+        {
+            AutoCmpltTxtField("SELECT FieldNumber FROM Plants", txtFieldNo, "FieldNumber");
+        }
+
+        private void AutoCmpltTxtHabit()
+        {
+            AutoCmpltTxtField("SELECT Habitat FROM Plants", txtHabit, "Habitat");
+        }
+
+private void AutoCmpltTxtSyn()
+        {
+            AutoCmpltTxtField("SELECT Synonym FROM Plants", txtSyn, "Synonym");
+        }
+
+private void AutoCmpltTxtSource()
+        {
+            AutoCmpltTxtField("SELECT Source FROM Plants", txtSource, "source");
+        }
+
+private void AutoCmpltTxtReplanted()
+        {
+            AutoCmpltTxtField("SELECT Replanted FROM Plants", txtReplanted, "Replanted");
+        }
+
+private void AutoCmpltTxtNotes()
+        {
+            AutoCmpltTxtField("SELECT Notes FROM Plants", txtNotes, "Notes");
+        }
+
+private void AutoCmpltTxtType()
+        {
+            AutoCmpltTxtField("SELECT Type FROM Plants", txtType, "Type");
+        }
+
 
         private int GetNextID()
         {
@@ -99,16 +134,16 @@ namespace Ornaments_Register
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            cboxGen.Text = "";
-            txtSp.Text = "";
-            txtSubsp.Text = "";
-            txtFieldNo.Text = "";
-            txtHabit.Text = "";
-            txtSyn.Text = "";
-            txtSource.Text = "";
-            txtReplanted.Text = "";
-            txtNotes.Text = "";
-            cboxType.Text = "";
+            txtGen.Text = null;
+            txtSp.Text = null;
+            txtSubsp.Text = null;
+            txtFieldNo.Text = null;
+            txtHabit.Text = null;
+            txtSyn.Text = null;
+            txtSource.Text = null;
+            txtReplanted.Text = null;
+            txtNotes.Text = null;
+            txtType.Text = null;
             txtID.Text = GetNextID().ToString();
         }
 
@@ -116,7 +151,7 @@ namespace Ornaments_Register
         {
             try
             {               
-                this.plantsTableAdapter.InsertPlant(Convert.ToInt32(txtID.Text.Trim()), cboxGen.Text.Trim(), txtSp.Text.Trim(), txtSubsp.Text.Trim(), txtFieldNo.Text.Trim(), txtHabit.Text.Trim(), txtSyn.Text.Trim(), txtSource.Text.Trim(), txtReplanted.Text.Trim(), txtNotes.Text.Trim(), cboxType.Text.Trim());
+                this.plantsTableAdapter.InsertPlant(Convert.ToInt32(txtID.Text.Trim()), txtGen.Text.Trim(), txtSp.Text.Trim(), txtSubsp.Text.Trim(), txtFieldNo.Text.Trim(), txtHabit.Text.Trim(), txtSyn.Text.Trim(), txtSource.Text.Trim(), txtReplanted.Text.Trim(), txtNotes.Text.Trim(), txtType.Text.Trim());
                 // need to refresh datasource
                 System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
             }
