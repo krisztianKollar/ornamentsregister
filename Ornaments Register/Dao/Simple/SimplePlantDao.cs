@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace Ornaments_Register.Dao.Simple
             this.ConnectionCreater = connectionCreater;
         }
 
-        public Plant CreatePlant(SqlDataReader reader, SqlCommand command)
+        public Plant CreatePlant(SQLiteDataReader reader, SQLiteCommand command)
         {
             int id = reader.GetInt32(0);
             String genus = reader.GetString(1);
@@ -45,11 +46,11 @@ namespace Ornaments_Register.Dao.Simple
             List<Plant> plants = new List<Plant>();
             try
             {
-                using (SqlConnection conn = ConnectionCreater.connect())
+                using (SQLiteConnection conn = ConnectionCreater.connect())
                 {
                     conn.Open();
-                    SqlCommand command = new SqlCommand("SELECT * FROM plants", conn);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    SQLiteCommand command = new SQLiteCommand("SELECT * FROM plants", conn);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -71,12 +72,12 @@ namespace Ornaments_Register.Dao.Simple
             List<Plant> plants = new List<Plant>();
             try
             {
-                using (SqlConnection conn = ConnectionCreater.connect())
+                using (SQLiteConnection conn = ConnectionCreater.connect())
                 {
                     conn.Open();
-                    SqlCommand command = new SqlCommand("SELECT * FROM plants WHERE type = @0", conn);
+                    SQLiteCommand command = new SQLiteCommand("SELECT * FROM plants WHERE type = @0", conn);
                     command.Parameters.Add(new SqlParameter("0", type));
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -98,12 +99,12 @@ namespace Ornaments_Register.Dao.Simple
             Plant plant = null;
             try
             {
-                using (SqlConnection conn = ConnectionCreater.connect())
+                using (SQLiteConnection conn = ConnectionCreater.connect())
                 {
                     conn.Open();
-                    SqlCommand command = new SqlCommand("SELECT * FROM plants WHERE id = @0", conn);
+                    SQLiteCommand command = new SQLiteCommand("SELECT * FROM plants WHERE id = @0", conn);
                     command.Parameters.Add(new SqlParameter("0", id));
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     return CreatePlant(reader, command);
                    
                 }
@@ -119,12 +120,12 @@ namespace Ornaments_Register.Dao.Simple
         {
             try
             {
-                using (SqlConnection conn = ConnectionCreater.connect())
+                using (SQLiteConnection conn = ConnectionCreater.connect())
                 {
                     conn.Open();
                     string sql = "INSERT INTO plants (Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type)" +
                         " VALUES (@genus, @species, @subspecies, @fieldnumber, @habitat, @synonym, @source, @replanted, @notes, @type)";
-                    SqlCommand insertCommand = new SqlCommand(sql, conn);
+                    SQLiteCommand insertCommand = new SQLiteCommand(sql, conn);
 
                     insertCommand.Parameters.Add(new SqlParameter("genus", plant.Genus));
                     insertCommand.Parameters.Add(new SqlParameter("species", plant.Species));

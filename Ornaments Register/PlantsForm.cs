@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,15 @@ namespace Ornaments_Register
 {
     public partial class PlantsForm : Form
     {
-        IConnectionCreater connectionCreater;
 
+        IConnectionCreater connectionCreater = new SimpleConnectionCreater();
 
         public PlantsForm()
         {
             InitializeComponent();
-       
+            AutoCmpltTxtSp();
+
+
         }
 
         private void PlantsForm_Load(object sender, EventArgs e)
@@ -39,10 +42,55 @@ namespace Ornaments_Register
             this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
         }
 
-        private void CboxGen_KeyUp(object sender, KeyEventArgs e)
+        private void AutoCmpltTxtSp()
         {
-            this.genusTableAdapter.SearchGenusInGenus("%" + cboxGen.Text.Trim() + "%");
+            txtSp.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtSp.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+            //SqlConnection conn = connectionCreater.connect();
+            //string connStr = @"Data Source=C:\Users\takk\develop\ornamentsregister\OrnamentsRegisterDatabase\OrnamentsRegister";
+            //string connStr = "server=Dell; database=OrnamentsRegister;";
+            /*SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+            string sqlString = "SELECT Species FROM Plants";
+            SqlDataAdapter sda = new SqlDataAdapter(sqlString, conn);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string species = dt.Rows[1]["Species"].ToString();
+                coll.Add(species);
+            }
+            txtSp.AutoCompleteCustomSource = coll;*/
+
+            try
+            {
+                using (SQLiteConnection conn = connectionCreater.connect())
+                {
+                    conn.Open();
+                    string sqlString = "SELECT Species FROM Plants";
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(sqlString, conn);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        string species = dt.Rows[1]["Species"].ToString();
+                        coll.Add(species);
+                    }
+                    txtSp.AutoCompleteCustomSource = coll;
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+            }
+
         }
+
+        /*private void CboxGen_KeyUp(object sender, KeyEventArgs e)
+        {
+            this.plantsTableAdapter.("%" + cboxGen.Text.Trim() + "%");
+        }*/
 
         private int GetNextID()
         {
@@ -68,8 +116,9 @@ namespace Ornaments_Register
         {
             try
             {               
-            this.plantsTableAdapter.InsertPlant(Convert.ToInt32(txtID.Text.Trim()), cboxGen.Text.Trim(), txtSp.Text.Trim(), txtSubsp.Text.Trim(), txtFieldNo.Text.Trim(), txtHabit.Text.Trim(), txtSyn.Text.Trim(), txtSource.Text.Trim(), txtReplanted.Text.Trim(), txtNotes.Text.Trim(), cboxType.Text.Trim());
-            // need to refresh datasource
+                this.plantsTableAdapter.InsertPlant(Convert.ToInt32(txtID.Text.Trim()), cboxGen.Text.Trim(), txtSp.Text.Trim(), txtSubsp.Text.Trim(), txtFieldNo.Text.Trim(), txtHabit.Text.Trim(), txtSyn.Text.Trim(), txtSource.Text.Trim(), txtReplanted.Text.Trim(), txtNotes.Text.Trim(), cboxType.Text.Trim());
+                // need to refresh datasource
+                System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
             }
             catch (System.Exception ex)
             {
@@ -82,6 +131,7 @@ namespace Ornaments_Register
             try
             {
                 this.plantsTableAdapter.DeletePlant(Convert.ToInt32(txtID.Text.Trim()));
+                System.Windows.Forms.MessageBox.Show("The plant has successfully deleted");
             }
             catch (System.Exception ex)
             {

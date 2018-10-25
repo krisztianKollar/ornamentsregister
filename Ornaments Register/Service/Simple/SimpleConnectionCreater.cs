@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Configuration;
 using System.Text;
@@ -14,9 +15,9 @@ namespace Ornaments_Register.Service.Simple
         string connString = ConfigurationManager.ConnectionStrings["plantsConnectionString"].ConnectionString;
       
 
-        public SqlConnection connect()
+        public SQLiteConnection connect()
         {
-            SqlConnection conn = new SqlConnection
+            SQLiteConnection conn = new SQLiteConnection
             {
                 ConnectionString = connString
             };

@@ -34,11 +34,11 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labID = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labSearch = new System.Windows.Forms.Label();
             this.cboxType = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labType = new System.Windows.Forms.Label();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbOther = new System.Windows.Forms.RadioButton();
             this.rbSucc = new System.Windows.Forms.RadioButton();
@@ -114,11 +114,11 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.txtID);
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.labID);
             this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.labSearch);
             this.groupBox1.Controls.Add(this.cboxType);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.labType);
             this.groupBox1.Controls.Add(this.rbAll);
             this.groupBox1.Controls.Add(this.rbOther);
             this.groupBox1.Controls.Add(this.rbSucc);
@@ -146,7 +146,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(12, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1125, 225);
+            this.groupBox1.Size = new System.Drawing.Size(1145, 236);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plant Details";
@@ -169,14 +169,14 @@
             this.dataSetForPlantReg.DataSetName = "DataSetForPlantReg";
             this.dataSetForPlantReg.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label3
+            // labID
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(578, 141);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "ID";
+            this.labID.AutoSize = true;
+            this.labID.Location = new System.Drawing.Point(578, 141);
+            this.labID.Name = "labID";
+            this.labID.Size = new System.Drawing.Size(20, 13);
+            this.labID.TabIndex = 28;
+            this.labID.Text = "ID";
             // 
             // txtSearch
             // 
@@ -186,14 +186,14 @@
             this.txtSearch.TabIndex = 27;
             this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
             // 
-            // label2
+            // labSearch
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(575, 200);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Search";
+            this.labSearch.AutoSize = true;
+            this.labSearch.Location = new System.Drawing.Point(575, 200);
+            this.labSearch.Name = "labSearch";
+            this.labSearch.Size = new System.Drawing.Size(47, 13);
+            this.labSearch.TabIndex = 26;
+            this.labSearch.Text = "Search";
             // 
             // cboxType
             // 
@@ -206,14 +206,14 @@
             this.cboxType.Size = new System.Drawing.Size(121, 21);
             this.cboxType.TabIndex = 25;
             // 
-            // label1
+            // labType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(575, 171);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Type";
+            this.labType.AutoSize = true;
+            this.labType.Location = new System.Drawing.Point(575, 171);
+            this.labType.Name = "labType";
+            this.labType.Size = new System.Drawing.Size(35, 13);
+            this.labType.TabIndex = 24;
+            this.labType.Text = "Type";
             // 
             // rbAll
             // 
@@ -352,7 +352,7 @@
             // 
             this.cboxGen.AllowDrop = true;
             this.cboxGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
-            this.cboxGen.DataSource = this.genusBindingSource;
+            this.cboxGen.DataSource = this.plantsBindingSource;
             this.cboxGen.DisplayMember = "Genus";
             this.cboxGen.FormattingEnabled = true;
             this.cboxGen.Location = new System.Drawing.Point(102, 17);
@@ -639,7 +639,7 @@
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
             this.bindingNavigator1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.bindingNavigator1.Size = new System.Drawing.Size(277, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(246, 25);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -829,11 +829,11 @@
         private System.Windows.Forms.ToolStripMenuItem otherPlantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewAllPlantsToolStripMenuItem;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labSearch;
         private System.Windows.Forms.ComboBox cboxType;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labType;
         private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labID;
         private System.Windows.Forms.BindingSource genusBindingSource;
         private DataSetForPlantRegTableAdapters.GenusTableAdapter genusTableAdapter;
     }
