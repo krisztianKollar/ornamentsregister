@@ -38,7 +38,9 @@ namespace Ornaments_Register
         {
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
 
-            this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
+            //this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
+            rbAll.Checked = true;
+            ViewAll();
 
         }
 
@@ -195,7 +197,10 @@ namespace Ornaments_Register
                 ViewOther();
             }
             else
+            {
                 rbAll.Checked = true;
+                ViewAll();
+            }
         }
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,7 +245,27 @@ namespace Ornaments_Register
 
         private void UpdateActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string Genus = txtGen.Text.Length == 0 ? null : txtGen.Text.Trim();
+                string Species = txtSp.Text.Length == 0 ? null : txtSp.Text.Trim();
+                string Subspecies = txtSubsp.Text.Length == 0 ? null : txtSubsp.Text.Trim();
+                string FieldNumber = txtFieldNo.Text.Length == 0 ? null : txtFieldNo.Text.Trim();
+                string Habitat = txtHabit.Text.Length == 0 ? null : txtHabit.Text.Trim();
+                string Synonym = txtSyn.Text.Length == 0 ? null : txtSyn.Text.Trim();
+                string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
+                string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
+                string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
+                string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
+                int ID = Convert.ToInt32(txtID.Text.Trim());
+                this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
+                System.Windows.Forms.MessageBox.Show("The plant has successfully updated");
+                RefreshView();
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
 
         private void DeleteActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
