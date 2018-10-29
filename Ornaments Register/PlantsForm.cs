@@ -123,11 +123,79 @@ namespace Ornaments_Register
         {
             AutoCmpltTxtField("SELECT Type FROM Plants", txtType, "Type");
         }
-
-
+        
         private int GetNextID()
         {
             return Convert.ToInt32(this.plantsTableAdapter.GetLastID()) + 1;
+        }
+
+        private void ViewCacti()
+        {
+            try
+            {
+                this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ViewSucc()
+        {
+            try
+            {
+                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ViewOther()
+        {
+            try
+            {
+                this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ViewAll()
+        {
+            try
+            {
+                this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void RefreshView()
+        {
+            if (rbCacti.Checked)
+            {
+                rbCacti.Checked = true;
+                ViewCacti();
+            }
+            else if (rbSucc.Checked)
+            {
+                rbSucc.Checked = true;
+                ViewSucc();
+            }
+            else if (rbOther.Checked)
+            {
+                rbOther.Checked = true;
+                ViewOther();
+            }
+            else
+                rbAll.Checked = true;
         }
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,7 +230,7 @@ namespace Ornaments_Register
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                 System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
-                this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
+                RefreshView();
             }
             catch (System.Exception ex)
             {
@@ -181,7 +249,7 @@ namespace Ornaments_Register
             {
                 this.plantsTableAdapter.DeletePlant(Convert.ToInt32(txtID.Text.Trim()));
                 System.Windows.Forms.MessageBox.Show("The plant has successfully deleted");
-                this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
+                RefreshView();
             }
             catch (System.Exception ex)
             {
@@ -196,50 +264,22 @@ namespace Ornaments_Register
 
         private void RbCacti_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewCacti();
         }
 
         private void RbSucc_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewSucc();
         }
 
         private void RbOther_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewOther();
         }
 
         private void RbAll_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewAll();
         }
 
         private void CactiToolStripMenuItem_Click(object sender, EventArgs e)
