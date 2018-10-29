@@ -46,9 +46,7 @@ namespace Ornaments_Register
         {
             this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
         }
-
-
-
+               
         private void AutoCmpltTxtField(string sql, TextBox txtField, string column)
         {
             txtField.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -101,27 +99,27 @@ namespace Ornaments_Register
             AutoCmpltTxtField("SELECT Habitat FROM Plants", txtHabit, "Habitat");
         }
 
-private void AutoCmpltTxtSyn()
+        private void AutoCmpltTxtSyn()
         {
             AutoCmpltTxtField("SELECT Synonym FROM Plants", txtSyn, "Synonym");
         }
 
-private void AutoCmpltTxtSource()
+        private void AutoCmpltTxtSource()
         {
             AutoCmpltTxtField("SELECT Source FROM Plants", txtSource, "source");
         }
 
-private void AutoCmpltTxtReplanted()
+        private void AutoCmpltTxtReplanted()
         {
             AutoCmpltTxtField("SELECT Replanted FROM Plants", txtReplanted, "Replanted");
         }
 
-private void AutoCmpltTxtNotes()
+        private void AutoCmpltTxtNotes()
         {
             AutoCmpltTxtField("SELECT Notes FROM Plants", txtNotes, "Notes");
         }
 
-private void AutoCmpltTxtType()
+        private void AutoCmpltTxtType()
         {
             AutoCmpltTxtField("SELECT Type FROM Plants", txtType, "Type");
         }
@@ -134,31 +132,47 @@ private void AutoCmpltTxtType()
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtGen.Text = null;
-            txtSp.Text = null;
-            txtSubsp.Text = null;
-            txtFieldNo.Text = null;
-            txtHabit.Text = null;
-            txtSyn.Text = null;
-            txtSource.Text = null;
-            txtReplanted.Text = null;
-            txtNotes.Text = null;
-            txtType.Text = null;
+            txtGen.Text = String.Empty;
+            txtSp.Text = String.Empty;
+            txtSubsp.Text = String.Empty;
+            txtFieldNo.Text = String.Empty;
+            txtHabit.Text = String.Empty;
+            txtSyn.Text = String.Empty;
+            txtSource.Text = String.Empty;
+            txtReplanted.Text = String.Empty;
+            txtNotes.Text = String.Empty;
+            txtType.Text = String.Empty;
             txtID.Text = GetNextID().ToString();
         }
 
         private void SaveActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
-            {               
-                this.plantsTableAdapter.InsertPlant(Convert.ToInt32(txtID.Text.Trim()), txtGen.Text.Trim(), txtSp.Text.Trim(), txtSubsp.Text.Trim(), txtFieldNo.Text.Trim(), txtHabit.Text.Trim(), txtSyn.Text.Trim(), txtSource.Text.Trim(), txtReplanted.Text.Trim(), txtNotes.Text.Trim(), txtType.Text.Trim());
-                // need to refresh datasource
+            {
+                string Genus = txtGen.Text.Length == 0 ? null : txtGen.Text.Trim();
+                string Species = txtSp.Text.Length == 0 ? null : txtSp.Text.Trim();
+                string Subspecies = txtSubsp.Text.Length == 0 ? null : txtSubsp.Text.Trim();
+                string FieldNumber = txtFieldNo.Text.Length == 0 ? null : txtFieldNo.Text.Trim();
+                string Habitat = txtHabit.Text.Length == 0 ? null : txtHabit.Text.Trim();
+                string Synonym = txtSyn.Text.Length == 0 ? null : txtSyn.Text.Trim();
+                string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
+                string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
+                string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
+                string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
+                int ID = Convert.ToInt32(txtID.Text.Trim());
+                this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                 System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
+                this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
             }
             catch (System.Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+        }
+
+        private void UpdateActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void DeleteActualPlantToolStripMenuItem_Click(object sender, EventArgs e)
@@ -167,6 +181,7 @@ private void AutoCmpltTxtType()
             {
                 this.plantsTableAdapter.DeletePlant(Convert.ToInt32(txtID.Text.Trim()));
                 System.Windows.Forms.MessageBox.Show("The plant has successfully deleted");
+                this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
             }
             catch (System.Exception ex)
             {

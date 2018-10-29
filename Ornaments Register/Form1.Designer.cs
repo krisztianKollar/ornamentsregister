@@ -99,6 +99,7 @@
             this.genusTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.GenusTableAdapter();
             this.txtGen = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
+            this.updateActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -424,6 +425,7 @@
             this.viewPlantsToolStripMenuItem,
             this.createNewPlantToolStripMenuItem,
             this.saveActualPlantToolStripMenuItem,
+            this.updateActualPlantToolStripMenuItem,
             this.deleteActualPlantToolStripMenuItem,
             this.uploadPictureForPlantToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -481,8 +483,8 @@
             // saveActualPlantToolStripMenuItem
             // 
             this.saveActualPlantToolStripMenuItem.Name = "saveActualPlantToolStripMenuItem";
-            this.saveActualPlantToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.saveActualPlantToolStripMenuItem.Text = "Save actual plant";
+            this.saveActualPlantToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.saveActualPlantToolStripMenuItem.Text = "Save new plant";
             this.saveActualPlantToolStripMenuItem.Click += new System.EventHandler(this.SaveActualPlantToolStripMenuItem_Click);
             // 
             // deleteActualPlantToolStripMenuItem
@@ -722,6 +724,13 @@
             this.txtType.Size = new System.Drawing.Size(121, 20);
             this.txtType.TabIndex = 19;
             // 
+            // updateActualPlantToolStripMenuItem
+            // 
+            this.updateActualPlantToolStripMenuItem.Name = "updateActualPlantToolStripMenuItem";
+            this.updateActualPlantToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.updateActualPlantToolStripMenuItem.Text = "Update actual plant";
+            this.updateActualPlantToolStripMenuItem.Click += new System.EventHandler(this.UpdateActualPlantToolStripMenuItem_Click);
+            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,6 +837,7 @@
         private DataSetForPlantRegTableAdapters.GenusTableAdapter genusTableAdapter;
         private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtGen;
+        private System.Windows.Forms.ToolStripMenuItem updateActualPlantToolStripMenuItem;
     }
 }
 
