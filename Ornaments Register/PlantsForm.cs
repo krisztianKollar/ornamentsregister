@@ -202,6 +202,12 @@ namespace Ornaments_Register
             }
         }
 
+        private void SaveGenusToDb(string Genus)
+        {
+            if (this.genusTableAdapter.SelectByGenus(Genus).Rows.Count == 0)
+                this.genusTableAdapter.InsertNewGenus(Genus);
+        }
+
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtGen.Text = String.Empty;
@@ -233,8 +239,7 @@ namespace Ornaments_Register
                 string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
-                if (this.genusTableAdapter.SelectByGenus(Genus).Rows.Count == 0)
-                    this.genusTableAdapter.InsertNewGenus(Genus);
+                SaveGenusToDb(Genus);
                 System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
                 RefreshView();
             }
@@ -260,6 +265,7 @@ namespace Ornaments_Register
                 string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
+                SaveGenusToDb(Genus);
                 System.Windows.Forms.MessageBox.Show("The plant has successfully updated");
                 RefreshView();
             }
@@ -328,5 +334,11 @@ namespace Ornaments_Register
             ViewAll();
         }
 
+        private void PlantsForm_Resize(object sender, EventArgs e)
+        {
+            PlantsBox.Width = (PlantsBox.Parent.Width / 100) * 99;
+            PlantsTableView.Width = PlantsTableView.Parent.Width;
+            
+        }
     }
 }
