@@ -38,7 +38,6 @@ namespace Ornaments_Register
         {
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
 
-            //this.plantsTableAdapter.Fill(this.dataSetForPlantReg.Plants);
             rbAll.Checked = true;
             ViewAll();
 
@@ -234,6 +233,8 @@ namespace Ornaments_Register
                 string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
+                if (this.genusTableAdapter.SelectByGenus(Genus).Rows.Count == 0)
+                    this.genusTableAdapter.InsertNewGenus(Genus);
                 System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
                 RefreshView();
             }
@@ -309,50 +310,22 @@ namespace Ornaments_Register
 
         private void CactiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewCacti();
         }
 
         private void FurtherSucculentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewSucc();
         }
 
         private void OtherPlantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewOther();
         }
 
         private void ViewAllPlantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            ViewAll();
         }
 
     }
