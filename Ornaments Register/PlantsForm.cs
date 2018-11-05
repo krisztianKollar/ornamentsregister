@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ornaments_Register.Models;
 using Ornaments_Register.Service.Interface;
 using Ornaments_Register.Service.Simple;
 
@@ -38,10 +39,22 @@ namespace Ornaments_Register
         private void PlantsForm_Load(object sender, EventArgs e)
         {
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
-
+            HideComboType();
             rbAll.Checked = true;
             ViewAll();
 
+        }
+
+        private void HideComboType()
+        {
+            comboType.Visible = false;
+            txtType.Visible = true;
+        }
+
+        private void ShowComboType()
+        {
+            comboType.Visible = true;
+            txtType.Visible = false;
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -83,6 +96,7 @@ namespace Ornaments_Register
                 using (SQLiteConnection conn = connectionCreater.connect())
                 {
                     List<string> coll = new List<string>();
+                    //List<Plant> plants = new SimplePlantService(connectionCreater).GetAll();
                     conn.Open();
                     SQLiteDataAdapter sda = new SQLiteDataAdapter("SELECT DISTINCT Type FROM Plants", conn);
                     DataTable dt = new DataTable();
@@ -93,6 +107,10 @@ namespace Ornaments_Register
                         coll.Add(type);
                     }
                     comboType.DataSource = coll;
+                    /*foreach (Plant plant in plants)
+                    {
+                        comboType.SelectedValue = plant.Type;
+                    }*/
                 }
             }
             catch (SqlException e)
@@ -160,6 +178,7 @@ namespace Ornaments_Register
         {
             try
             {
+                HideComboType();
                 this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
             }
             catch (System.Exception ex)
@@ -172,6 +191,7 @@ namespace Ornaments_Register
         {
             try
             {
+                HideComboType();
                 this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
             }
             catch (System.Exception ex)
@@ -184,6 +204,7 @@ namespace Ornaments_Register
         {
             try
             {
+                HideComboType();
                 this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
             }
             catch (System.Exception ex)
@@ -196,6 +217,7 @@ namespace Ornaments_Register
         {
             try
             {
+                HideComboType();
                 this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
             }
             catch (System.Exception ex)
@@ -236,6 +258,7 @@ namespace Ornaments_Register
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ShowComboType();
             txtGen.Text = String.Empty;
             txtSp.Text = String.Empty;
             txtSubsp.Text = String.Empty;
@@ -245,7 +268,6 @@ namespace Ornaments_Register
             txtSource.Text = String.Empty;
             txtReplanted.Text = String.Empty;
             txtNotes.Text = String.Empty;
-            txtType.Text = String.Empty;
             txtID.Text = GetNextID().ToString();
         }
 
@@ -262,7 +284,7 @@ namespace Ornaments_Register
                 string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
                 string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
                 string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
-                string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
+                string Type = comboType.Text.Length == 0 ? null : txtType.Text.Trim();
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                 SaveGenusToDb(Genus);
@@ -373,11 +395,9 @@ namespace Ornaments_Register
             
         }
 
-        private void ComboType_DropDown(object sender, EventArgs e)
+        private void ImportExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataSetForPlantReg.Tables["Plants"].DefaultView.ToTable(true, "Type");
 
         }
-
     }
 }

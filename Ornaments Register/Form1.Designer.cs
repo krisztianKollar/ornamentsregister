@@ -76,6 +76,7 @@
             this.updateActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadPictureForPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -168,14 +169,12 @@
             this.comboType.DisplayMember = "Type";
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboType.FormattingEnabled = true;
-            this.comboType.Location = new System.Drawing.Point(801, 171);
+            this.comboType.Location = new System.Drawing.Point(635, 167);
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(121, 21);
             this.comboType.TabIndex = 29;
             this.toolTipComboType.SetToolTip(this.comboType, "You can choose the type of plant");
             this.comboType.ValueMember = "Type";
-            this.comboType.DropDown += new System.EventHandler(this.ComboType_DropDown);
-            this.comboType.Click += new System.EventHandler(this.ComboType_DropDown);
             // 
             // plantsBindingSource
             // 
@@ -470,7 +469,8 @@
             this.saveActualPlantToolStripMenuItem,
             this.updateActualPlantToolStripMenuItem,
             this.deleteActualPlantToolStripMenuItem,
-            this.uploadPictureForPlantToolStripMenuItem});
+            this.uploadPictureForPlantToolStripMenuItem,
+            this.importExcelFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1216, 24);
@@ -550,6 +550,13 @@
             this.uploadPictureForPlantToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
             this.uploadPictureForPlantToolStripMenuItem.Text = "Upload picture for plant";
             this.uploadPictureForPlantToolStripMenuItem.Click += new System.EventHandler(this.UploadPictureForPlantToolStripMenuItem_Click);
+            // 
+            // importExcelFileToolStripMenuItem
+            // 
+            this.importExcelFileToolStripMenuItem.Name = "importExcelFileToolStripMenuItem";
+            this.importExcelFileToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.importExcelFileToolStripMenuItem.Text = "Import Excel file";
+            this.importExcelFileToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelFileToolStripMenuItem_Click);
             // 
             // bindingNavigator1
             // 
@@ -912,6 +919,7 @@
         private System.Windows.Forms.ToolTip toolTipComboType;
         private System.Windows.Forms.ToolTip toolTipNotes;
         private System.Windows.Forms.ToolTip toolTipReplanted;
+        private System.Windows.Forms.ToolStripMenuItem importExcelFileToolStripMenuItem;
     }
 }
 
