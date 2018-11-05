@@ -128,6 +128,15 @@ WHERE        (ID = :Original_ID)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;main&quot;.Plants" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByType" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByType" GeneratorSourceName="FillByType" GetMethodModifier="Public" GetMethodName="GetDataByType" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByType" UserSourceName="FillByType">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT Type
+FROM            Plants </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetLastID" Modifier="Public" Name="GetLastID" QueryType="Scalar" ScalarCallRetval="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetLastID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -328,7 +337,7 @@ WHERE        (Genus = :Genus)</CommandText>
   <xs:element name="DataSetForPlantReg" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetForPlantReg" msprop:Generator_UserDSName="DataSetForPlantReg">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Plants" msprop:Generator_TableClassName="PlantsDataTable" msprop:Generator_TableVarName="tablePlants" msprop:Generator_TablePropName="Plants" msprop:Generator_RowDeletingName="PlantsRowDeleting" msprop:Generator_RowChangingName="PlantsRowChanging" msprop:Generator_RowEvHandlerName="PlantsRowChangeEventHandler" msprop:Generator_RowDeletedName="PlantsRowDeleted" msprop:Generator_UserTableName="Plants" msprop:Generator_RowChangedName="PlantsRowChanged" msprop:Generator_RowEvArgName="PlantsRowChangeEvent" msprop:Generator_RowClassName="PlantsRow">
+        <xs:element name="Plants" msprop:Generator_TableClassName="PlantsDataTable" msprop:Generator_TableVarName="tablePlants" msprop:Generator_RowChangedName="PlantsRowChanged" msprop:Generator_TablePropName="Plants" msprop:Generator_RowDeletingName="PlantsRowDeleting" msprop:Generator_RowChangingName="PlantsRowChanging" msprop:Generator_RowEvHandlerName="PlantsRowChangeEventHandler" msprop:Generator_RowDeletedName="PlantsRowDeleted" msprop:Generator_RowClassName="PlantsRow" msprop:Generator_UserTableName="Plants" msprop:Generator_RowEvArgName="PlantsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -345,7 +354,7 @@ WHERE        (Genus = :Genus)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sqlite_sequence" msprop:Generator_TableClassName="sqlite_sequenceDataTable" msprop:Generator_TableVarName="tablesqlite_sequence" msprop:Generator_TablePropName="sqlite_sequence" msprop:Generator_RowDeletingName="sqlite_sequenceRowDeleting" msprop:Generator_RowChangingName="sqlite_sequenceRowChanging" msprop:Generator_RowEvHandlerName="sqlite_sequenceRowChangeEventHandler" msprop:Generator_RowDeletedName="sqlite_sequenceRowDeleted" msprop:Generator_UserTableName="sqlite_sequence" msprop:Generator_RowChangedName="sqlite_sequenceRowChanged" msprop:Generator_RowEvArgName="sqlite_sequenceRowChangeEvent" msprop:Generator_RowClassName="sqlite_sequenceRow">
+        <xs:element name="sqlite_sequence" msprop:Generator_TableClassName="sqlite_sequenceDataTable" msprop:Generator_TableVarName="tablesqlite_sequence" msprop:Generator_RowChangedName="sqlite_sequenceRowChanged" msprop:Generator_TablePropName="sqlite_sequence" msprop:Generator_RowDeletingName="sqlite_sequenceRowDeleting" msprop:Generator_RowChangingName="sqlite_sequenceRowChanging" msprop:Generator_RowEvHandlerName="sqlite_sequenceRowChangeEventHandler" msprop:Generator_RowDeletedName="sqlite_sequenceRowDeleted" msprop:Generator_RowClassName="sqlite_sequenceRow" msprop:Generator_UserTableName="sqlite_sequence" msprop:Generator_RowEvArgName="sqlite_sequenceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
@@ -353,7 +362,7 @@ WHERE        (Genus = :Genus)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Genus" msprop:Generator_TableClassName="GenusDataTable" msprop:Generator_TableVarName="tableGenus" msprop:Generator_TablePropName="Genus" msprop:Generator_RowDeletingName="GenusRowDeleting" msprop:Generator_RowChangingName="GenusRowChanging" msprop:Generator_RowEvHandlerName="GenusRowChangeEventHandler" msprop:Generator_RowDeletedName="GenusRowDeleted" msprop:Generator_UserTableName="Genus" msprop:Generator_RowChangedName="GenusRowChanged" msprop:Generator_RowEvArgName="GenusRowChangeEvent" msprop:Generator_RowClassName="GenusRow">
+        <xs:element name="Genus" msprop:Generator_TableClassName="GenusDataTable" msprop:Generator_TableVarName="tableGenus" msprop:Generator_RowChangedName="GenusRowChanged" msprop:Generator_TablePropName="Genus" msprop:Generator_RowDeletingName="GenusRowDeleting" msprop:Generator_RowChangingName="GenusRowChanging" msprop:Generator_RowEvHandlerName="GenusRowChangeEventHandler" msprop:Generator_RowDeletedName="GenusRowDeleted" msprop:Generator_RowClassName="GenusRow" msprop:Generator_UserTableName="Genus" msprop:Generator_RowEvArgName="GenusRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Genus" msprop:Generator_ColumnVarNameInTable="columnGenus" msprop:Generator_ColumnPropNameInRow="Genus" msprop:Generator_ColumnPropNameInTable="GenusColumn" msprop:Generator_UserColumnName="Genus" type="xs:string" minOccurs="0" />

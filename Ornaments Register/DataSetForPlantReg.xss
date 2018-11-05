@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:Plants" ZOrder="1" X="70" Y="70" Height="362" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
     <Shape ID="DesignTable:sqlite_sequence" ZOrder="3" X="564" Y="59" Height="115" Width="235" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:Genus" ZOrder="2" X="829" Y="86" Height="154" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="46" />
+    <Shape ID="DesignTable:Genus" ZOrder="2" X="829" Y="81" Height="173" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="46" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

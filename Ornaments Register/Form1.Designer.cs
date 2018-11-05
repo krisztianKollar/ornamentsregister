@@ -31,9 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
-            this.txtType = new System.Windows.Forms.TextBox();
+            this.comboType = new System.Windows.Forms.ComboBox();
             this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.txtGen = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.labID = new System.Windows.Forms.Label();
@@ -87,8 +88,6 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
-            this.genusTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.GenusTableAdapter();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.PlantsBox = new System.Windows.Forms.GroupBox();
             this.PlantsTableView = new System.Windows.Forms.DataGridView();
@@ -102,6 +101,12 @@
             this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.replantedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fillByTypeToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.plantsTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PlantsTableAdapter();
+            this.genusTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.GenusTableAdapter();
+            this.toolTipComboType = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipNotes = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipReplanted = new System.Windows.Forms.ToolTip(this.components);
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -117,6 +122,7 @@
             // PlantDetailsBox
             // 
             this.PlantDetailsBox.BackColor = System.Drawing.Color.Transparent;
+            this.PlantDetailsBox.Controls.Add(this.comboType);
             this.PlantDetailsBox.Controls.Add(this.txtType);
             this.PlantDetailsBox.Controls.Add(this.txtGen);
             this.PlantDetailsBox.Controls.Add(this.txtID);
@@ -150,18 +156,26 @@
             this.PlantDetailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlantDetailsBox.Location = new System.Drawing.Point(14, 33);
             this.PlantDetailsBox.Name = "PlantDetailsBox";
-            this.PlantDetailsBox.Size = new System.Drawing.Size(1131, 236);
+            this.PlantDetailsBox.Size = new System.Drawing.Size(1139, 236);
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
             this.PlantDetailsBox.Text = "Plant Details";
             // 
-            // txtType
+            // comboType
             // 
-            this.txtType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Type", true));
-            this.txtType.Location = new System.Drawing.Point(635, 167);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(121, 20);
-            this.txtType.TabIndex = 19;
+            this.comboType.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.plantsBindingSource, "Type", true));
+            this.comboType.DataSource = this.plantsBindingSource;
+            this.comboType.DisplayMember = "Type";
+            this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboType.FormattingEnabled = true;
+            this.comboType.Location = new System.Drawing.Point(801, 171);
+            this.comboType.Name = "comboType";
+            this.comboType.Size = new System.Drawing.Size(121, 21);
+            this.comboType.TabIndex = 29;
+            this.toolTipComboType.SetToolTip(this.comboType, "You can choose the type of plant");
+            this.comboType.ValueMember = "Type";
+            this.comboType.DropDown += new System.EventHandler(this.ComboType_DropDown);
+            this.comboType.Click += new System.EventHandler(this.ComboType_DropDown);
             // 
             // plantsBindingSource
             // 
@@ -172,6 +186,14 @@
             // 
             this.dataSetForPlantReg.DataSetName = "DataSetForPlantReg";
             this.dataSetForPlantReg.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtType
+            // 
+            this.txtType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Type", true));
+            this.txtType.Location = new System.Drawing.Point(635, 167);
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(121, 20);
+            this.txtType.TabIndex = 19;
             // 
             // txtGen
             // 
@@ -365,6 +387,8 @@
             this.labNotes.Size = new System.Drawing.Size(40, 13);
             this.labNotes.TabIndex = 8;
             this.labNotes.Text = "Notes";
+            this.toolTipNotes.SetToolTip(this.labNotes, "You can save other information here: form notes like cristata, variegata etc. You" +
+        " can find every snippet or character of this field using the search box.");
             // 
             // labSource
             // 
@@ -449,7 +473,7 @@
             this.uploadPictureForPlantToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1148, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1216, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -638,14 +662,6 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // plantsTableAdapter
-            // 
-            this.plantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // genusTableAdapter
-            // 
-            this.genusTableAdapter.ClearBeforeFill = true;
-            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
@@ -753,6 +769,31 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Notes";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
+            // fillByTypeToolStripButton
+            // 
+            this.fillByTypeToolStripButton.Name = "fillByTypeToolStripButton";
+            this.fillByTypeToolStripButton.Size = new System.Drawing.Size(23, 23);
+            // 
+            // plantsTableAdapter
+            // 
+            this.plantsTableAdapter.ClearBeforeFill = true;
+            // 
+            // genusTableAdapter
+            // 
+            this.genusTableAdapter.ClearBeforeFill = true;
+            // 
+            // toolTipComboType
+            // 
+            this.toolTipComboType.IsBalloon = true;
+            // 
+            // toolTipNotes
+            // 
+            this.toolTipNotes.IsBalloon = true;
+            // 
+            // toolTipReplanted
+            // 
+            this.toolTipReplanted.IsBalloon = true;
+            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,13 +803,14 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1165, 485);
+            this.ClientSize = new System.Drawing.Size(1216, 525);
             this.Controls.Add(this.PlantsBox);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.PlantDetailsBox);
             this.Controls.Add(this.menuStrip1);
             this.MaximumSize = new System.Drawing.Size(1900, 980);
             this.Name = "PlantsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome to the Ornamental Plant Register!";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PlantsForm_Load);
@@ -865,6 +907,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sourceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn replantedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ComboBox comboType;
+        private System.Windows.Forms.ToolStripButton fillByTypeToolStripButton;
+        private System.Windows.Forms.ToolTip toolTipComboType;
+        private System.Windows.Forms.ToolTip toolTipNotes;
+        private System.Windows.Forms.ToolTip toolTipReplanted;
     }
 }
 

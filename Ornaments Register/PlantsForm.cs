@@ -22,6 +22,7 @@ namespace Ornaments_Register
         public PlantsForm()
         {
             InitializeComponent();
+            FillComboType();
             AutoCmpltTxtGen();
             AutoCmpltTxtSp();
             AutoCmpltTxtSubsp();
@@ -67,6 +68,31 @@ namespace Ornaments_Register
                         coll.Add(fieldName);
                     }
                     txtField.AutoCompleteCustomSource = coll;
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+            }
+        }
+
+        private void FillComboType()
+        {
+            try
+            {
+                using (SQLiteConnection conn = connectionCreater.connect())
+                {
+                    List<string> coll = new List<string>();
+                    conn.Open();
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter("SELECT DISTINCT Type FROM Plants", conn);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        string type = dt.Rows[i]["Type"].ToString();
+                        coll.Add(type);
+                    }
+                    comboType.DataSource = coll;
                 }
             }
             catch (SqlException e)
@@ -316,29 +342,42 @@ namespace Ornaments_Register
 
         private void CactiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            rbCacti.Checked = true;
             ViewCacti();
         }
 
         private void FurtherSucculentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            rbSucc.Checked = true;
             ViewSucc();
         }
 
         private void OtherPlantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            rbOther.Checked = true;
             ViewOther();
         }
 
         private void ViewAllPlantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            rbAll.Checked = true;
             ViewAll();
         }
 
         private void PlantsForm_Resize(object sender, EventArgs e)
         {
             PlantsBox.Width = (PlantsBox.Parent.Width / 100) * 99;
+            //PlantsBox.Height = (PlantsBox.Parent.Width / 100) * 15;
             PlantsTableView.Width = PlantsTableView.Parent.Width;
+
             
         }
+
+        private void ComboType_DropDown(object sender, EventArgs e)
+        {
+            dataSetForPlantReg.Tables["Plants"].DefaultView.ToTable(true, "Type");
+
+        }
+
     }
 }
