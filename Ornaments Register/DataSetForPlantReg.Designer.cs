@@ -2383,7 +2383,28 @@ VALUES        (:ID, :Genus, :Species, :Subspecies, :FieldNumber, :Habitat, :Syno
             this._commandCollection[5].Parameters.Add(param);
             this._commandCollection[6] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspecies, Synonym, Type FROM Plants WHERE (Genus LIKE :Param1) OR (Genus = '') OR (Species LIKE :Param1) OR (Species = '') OR (Subspecies LIKE :Param1) OR (Subspecies = '') OR (FieldNumber LIKE :Param1) OR (FieldNumber = '') OR (Habitat LIKE :Param1) OR (Habitat = '') OR (Synonym LIKE :Param1) OR (Synonym = '') OR (Source LIKE :Param1) OR (Source = '') OR (Replanted LIKE :Param1) OR (Replanted = '') OR (Notes LIKE :Param1) OR (Notes = '')";
+            this._commandCollection[6].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
+FROM            Plants
+WHERE        (Genus LIKE :Param1) OR
+                         (Genus = '') OR
+                         (ID LIKE :Param1) OR
+                         (ID = '') OR
+                         (Species LIKE :Param1) OR
+                         (Species = '') OR
+                         (Subspecies LIKE :Param1) OR
+                         (Subspecies = '') OR
+                         (FieldNumber LIKE :Param1) OR
+                         (FieldNumber = '') OR
+                         (Habitat LIKE :Param1) OR
+                         (Habitat = '') OR
+                         (Synonym LIKE :Param1) OR
+                         (Synonym = '') OR
+                         (Source LIKE :Param1) OR
+                         (Source = '') OR
+                         (Replanted LIKE :Param1) OR
+                         (Replanted = '') OR
+                         (Notes LIKE :Param1) OR
+                         (Notes = '')";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";
