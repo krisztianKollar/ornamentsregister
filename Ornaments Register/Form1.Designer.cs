@@ -108,6 +108,8 @@
             this.toolTipComboType = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipNotes = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReplanted = new System.Windows.Forms.ToolTip(this.components);
+            this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
+            this.plantsLabelStat = new System.Windows.Forms.Label();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -123,6 +125,7 @@
             // PlantDetailsBox
             // 
             this.PlantDetailsBox.BackColor = System.Drawing.Color.Transparent;
+            this.PlantDetailsBox.Controls.Add(this.dateTimePickerReplanted);
             this.PlantDetailsBox.Controls.Add(this.comboType);
             this.PlantDetailsBox.Controls.Add(this.txtType);
             this.PlantDetailsBox.Controls.Add(this.txtGen);
@@ -679,6 +682,7 @@
             // 
             this.PlantsBox.AutoSize = true;
             this.PlantsBox.BackColor = System.Drawing.Color.Transparent;
+            this.PlantsBox.Controls.Add(this.plantsLabelStat);
             this.PlantsBox.Controls.Add(this.PlantsTableView);
             this.PlantsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlantsBox.Location = new System.Drawing.Point(12, 276);
@@ -801,6 +805,25 @@
             // 
             this.toolTipReplanted.IsBalloon = true;
             // 
+            // dateTimePickerReplanted
+            // 
+            this.dateTimePickerReplanted.CustomFormat = "2018. nov.";
+            this.dateTimePickerReplanted.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Replanted", true));
+            this.dateTimePickerReplanted.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerReplanted.Location = new System.Drawing.Point(818, 167);
+            this.dateTimePickerReplanted.Name = "dateTimePickerReplanted";
+            this.dateTimePickerReplanted.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerReplanted.TabIndex = 30;
+            // 
+            // plantsLabelStat
+            // 
+            this.plantsLabelStat.AutoSize = true;
+            this.plantsLabelStat.Location = new System.Drawing.Point(55, 0);
+            this.plantsLabelStat.Name = "plantsLabelStat";
+            this.plantsLabelStat.Size = new System.Drawing.Size(41, 13);
+            this.plantsLabelStat.TabIndex = 9;
+            this.plantsLabelStat.Text = "label1";
+            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -834,6 +857,7 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             this.PlantsBox.ResumeLayout(false);
+            this.PlantsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlantsTableView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -920,6 +944,8 @@
         private System.Windows.Forms.ToolTip toolTipNotes;
         private System.Windows.Forms.ToolTip toolTipReplanted;
         private System.Windows.Forms.ToolStripMenuItem importExcelFileToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dateTimePickerReplanted;
+        private System.Windows.Forms.Label plantsLabelStat;
     }
 }
 

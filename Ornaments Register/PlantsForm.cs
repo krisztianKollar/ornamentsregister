@@ -63,6 +63,7 @@ namespace Ornaments_Register
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+            ChangePlantsLabelStatText();
         }
                
         private void AutoCmpltTxtField(string sql, TextBox txtField, string column)
@@ -183,6 +184,7 @@ namespace Ornaments_Register
             {
                 HideComboType();
                 this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
+                ChangePlantsLabelStatText();
             }
             catch (System.Exception ex)
             {
@@ -196,6 +198,7 @@ namespace Ornaments_Register
             {
                 HideComboType();
                 this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
+                ChangePlantsLabelStatText();
             }
             catch (System.Exception ex)
             {
@@ -209,6 +212,7 @@ namespace Ornaments_Register
             {
                 HideComboType();
                 this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
+                ChangePlantsLabelStatText();
             }
             catch (System.Exception ex)
             {
@@ -222,6 +226,7 @@ namespace Ornaments_Register
             {
                 HideComboType();
                 this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
+                ChangePlantsLabelStatText();
             }
             catch (System.Exception ex)
             {
@@ -460,6 +465,12 @@ namespace Ornaments_Register
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ChangePlantsLabelStatText()
+        {
+            int count = PlantsTableView.RowCount;
+            plantsLabelStat.Text = "You have " + count + " plants according this filter/search/view";
         }
     }
 }
