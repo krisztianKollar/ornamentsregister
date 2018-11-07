@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using Ornaments_Register.Models;
 using Ornaments_Register.Service.Interface;
 using Ornaments_Register.Service.Simple;
+using System.IO;
+using ExcelDataReader;
+using Spire.Xls;
 
 namespace Ornaments_Register
 {
@@ -284,7 +287,7 @@ namespace Ornaments_Register
                 string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
                 string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
                 string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
-                string Type = comboType.Text.Length == 0 ? null : txtType.Text.Trim();
+                string Type = Convert.ToString(comboType.Text);
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                 SaveGenusToDb(Genus);
@@ -396,8 +399,67 @@ namespace Ornaments_Register
         }
 
         private void ImportExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {            
+            try
+            {
+                IExcelDataReader excelReader;
+                OpenFileDialog ope = new OpenFileDialog
+                {
+                    Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+                };
+                if (ope.ShowDialog() == DialogResult.Cancel)
+                    return;
+                FileStream stream = new FileStream(ope.FileName, FileMode.Open);
+                if (".xls".Equals(Path.GetExtension(ope.FileName), StringComparison.OrdinalIgnoreCase))
+                {
+                    excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+                }
+                else
+                {
+                    excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
 
+                }
+                DataSet result = excelReader.AsDataSet();
+
+                DataTable dt = result.Tables[0];
+                MessageBox.Show("Importing is in process. Please be patient.");
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string Genus = Convert.ToString(dr[1]) == "" ? "?" : Convert.ToString(dr[1]).Trim();
+                    string Species = Convert.ToString(dr[2]) == "" ? "?" : Convert.ToString(dr[2]).Trim();
+                    string Subspecies = Convert.ToString(dr[3]) == "" ? null : Convert.ToString(dr[3]).Trim();
+                    string FieldNumber = Convert.ToString(dr[4]) == "" ? null : Convert.ToString(dr[4]).Trim();
+                    string Habitat = Convert.ToString(dr[5]) == "" ? null : Convert.ToString(dr[5]).Trim();
+                    string Synonym = Convert.ToString(dr[6]) == "" ? null : Convert.ToString(dr[6]).Trim();
+                    string Source = Convert.ToString(dr[7]) == "" ? "?" : Convert.ToString(dr[7]).Trim();
+                    string Replanted = Convert.ToString(dr[8]) == "" ? null : Convert.ToString(dr[8]).Trim();
+                    string Notes = Convert.ToString(dr[9]) == "" ? null : Convert.ToString(dr[9]).Trim();
+                    string Type = Convert.ToString(dr[10]) == "" ? "?" : Convert.ToString(dr[10]).Trim();
+                    int ID = Convert.ToInt32(Convert.ToString(dr[0])) == 0 ? 0 : Convert.ToInt32(Convert.ToString(dr[0]).Trim());
+
+                    /*string Genus = Convert.ToString(dr[1]);
+                    string Species = Convert.ToString(dr[2]);
+                    string Subspecies = Convert.ToString(dr[3]);
+                    string FieldNumber = Convert.ToString(dr[4]);
+                    string Habitat = Convert.ToString(dr[5]);
+                    string Synonym = Convert.ToString(dr[6]);
+                    string Source = Convert.ToString(dr[7]);
+                    string Replanted = Convert.ToString(dr[8]);
+                    string Notes = Convert.ToString(dr[9]);
+                    string Type = Convert.ToString(dr[10]);
+                    int ID = Convert.ToInt32(Convert.ToString(dr[0]));*/
+                    this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
+                    SaveGenusToDb(Genus);
+                    RefreshView();
+                }
+                MessageBox.Show("The import is done. If there where any plants with conflicting ID, they were ignored.");
+                excelReader.Close();
+                stream.Close();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
