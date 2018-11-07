@@ -2265,7 +2265,7 @@ namespace Ornaments_Register.DataSetForPlantRegTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[13];
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[15];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Rep" +
@@ -2408,7 +2408,7 @@ WHERE        (Genus LIKE :Param1) OR
                          (Replanted LIKE :Param1) OR
                          (Replanted = '') OR
                          (Notes LIKE :Param1) OR
-                         (Notes = '')";
+                         (Notes = '') ";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";
@@ -2419,106 +2419,192 @@ WHERE        (Genus LIKE :Param1) OR
             this._commandCollection[7].Parameters.Add(param);
             this._commandCollection[8] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "SELECT Species FROM Plants WHERE (Species LIKE :Param1) OR (Species = \'\')";
+            this._commandCollection[8].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
+FROM            Plants
+WHERE        (Type = 'cactus') AND (Genus LIKE :Param1) OR
+                         (Genus = '') OR
+                         (ID LIKE :Param1) OR
+                         (ID = '') OR
+                         (Species LIKE :Param1) OR
+                         (Species = '') OR
+                         (Subspecies LIKE :Param1) OR
+                         (Subspecies = '') OR
+                         (FieldNumber LIKE :Param1) OR
+                         (FieldNumber = '') OR
+                         (Habitat LIKE :Param1) OR
+                         (Habitat = '') OR
+                         (Synonym LIKE :Param1) OR
+                         (Synonym = '') OR
+                         (Source LIKE :Param1) OR
+                         (Source = '') OR
+                         (Replanted LIKE :Param1) OR
+                         (Replanted = '') OR
+                         (Notes LIKE :Param1) OR
+                         (Notes = '')";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
-            param.SourceColumn = "Species";
+            param.SourceColumn = "Genus";
             this._commandCollection[8].Parameters.Add(param);
             this._commandCollection[9] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspe" +
-                "cies, Synonym, Type FROM Plants WHERE (Type = \'cactus\')";
+            this._commandCollection[9].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
+FROM            Plants
+WHERE        (Genus LIKE :Param1) AND (Type = 'other') OR
+                         (Genus = '') OR
+                         (ID LIKE :Param1) OR
+                         (ID = '') OR
+                         (Species LIKE :Param1) OR
+                         (Species = '') OR
+                         (Subspecies LIKE :Param1) OR
+                         (Subspecies = '') OR
+                         (FieldNumber LIKE :Param1) OR
+                         (FieldNumber = '') OR
+                         (Habitat LIKE :Param1) OR
+                         (Habitat = '') OR
+                         (Synonym LIKE :Param1) OR
+                         (Synonym = '') OR
+                         (Source LIKE :Param1) OR
+                         (Source = '') OR
+                         (Replanted LIKE :Param1) OR
+                         (Replanted = '') OR
+                         (Notes LIKE :Param1) OR
+                         (Notes = '')";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Param1";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceColumn = "Genus";
+            this._commandCollection[9].Parameters.Add(param);
             this._commandCollection[10] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[10].Connection = this.Connection;
-            this._commandCollection[10].CommandText = "SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspe" +
-                "cies, Synonym, Type FROM Plants WHERE (Type = \'other\')";
+            this._commandCollection[10].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
+FROM            Plants
+WHERE        (Type = 'succulent') AND (Genus LIKE :Param1) OR
+                         (Genus = '') OR
+                         (ID LIKE :Param1) OR
+                         (ID = '') OR
+                         (Species LIKE :Param1) OR
+                         (Species = '') OR
+                         (Subspecies LIKE :Param1) OR
+                         (Subspecies = '') OR
+                         (FieldNumber LIKE :Param1) OR
+                         (FieldNumber = '') OR
+                         (Habitat LIKE :Param1) OR
+                         (Habitat = '') OR
+                         (Synonym LIKE :Param1) OR
+                         (Synonym = '') OR
+                         (Source LIKE :Param1) OR
+                         (Source = '') OR
+                         (Replanted LIKE :Param1) OR
+                         (Replanted = '') OR
+                         (Notes LIKE :Param1) OR
+                         (Notes = '') 
+";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Param1";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceColumn = "Genus";
+            this._commandCollection[10].Parameters.Add(param);
             this._commandCollection[11] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[11].Connection = this.Connection;
             this._commandCollection[11].CommandText = "SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspe" +
-                "cies, Synonym, Type FROM Plants WHERE (Type = \'succulent\')";
+                "cies, Synonym, Type FROM Plants WHERE (Type = \'cactus\')";
             this._commandCollection[11].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[12] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[12].Connection = this.Connection;
-            this._commandCollection[12].CommandText = @"UPDATE       Plants
+            this._commandCollection[12].CommandText = "SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspe" +
+                "cies, Synonym, Type FROM Plants WHERE (Type = \'other\')";
+            this._commandCollection[12].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[13] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[13].Connection = this.Connection;
+            this._commandCollection[13].CommandText = "SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspe" +
+                "cies, Synonym, Type FROM Plants WHERE (Type = \'succulent\')";
+            this._commandCollection[13].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[14] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[14].Connection = this.Connection;
+            this._commandCollection[14].CommandText = @"UPDATE       Plants
 SET                Genus = :Genus, Species = :Species, Subspecies = :Subspecies, FieldNumber = :FieldNumber, Habitat = :Habitat, Synonym = :Synonym, Source = :Source, Replanted = :Replanted, Notes = :Notes, Type = :Type
 WHERE        (ID = :Original_ID)";
-            this._commandCollection[12].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[14].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Genus";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Genus";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Species";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Species";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Subspecies";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Subspecies";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "FieldNumber";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "FieldNumber";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Habitat";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Habitat";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Synonym";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Synonym";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Source";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Source";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Replanted";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Replanted";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Notes";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Notes";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Type";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Type";
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_ID";
             param.DbType = global::System.Data.DbType.Int64;
@@ -2527,7 +2613,7 @@ WHERE        (ID = :Original_ID)";
             param.IsNullable = true;
             param.SourceColumn = "ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[14].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2631,7 +2717,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int SearchSp(DataSetForPlantReg.PlantsDataTable dataTable, string Param1) {
+        public virtual int Search_cacti(DataSetForPlantReg.PlantsDataTable dataTable, string Param1) {
             this.Adapter.SelectCommand = this.CommandCollection[8];
             if ((Param1 == null)) {
                 throw new global::System.ArgumentNullException("Param1");
@@ -2649,9 +2735,98 @@ WHERE        (ID = :Original_ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetForPlantReg.PlantsDataTable GetDataBySearch_cacti(string Param1) {
+            this.Adapter.SelectCommand = this.CommandCollection[8];
+            if ((Param1 == null)) {
+                throw new global::System.ArgumentNullException("Param1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            DataSetForPlantReg.PlantsDataTable dataTable = new DataSetForPlantReg.PlantsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Search_other(DataSetForPlantReg.PlantsDataTable dataTable, string Param1) {
+            this.Adapter.SelectCommand = this.CommandCollection[9];
+            if ((Param1 == null)) {
+                throw new global::System.ArgumentNullException("Param1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetForPlantReg.PlantsDataTable GetDataBySearch_other(string Param1) {
+            this.Adapter.SelectCommand = this.CommandCollection[9];
+            if ((Param1 == null)) {
+                throw new global::System.ArgumentNullException("Param1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            DataSetForPlantReg.PlantsDataTable dataTable = new DataSetForPlantReg.PlantsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Search_succulent(DataSetForPlantReg.PlantsDataTable dataTable, string Param1) {
+            this.Adapter.SelectCommand = this.CommandCollection[10];
+            if ((Param1 == null)) {
+                throw new global::System.ArgumentNullException("Param1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetForPlantReg.PlantsDataTable GetDataBySearch_succulent(string Param1) {
+            this.Adapter.SelectCommand = this.CommandCollection[10];
+            if ((Param1 == null)) {
+                throw new global::System.ArgumentNullException("Param1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            DataSetForPlantReg.PlantsDataTable dataTable = new DataSetForPlantReg.PlantsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int Select_cacti(DataSetForPlantReg.PlantsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[9];
+            this.Adapter.SelectCommand = this.CommandCollection[11];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2664,7 +2839,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int Select_other(DataSetForPlantReg.PlantsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[10];
+            this.Adapter.SelectCommand = this.CommandCollection[12];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2677,7 +2852,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int Succulents(DataSetForPlantReg.PlantsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[11];
+            this.Adapter.SelectCommand = this.CommandCollection[13];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3265,7 +3440,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdatePlant(string Genus, string Species, string Subspecies, string FieldNumber, string Habitat, string Synonym, string Source, string Replanted, string Notes, string Type, long Original_ID) {
-            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[12];
+            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[14];
             if ((Genus == null)) {
                 throw new global::System.ArgumentNullException("Genus");
             }

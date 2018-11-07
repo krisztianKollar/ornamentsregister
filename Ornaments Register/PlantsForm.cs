@@ -62,7 +62,26 @@ namespace Ornaments_Register
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+             
+            if (rbCacti.Checked)
+            {
+                this.plantsTableAdapter.Search_cacti(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+            }
+            else if (rbSucc.Checked)
+            {
+                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
+                this.plantsTableAdapter.Search_succulent(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+                RefreshView();
+            }
+            else if (rbOther.Checked)
+            {
+                this.plantsTableAdapter.Search_other(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+            }
+            else
+            {
+                this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
+            }
+                       
             ChangePlantsLabelStatText();
         }
                
