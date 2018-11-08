@@ -112,7 +112,6 @@ namespace Ornaments_Register
                 using (SQLiteConnection conn = connectionCreater.connect())
                 {
                     List<string> coll = new List<string>();
-                    //List<Plant> plants = new SimplePlantService(connectionCreater).GetAll();
                     conn.Open();
                     SQLiteDataAdapter sda = new SQLiteDataAdapter("SELECT Type FROM TypeTable", conn);
                     DataTable dt = new DataTable();
@@ -464,7 +463,6 @@ namespace Ornaments_Register
                 else
                 {
                     excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-
                 }
                 DataSet result = excelReader.AsDataSet();
 
@@ -484,17 +482,6 @@ namespace Ornaments_Register
                     string Type = Convert.ToString(dr[10]).Trim() == "" ? "?" : Convert.ToString(dr[10]).Trim();
                     int ID = Convert.ToInt32(Convert.ToString(dr[0]).Trim()) == 0 ? 0 : Convert.ToInt32(Convert.ToString(dr[0]).Trim());
 
-                    /*string Genus = Convert.ToString(dr[1]);
-                    string Species = Convert.ToString(dr[2]);
-                    string Subspecies = Convert.ToString(dr[3]);
-                    string FieldNumber = Convert.ToString(dr[4]);
-                    string Habitat = Convert.ToString(dr[5]);
-                    string Synonym = Convert.ToString(dr[6]);
-                    string Source = Convert.ToString(dr[7]);
-                    string Replanted = Convert.ToString(dr[8]);
-                    string Notes = Convert.ToString(dr[9]);
-                    string Type = Convert.ToString(dr[10]);
-                    int ID = Convert.ToInt32(Convert.ToString(dr[0]));*/
                     this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                     SaveGenusToDb(Genus);
                     RefreshView();
