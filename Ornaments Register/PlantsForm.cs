@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Ornaments_Register.Models;
 using Ornaments_Register.Service.Interface;
 using Ornaments_Register.Service.Simple;
 using System.IO;
@@ -69,9 +64,7 @@ namespace Ornaments_Register
             }
             else if (rbSucc.Checked)
             {
-                this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
                 this.plantsTableAdapter.Search_succulent(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
-                RefreshView();
             }
             else if (rbOther.Checked)
             {
@@ -328,25 +321,42 @@ namespace Ornaments_Register
         {
             try
             {
-                string Genus = txtGen.Text.Length == 0 ? null : txtGen.Text.Trim();
-                string Species = txtSp.Text.Length == 0 ? null : txtSp.Text.Trim();
-                string Subspecies = txtSubsp.Text.Length == 0 ? null : txtSubsp.Text.Trim();
-                string FieldNumber = txtFieldNo.Text.Length == 0 ? null : txtFieldNo.Text.Trim();
-                string Habitat = txtHabit.Text.Length == 0 ? null : txtHabit.Text.Trim();
-                string Synonym = txtSyn.Text.Length == 0 ? null : txtSyn.Text.Trim();
-                string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
-                string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
-                string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
-                string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
-                int ID = Convert.ToInt32(txtID.Text.Trim());
-                this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
-                SaveGenusToDb(Genus);
-                System.Windows.Forms.MessageBox.Show("The plant has successfully updated");
-                RefreshView();
+                int id = Convert.ToInt32(txtID.Text.Trim());
+                if (id == GetNextID())
+                {
+                    MessageBox.Show("This ID doesn't belong to any plant. You can not update it. Please choose a real plant.");
+
+                    RefreshView();
+                }
+                else
+                {
+                    DialogResult res = MessageBox.Show("Are you sure you want to update this plant? Existing plant with same ID will be overwritten.", "Update confirmation",
+                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (res == DialogResult.No)
+                        RefreshView();
+                    else
+                    {
+                        string Genus = txtGen.Text.Length == 0 ? null : txtGen.Text.Trim();
+                        string Species = txtSp.Text.Length == 0 ? null : txtSp.Text.Trim();
+                        string Subspecies = txtSubsp.Text.Length == 0 ? null : txtSubsp.Text.Trim();
+                        string FieldNumber = txtFieldNo.Text.Length == 0 ? null : txtFieldNo.Text.Trim();
+                        string Habitat = txtHabit.Text.Length == 0 ? null : txtHabit.Text.Trim();
+                        string Synonym = txtSyn.Text.Length == 0 ? null : txtSyn.Text.Trim();
+                        string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
+                        string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
+                        string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
+                        string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
+                        int ID = Convert.ToInt32(txtID.Text.Trim());
+                        this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
+                        SaveGenusToDb(Genus);
+                        MessageBox.Show("The plant has successfully updated");
+                        RefreshView();
+                    }
+                }
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -354,9 +364,26 @@ namespace Ornaments_Register
         {
             try
             {
-                this.plantsTableAdapter.DeletePlant(Convert.ToInt32(txtID.Text.Trim()));
-                System.Windows.Forms.MessageBox.Show("The plant has successfully deleted");
-                RefreshView();
+                int id = Convert.ToInt32(txtID.Text.Trim());
+                if (id == GetNextID())
+                {
+                    MessageBox.Show("This ID doesn't belong to any plant.");
+                    
+                    RefreshView();
+                }
+                else
+                {
+                    DialogResult res = MessageBox.Show("Are you sure you want to delete this plant?", "Delete confirmation",
+                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (res == DialogResult.No)
+                        RefreshView();
+                    else
+                    {
+                    this.plantsTableAdapter.DeletePlant(id);
+                    MessageBox.Show("The plant has successfully deleted");
+                    RefreshView();
+                    }
+                }
             }
             catch (System.Exception ex)
             {
@@ -490,6 +517,29 @@ namespace Ornaments_Register
         {
             int count = PlantsTableView.RowCount;
             plantsLabelStat.Text = "You have " + count + " plants according this filter/search/view";
+        }
+
+        private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*printPreviewDialogPlants.Document = printDocumentPlants;
+            printPreviewDialogPlants.ShowDialog();*/
+
+            PrintDialog PrintDialogPlants = new PrintDialog();
+            PrintDialogPlants.AllowSomePages = true;
+            PrintDialogPlants.ShowHelp = true;
+            PrintDialogPlants.Document = printDocumentPlants;
+            DialogResult result = PrintDialogPlants.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                printDocumentPlants.Print();
+            }
+        }
+
+        private void PrintDocumentPlants_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(this.PlantsTableView.Width, this.PlantsTableView.Height);
+            PlantsTableView.DrawToBitmap(bitmap, new Rectangle(0, 0, this.PlantsTableView.Width, this.PlantsTableView.Height));
+            e.Graphics.DrawImage(bitmap, 10, 10);
         }
     }
 }
