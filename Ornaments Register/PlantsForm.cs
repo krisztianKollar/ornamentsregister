@@ -472,17 +472,17 @@ namespace Ornaments_Register
                 MessageBox.Show("Importing is in process. Please be patient.");
                 foreach (DataRow dr in dt.Rows)
                 {
-                    string Genus = Convert.ToString(dr[1]) == "" ? "?" : Convert.ToString(dr[1]).Trim();
-                    string Species = Convert.ToString(dr[2]) == "" ? "?" : Convert.ToString(dr[2]).Trim();
-                    string Subspecies = Convert.ToString(dr[3]) == "" ? null : Convert.ToString(dr[3]).Trim();
-                    string FieldNumber = Convert.ToString(dr[4]) == "" ? null : Convert.ToString(dr[4]).Trim();
-                    string Habitat = Convert.ToString(dr[5]) == "" ? null : Convert.ToString(dr[5]).Trim();
-                    string Synonym = Convert.ToString(dr[6]) == "" ? null : Convert.ToString(dr[6]).Trim();
-                    string Source = Convert.ToString(dr[7]) == "" ? "?" : Convert.ToString(dr[7]).Trim();
-                    string Replanted = Convert.ToString(dr[8]) == "" ? null : Convert.ToString(dr[8]).Trim();
-                    string Notes = Convert.ToString(dr[9]) == "" ? null : Convert.ToString(dr[9]).Trim();
-                    string Type = Convert.ToString(dr[10]) == "" ? "?" : Convert.ToString(dr[10]).Trim();
-                    int ID = Convert.ToInt32(Convert.ToString(dr[0])) == 0 ? 0 : Convert.ToInt32(Convert.ToString(dr[0]).Trim());
+                    string Genus = Convert.ToString(dr[1]).Trim() == "" ? "?" : Convert.ToString(dr[1]).Trim();
+                    string Species = Convert.ToString(dr[2]).Trim() == "" ? "?" : Convert.ToString(dr[2]).Trim();
+                    string Subspecies = Convert.ToString(dr[3]).Trim() == "" ? null : Convert.ToString(dr[3]).Trim();
+                    string FieldNumber = Convert.ToString(dr[4]).Trim() == "" ? null : Convert.ToString(dr[4]).Trim();
+                    string Habitat = Convert.ToString(dr[5]).Trim() == "" ? null : Convert.ToString(dr[5]).Trim();
+                    string Synonym = Convert.ToString(dr[6]).Trim() == "" ? null : Convert.ToString(dr[6]).Trim();
+                    string Source = Convert.ToString(dr[7]).Trim() == "" ? "?" : Convert.ToString(dr[7]).Trim();
+                    string Replanted = Convert.ToString(dr[8]).Trim() == "" ? null : Convert.ToString(dr[8]).Trim();
+                    string Notes = Convert.ToString(dr[9]).Trim() == "" ? null : Convert.ToString(dr[9]).Trim();
+                    string Type = Convert.ToString(dr[10]).Trim() == "" ? "?" : Convert.ToString(dr[10]).Trim();
+                    int ID = Convert.ToInt32(Convert.ToString(dr[0]).Trim()) == 0 ? 0 : Convert.ToInt32(Convert.ToString(dr[0]).Trim());
 
                     /*string Genus = Convert.ToString(dr[1]);
                     string Species = Convert.ToString(dr[2]);
