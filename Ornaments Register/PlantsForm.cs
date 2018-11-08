@@ -114,7 +114,7 @@ namespace Ornaments_Register
                     List<string> coll = new List<string>();
                     //List<Plant> plants = new SimplePlantService(connectionCreater).GetAll();
                     conn.Open();
-                    SQLiteDataAdapter sda = new SQLiteDataAdapter("SELECT DISTINCT Type FROM Plants", conn);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter("SELECT Type FROM TypeTable", conn);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
                     for (int i = 0; i < dt.Rows.Count; i++)
@@ -122,16 +122,12 @@ namespace Ornaments_Register
                         string type = dt.Rows[i]["Type"].ToString();
                         coll.Add(type);
                     }
-                    comboType.DataSource = coll;
-                    /*foreach (Plant plant in plants)
-                    {
-                        comboType.SelectedValue = plant.Type;
-                    }*/
+                    comboType.DataSource = coll;                    
                 }
             }
             catch (SqlException e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
             }
         }
 

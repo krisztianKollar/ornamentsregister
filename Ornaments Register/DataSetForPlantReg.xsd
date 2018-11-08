@@ -109,7 +109,7 @@
               <Mapping SourceColumn="Type" DataSetColumn="Type" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountRows" Modifier="Public" Name="CountRows" QueryType="Scalar" ScalarCallRetval="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="CountRows">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountRows" Modifier="Public" Name="CountRows" QueryType="Scalar" ScalarCallRetval="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CountRows">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(ID) AS "count"
@@ -118,7 +118,7 @@ FROM            Plants</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePlant" Modifier="Public" Name="DeletePlant" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeletePlant">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePlant" Modifier="Public" Name="DeletePlant" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeletePlant">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Plants
@@ -129,7 +129,7 @@ WHERE        (ID = :Original_ID)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;main&quot;.Plants" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;main&quot;.Plants" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT FieldNumber, Genus, Habitat, ID, Notes, Replanted, Source, Species, Subspecies, Synonym, Type FROM Plants</CommandText>
@@ -146,7 +146,7 @@ FROM            Plants </CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetLastID" Modifier="Public" Name="GetLastID" QueryType="Scalar" ScalarCallRetval="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetLastID">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetLastID" Modifier="Public" Name="GetLastID" QueryType="Scalar" ScalarCallRetval="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="GetLastID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(ID)
@@ -155,7 +155,7 @@ FROM            Plants</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPlant" Modifier="Public" Name="InsertPlant" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertPlant">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPlant" Modifier="Public" Name="InsertPlant" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="InsertPlant">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Plants
@@ -443,6 +443,31 @@ WHERE        (Genus = :Genus)</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TypeTableTableAdapter" GeneratorDataComponentClassName="TypeTableTableAdapter" Name="TypeTable" UserDataComponentName="TypeTableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;main&quot;.TypeTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO "main"."TypeTable" ("Type") VALUES (:Type)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Type" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Type
+FROM            TypeTable</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Type" DataSetColumn="Type" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -451,7 +476,7 @@ WHERE        (Genus = :Genus)</CommandText>
   <xs:element name="DataSetForPlantReg" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetForPlantReg" msprop:Generator_UserDSName="DataSetForPlantReg">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Plants" msprop:Generator_TableClassName="PlantsDataTable" msprop:Generator_TableVarName="tablePlants" msprop:Generator_TablePropName="Plants" msprop:Generator_RowDeletingName="PlantsRowDeleting" msprop:Generator_RowChangingName="PlantsRowChanging" msprop:Generator_RowEvHandlerName="PlantsRowChangeEventHandler" msprop:Generator_RowDeletedName="PlantsRowDeleted" msprop:Generator_UserTableName="Plants" msprop:Generator_RowChangedName="PlantsRowChanged" msprop:Generator_RowEvArgName="PlantsRowChangeEvent" msprop:Generator_RowClassName="PlantsRow">
+        <xs:element name="Plants" msprop:Generator_TableClassName="PlantsDataTable" msprop:Generator_TableVarName="tablePlants" msprop:Generator_RowChangedName="PlantsRowChanged" msprop:Generator_TablePropName="Plants" msprop:Generator_RowDeletingName="PlantsRowDeleting" msprop:Generator_RowChangingName="PlantsRowChanging" msprop:Generator_RowEvHandlerName="PlantsRowChangeEventHandler" msprop:Generator_RowDeletedName="PlantsRowDeleted" msprop:Generator_RowClassName="PlantsRow" msprop:Generator_UserTableName="Plants" msprop:Generator_RowEvArgName="PlantsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -468,7 +493,7 @@ WHERE        (Genus = :Genus)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sqlite_sequence" msprop:Generator_TableClassName="sqlite_sequenceDataTable" msprop:Generator_TableVarName="tablesqlite_sequence" msprop:Generator_TablePropName="sqlite_sequence" msprop:Generator_RowDeletingName="sqlite_sequenceRowDeleting" msprop:Generator_RowChangingName="sqlite_sequenceRowChanging" msprop:Generator_RowEvHandlerName="sqlite_sequenceRowChangeEventHandler" msprop:Generator_RowDeletedName="sqlite_sequenceRowDeleted" msprop:Generator_UserTableName="sqlite_sequence" msprop:Generator_RowChangedName="sqlite_sequenceRowChanged" msprop:Generator_RowEvArgName="sqlite_sequenceRowChangeEvent" msprop:Generator_RowClassName="sqlite_sequenceRow">
+        <xs:element name="sqlite_sequence" msprop:Generator_TableClassName="sqlite_sequenceDataTable" msprop:Generator_TableVarName="tablesqlite_sequence" msprop:Generator_RowChangedName="sqlite_sequenceRowChanged" msprop:Generator_TablePropName="sqlite_sequence" msprop:Generator_RowDeletingName="sqlite_sequenceRowDeleting" msprop:Generator_RowChangingName="sqlite_sequenceRowChanging" msprop:Generator_RowEvHandlerName="sqlite_sequenceRowChangeEventHandler" msprop:Generator_RowDeletedName="sqlite_sequenceRowDeleted" msprop:Generator_RowClassName="sqlite_sequenceRow" msprop:Generator_UserTableName="sqlite_sequence" msprop:Generator_RowEvArgName="sqlite_sequenceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
@@ -476,10 +501,17 @@ WHERE        (Genus = :Genus)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Genus" msprop:Generator_TableClassName="GenusDataTable" msprop:Generator_TableVarName="tableGenus" msprop:Generator_TablePropName="Genus" msprop:Generator_RowDeletingName="GenusRowDeleting" msprop:Generator_RowChangingName="GenusRowChanging" msprop:Generator_RowEvHandlerName="GenusRowChangeEventHandler" msprop:Generator_RowDeletedName="GenusRowDeleted" msprop:Generator_UserTableName="Genus" msprop:Generator_RowChangedName="GenusRowChanged" msprop:Generator_RowEvArgName="GenusRowChangeEvent" msprop:Generator_RowClassName="GenusRow">
+        <xs:element name="Genus" msprop:Generator_TableClassName="GenusDataTable" msprop:Generator_TableVarName="tableGenus" msprop:Generator_RowChangedName="GenusRowChanged" msprop:Generator_TablePropName="Genus" msprop:Generator_RowDeletingName="GenusRowDeleting" msprop:Generator_RowChangingName="GenusRowChanging" msprop:Generator_RowEvHandlerName="GenusRowChangeEventHandler" msprop:Generator_RowDeletedName="GenusRowDeleted" msprop:Generator_RowClassName="GenusRow" msprop:Generator_UserTableName="Genus" msprop:Generator_RowEvArgName="GenusRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Genus" msprop:Generator_ColumnVarNameInTable="columnGenus" msprop:Generator_ColumnPropNameInRow="Genus" msprop:Generator_ColumnPropNameInTable="GenusColumn" msprop:Generator_UserColumnName="Genus" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TypeTable" msprop:Generator_TableClassName="TypeTableDataTable" msprop:Generator_TableVarName="tableTypeTable" msprop:Generator_TablePropName="TypeTable" msprop:Generator_RowDeletingName="TypeTableRowDeleting" msprop:Generator_RowChangingName="TypeTableRowChanging" msprop:Generator_RowEvHandlerName="TypeTableRowChangeEventHandler" msprop:Generator_RowDeletedName="TypeTableRowDeleted" msprop:Generator_UserTableName="TypeTable" msprop:Generator_RowChangedName="TypeTableRowChanged" msprop:Generator_RowEvArgName="TypeTableRowChangeEvent" msprop:Generator_RowClassName="TypeTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -488,6 +520,10 @@ WHERE        (Genus = :Genus)</CommandText>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Plants" />
       <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="TypeTable_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:TypeTable" />
+      <xs:field xpath="mstns:Type" />
     </xs:unique>
   </xs:element>
 </xs:schema>
