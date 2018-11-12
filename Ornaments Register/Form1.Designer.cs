@@ -31,13 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
-            this.buttonImport = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
             this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
             this.comboType = new System.Windows.Forms.ComboBox();
-            this.txtType = new System.Windows.Forms.TextBox();
             this.txtGen = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.labID = new System.Windows.Forms.Label();
@@ -117,7 +115,6 @@
             this.printPreviewDialogPlants = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialogPlants = new System.Windows.Forms.PrintDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonSearchOther = new System.Windows.Forms.Button();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -133,12 +130,9 @@
             // PlantDetailsBox
             // 
             this.PlantDetailsBox.BackColor = System.Drawing.Color.Transparent;
-            this.PlantDetailsBox.Controls.Add(this.buttonSearchOther);
-            this.PlantDetailsBox.Controls.Add(this.buttonImport);
             this.PlantDetailsBox.Controls.Add(this.buttonStart);
             this.PlantDetailsBox.Controls.Add(this.dateTimePickerReplanted);
             this.PlantDetailsBox.Controls.Add(this.comboType);
-            this.PlantDetailsBox.Controls.Add(this.txtType);
             this.PlantDetailsBox.Controls.Add(this.txtGen);
             this.PlantDetailsBox.Controls.Add(this.txtID);
             this.PlantDetailsBox.Controls.Add(this.labID);
@@ -175,16 +169,6 @@
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
             this.PlantDetailsBox.Text = "Plant Details";
-            // 
-            // buttonImport
-            // 
-            this.buttonImport.Location = new System.Drawing.Point(924, 145);
-            this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Size = new System.Drawing.Size(150, 23);
-            this.buttonImport.TabIndex = 32;
-            this.buttonImport.Text = "import sample";
-            this.buttonImport.UseVisualStyleBackColor = true;
-            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
             // buttonStart
             // 
@@ -224,20 +208,12 @@
             this.comboType.DisplayMember = "Type";
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboType.FormattingEnabled = true;
-            this.comboType.Location = new System.Drawing.Point(777, 168);
+            this.comboType.Location = new System.Drawing.Point(635, 168);
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(121, 21);
             this.comboType.TabIndex = 29;
             this.toolTipComboType.SetToolTip(this.comboType, "You can choose the type of plant");
             this.comboType.ValueMember = "Type";
-            // 
-            // txtType
-            // 
-            this.txtType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Type", true));
-            this.txtType.Location = new System.Drawing.Point(635, 167);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(121, 20);
-            this.txtType.TabIndex = 19;
             // 
             // txtGen
             // 
@@ -915,16 +891,6 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
-            // buttonSearchOther
-            // 
-            this.buttonSearchOther.Location = new System.Drawing.Point(852, 38);
-            this.buttonSearchOther.Name = "buttonSearchOther";
-            this.buttonSearchOther.Size = new System.Drawing.Size(140, 23);
-            this.buttonSearchOther.TabIndex = 33;
-            this.buttonSearchOther.Text = "search other ";
-            this.buttonSearchOther.UseVisualStyleBackColor = true;
-            this.buttonSearchOther.Click += new System.EventHandler(this.buttonSearchOther_Click);
-            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1023,7 +989,6 @@
         private System.Windows.Forms.Label labID;
         private System.Windows.Forms.BindingSource genusBindingSource;
         private DataSetForPlantRegTableAdapters.GenusTableAdapter genusTableAdapter;
-        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtGen;
         private System.Windows.Forms.ToolStripMenuItem updateActualPlantToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList1;
@@ -1053,8 +1018,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button buttonStart;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button buttonImport;
-        private System.Windows.Forms.Button buttonSearchOther;
     }
 }
 

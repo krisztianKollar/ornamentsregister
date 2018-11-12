@@ -33,27 +33,13 @@ namespace Ornaments_Register
             AutoCmpltTxtSource();
             AutoCmpltTxtReplanted();
             AutoCmpltTxtNotes();
-            AutoCmpltTxtType();
         }
 
         private void PlantsForm_Load(object sender, EventArgs e)
         {
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
-            HideComboType();
             rbAll.Checked = true;
             ViewAll();
-        }
-
-        private void HideComboType()
-        {
-            comboType.Visible = true;
-            txtType.Visible = true;
-        }
-
-        private void ShowComboType()
-        {
-            comboType.Visible = true;
-            txtType.Visible = false;
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -176,11 +162,6 @@ namespace Ornaments_Register
             AutoCmpltTxtField("SELECT Notes FROM Plants", txtNotes, "Notes");
         }
 
-        private void AutoCmpltTxtType()
-        {
-            AutoCmpltTxtField("SELECT Type FROM Plants", txtType, "Type");
-        }
-        
         private int GetNextID()
         {
             return Convert.ToInt32(this.plantsTableAdapter.GetLastID()) + 1;
@@ -190,7 +171,6 @@ namespace Ornaments_Register
         {
             try
             {
-                HideComboType();
                 this.plantsTableAdapter.Select_cacti(this.dataSetForPlantReg.Plants);
                 ChangePlantsLabelStatText();
             }
@@ -204,7 +184,6 @@ namespace Ornaments_Register
         {
             try
             {
-                HideComboType();
                 this.plantsTableAdapter.Succulents(this.dataSetForPlantReg.Plants);
                 ChangePlantsLabelStatText();
             }
@@ -218,7 +197,6 @@ namespace Ornaments_Register
         {
             try
             {
-                HideComboType();
                 this.plantsTableAdapter.Select_other(this.dataSetForPlantReg.Plants);
                 ChangePlantsLabelStatText();
             }
@@ -232,7 +210,6 @@ namespace Ornaments_Register
         {
             try
             {
-                HideComboType();
                 this.plantsTableAdapter.FillBy(this.dataSetForPlantReg.Plants);
                 ChangePlantsLabelStatText();
             }
@@ -274,7 +251,6 @@ namespace Ornaments_Register
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowComboType();
             txtGen.Text = String.Empty;
             txtSp.Text = String.Empty;
             txtSubsp.Text = String.Empty;
@@ -304,7 +280,7 @@ namespace Ornaments_Register
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                 SaveGenusToDb(Genus);
-                System.Windows.Forms.MessageBox.Show("The plant has successfully saved");
+                MessageBox.Show("The plant has successfully saved");
                 RefreshView();
             }
             catch (System.Exception ex)
@@ -341,7 +317,7 @@ namespace Ornaments_Register
                         string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
                         string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
                         string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
-                        string Type = txtType.Text.Length == 0 ? null : txtType.Text.Trim();
+                        string Type = Convert.ToString(comboType.Text);
                         int ID = Convert.ToInt32(txtID.Text.Trim());
                         this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
                         SaveGenusToDb(Genus);
@@ -603,14 +579,9 @@ namespace Ornaments_Register
             alert.Close();
         }
 
-        private void buttonImport_Click(object sender, EventArgs e)
+        private void ButtonImport_Click(object sender, EventArgs e)
         {
             ImportExcel();
-        }
-
-        private void buttonSearchOther_Click(object sender, EventArgs e)
-        {
-            this.plantsTableAdapter.Search_other(this.dataSetForPlantReg.Plants, "Astrophytum");
         }
     }
 }
