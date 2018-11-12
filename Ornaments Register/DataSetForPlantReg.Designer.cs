@@ -2767,26 +2767,26 @@ WHERE        (Genus LIKE :Param1) OR
             this._commandCollection[8].Connection = this.Connection;
             this._commandCollection[8].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
 FROM            Plants
-WHERE        (Type = 'cactus') AND (Genus LIKE :Param1) OR
-                         (Genus = '') OR
-                         (ID LIKE :Param1) OR
-                         (ID = '') OR
-                         (Species LIKE :Param1) OR
-                         (Species = '') OR
-                         (Subspecies LIKE :Param1) OR
-                         (Subspecies = '') OR
-                         (FieldNumber LIKE :Param1) OR
-                         (FieldNumber = '') OR
-                         (Habitat LIKE :Param1) OR
-                         (Habitat = '') OR
-                         (Synonym LIKE :Param1) OR
-                         (Synonym = '') OR
-                         (Source LIKE :Param1) OR
-                         (Source = '') OR
-                         (Replanted LIKE :Param1) OR
-                         (Replanted = '') OR
-                         (Notes LIKE :Param1) OR
-                         (Notes = '')";
+WHERE        (Type = 'cactus') AND (Genus LIKE :Param1 OR
+                         Genus = '') OR
+                         (Type = 'cactus') AND (ID LIKE :Param1) OR
+                         (Type = 'cactus') AND (ID = '') OR
+                         (Type = 'cactus') AND (Species LIKE :Param1) OR
+                         (Type = 'cactus') AND (Species = '') OR
+                         (Type = 'cactus') AND (Subspecies LIKE :Param1) OR
+                         (Type = 'cactus') AND (Subspecies = '') OR
+                         (Type = 'cactus') AND (FieldNumber LIKE :Param1) OR
+                         (Type = 'cactus') AND (FieldNumber = '') OR
+                         (Type = 'cactus') AND (Habitat LIKE :Param1) OR
+                         (Type = 'cactus') AND (Habitat = '') OR
+                         (Type = 'cactus') AND (Synonym LIKE :Param1) OR
+                         (Type = 'cactus') AND (Synonym = '') OR
+                         (Type = 'cactus') AND (Source LIKE :Param1) OR
+                         (Type = 'cactus') AND (Source = '') OR
+                         (Type = 'cactus') AND (Replanted LIKE :Param1) OR
+                         (Type = 'cactus') AND (Replanted = '') OR
+                         (Type = 'cactus') AND (Notes LIKE :Param1) OR
+                         (Type = 'cactus') AND (Notes = '')";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";
@@ -2799,26 +2799,26 @@ WHERE        (Type = 'cactus') AND (Genus LIKE :Param1) OR
             this._commandCollection[9].Connection = this.Connection;
             this._commandCollection[9].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
 FROM            Plants
-WHERE        (Genus LIKE :Param1) AND (Type = 'other') OR
-                         (Genus = '') OR
-                         (ID LIKE :Param1) OR
-                         (ID = '') OR
-                         (Species LIKE :Param1) OR
-                         (Species = '') OR
-                         (Subspecies LIKE :Param1) OR
-                         (Subspecies = '') OR
-                         (FieldNumber LIKE :Param1) OR
-                         (FieldNumber = '') OR
-                         (Habitat LIKE :Param1) OR
-                         (Habitat = '') OR
-                         (Synonym LIKE :Param1) OR
-                         (Synonym = '') OR
-                         (Source LIKE :Param1) OR
-                         (Source = '') OR
-                         (Replanted LIKE :Param1) OR
-                         (Replanted = '') OR
-                         (Notes LIKE :Param1) OR
-                         (Notes = '')";
+WHERE        (Genus LIKE :Param1 OR
+                         Genus = '') AND (Type = 'other') OR
+                         (Type = 'other') AND (ID LIKE :Param1) OR
+                         (Type = 'other') AND (ID = '') OR
+                         (Type = 'other') AND (Species LIKE :Param1) OR
+                         (Type = 'other') AND (Species = '') OR
+                         (Type = 'other') AND (Subspecies LIKE :Param1) OR
+                         (Type = 'other') AND (Subspecies = '') OR
+                         (Type = 'other') AND (FieldNumber LIKE :Param1) OR
+                         (Type = 'other') AND (FieldNumber = '') OR
+                         (Type = 'other') AND (Habitat LIKE :Param1) OR
+                         (Type = 'other') AND (Habitat = '') OR
+                         (Type = 'other') AND (Synonym LIKE :Param1) OR
+                         (Type = 'other') AND (Synonym = '') OR
+                         (Type = 'other') AND (Source LIKE :Param1) OR
+                         (Type = 'other') AND (Source = '') OR
+                         (Type = 'other') AND (Replanted LIKE :Param1) OR
+                         (Type = 'other') AND (Replanted = '') OR
+                         (Type = 'other') AND (Notes LIKE :Param1) OR
+                         (Type = 'other') AND (Notes = '')";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";
@@ -2829,29 +2829,26 @@ WHERE        (Genus LIKE :Param1) AND (Type = 'other') OR
             this._commandCollection[9].Parameters.Add(param);
             this._commandCollection[10] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[10].Connection = this.Connection;
-            this._commandCollection[10].CommandText = @"SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type
-FROM            Plants
-WHERE        (Type = 'succulent') AND (Genus LIKE :Param1) OR
-                         (Genus = '') OR
-                         (ID LIKE :Param1) OR
-                         (ID = '') OR
-                         (Species LIKE :Param1) OR
-                         (Species = '') OR
-                         (Subspecies LIKE :Param1) OR
-                         (Subspecies = '') OR
-                         (FieldNumber LIKE :Param1) OR
-                         (FieldNumber = '') OR
-                         (Habitat LIKE :Param1) OR
-                         (Habitat = '') OR
-                         (Synonym LIKE :Param1) OR
-                         (Synonym = '') OR
-                         (Source LIKE :Param1) OR
-                         (Source = '') OR
-                         (Replanted LIKE :Param1) OR
-                         (Replanted = '') OR
-                         (Notes LIKE :Param1) OR
-                         (Notes = '') 
-";
+            this._commandCollection[10].CommandText = "SELECT        ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Sour" +
+                "ce, Replanted, Notes, Type\r\nFROM            Plants\r\nWHERE        (Type = \'succul" +
+                "ent\') AND (Genus LIKE :Param1 OR\r\n                         Genus = \'\') OR\r\n     " +
+                "                    (Type = \'succulent\') AND (ID LIKE :Param1) OR\r\n             " +
+                "            (Type = \'succulent\') AND (ID = \'\') OR\r\n                         (Typ" +
+                "e = \'succulent\') AND (Species LIKE :Param1) OR\r\n                         (Type =" +
+                " \'succulent\') AND (Species = \'\') OR\r\n                         (Type = \'succulent" +
+                "\') AND (Subspecies LIKE :Param1) OR\r\n                         (Type = \'succulent" +
+                "\') AND (Subspecies = \'\') OR\r\n                         (Type = \'succulent\') AND (" +
+                "FieldNumber LIKE :Param1) OR\r\n                         (Type = \'succulent\') AND " +
+                "(FieldNumber = \'\') OR\r\n                         (Type = \'succulent\') AND (Habita" +
+                "t LIKE :Param1) OR\r\n                         (Type = \'succulent\') AND (Habitat =" +
+                " \'\') OR\r\n                         (Type = \'succulent\') AND (Synonym LIKE :Param1" +
+                ") OR\r\n                         (Type = \'succulent\') AND (Synonym = \'\') OR\r\n     " +
+                "                    (Type = \'succulent\') AND (Source LIKE :Param1) OR\r\n         " +
+                "                (Type = \'succulent\') AND (Source = \'\') OR\r\n                     " +
+                "    (Type = \'succulent\') AND (Replanted LIKE :Param1) OR\r\n                      " +
+                "   (Type = \'succulent\') AND (Replanted = \'\') OR\r\n                         (Type " +
+                "= \'succulent\') AND (Notes LIKE :Param1) OR\r\n                         (Type = \'su" +
+                "cculent\') AND (Notes = \'\')";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";

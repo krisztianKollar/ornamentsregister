@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alert.Designer.cs">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dao\Interface\IPlantDao.cs" />
     <Compile Include="Dao\Simple\SimplePlantDao.cs" />
     <Compile Include="DataSetForPlantReg.cs">
@@ -97,6 +103,9 @@
     <Compile Include="Service\Interface\IPlantService.cs" />
     <Compile Include="Service\Simple\SimpleConnectionCreater.cs" />
     <Compile Include="Service\Simple\SimplePlantService.cs" />
+    <EmbeddedResource Include="Alert.resx">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlantsForm.resx">
       <DependentUpon>PlantsForm.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -10,6 +10,7 @@ using Ornaments_Register.Service.Simple;
 using System.IO;
 using ExcelDataReader;
 using Spire.Xls;
+using System.ComponentModel;
 
 namespace Ornaments_Register
 {
@@ -17,6 +18,7 @@ namespace Ornaments_Register
     {
 
         IConnectionCreater connectionCreater = new SimpleConnectionCreater();
+        Alert alert;
 
         public PlantsForm()
         {
@@ -40,12 +42,11 @@ namespace Ornaments_Register
             HideComboType();
             rbAll.Checked = true;
             ViewAll();
-
         }
 
         private void HideComboType()
         {
-            comboType.Visible = false;
+            comboType.Visible = true;
             txtType.Visible = true;
         }
 
@@ -444,8 +445,21 @@ namespace Ornaments_Register
             
         }
 
+
         private void ImportExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
+        {
+            
+            if (backgroundWorker1.IsBusy != true)
+            {
+                alert = new Alert();
+                alert.Canceled += new EventHandler<EventArgs>(ButtonCancel_Click);
+                alert.Show();
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        private void ImportExcel()
+        {
             try
             {
                 IExcelDataReader excelReader;
@@ -484,8 +498,8 @@ namespace Ornaments_Register
 
                     this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                     SaveGenusToDb(Genus);
-                    RefreshView();
                 }
+                RefreshView();
                 MessageBox.Show("The import is done. If there where any plants with conflicting ID, they were ignored.");
                 excelReader.Close();
                 stream.Close();
@@ -493,7 +507,7 @@ namespace Ornaments_Register
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            } 
         }
 
         private void ChangePlantsLabelStatText()
@@ -523,6 +537,80 @@ namespace Ornaments_Register
             Bitmap bitmap = new Bitmap(this.PlantsTableView.Width, this.PlantsTableView.Height);
             PlantsTableView.DrawToBitmap(bitmap, new Rectangle(0, 0, this.PlantsTableView.Width, this.PlantsTableView.Height));
             e.Graphics.DrawImage(bitmap, 10, 10);
+        }
+
+        private void ButtonStart_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.IsBusy != true)
+            {
+                alert = new Alert();
+                alert.Canceled += new EventHandler<EventArgs>(ButtonCancel_Click);
+                alert.Show();
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.WorkerSupportsCancellation == true)
+            {
+                backgroundWorker1.CancelAsync();
+                alert.Close();
+            }
+        }
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+
+
+            for (int i = 1; i <= 10; i++)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                else
+                {
+                    worker.ReportProgress(i * 10);
+                    System.Threading.Thread.Sleep(500);
+                }
+            }            
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            alert.Message = "In progress, please wait... " + e.ProgressPercentage.ToString() + "%";
+            alert.ProgressValue = e.ProgressPercentage;
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled == true)
+            {
+                MessageBox.Show("The import was canceled."); // what about transaction? Canceled import means that part of the file is in the db, but another part is not or what?
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Error: " + e.Error.Message);
+            }
+            else
+            {
+                MessageBox.Show("The import is done. If there where any plants with conflicting ID, they were ignored.");
+            }
+            alert.Close();
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            ImportExcel();
+        }
+
+        private void buttonSearchOther_Click(object sender, EventArgs e)
+        {
+            this.plantsTableAdapter.Search_other(this.dataSetForPlantReg.Plants, "Astrophytum");
         }
     }
 }
