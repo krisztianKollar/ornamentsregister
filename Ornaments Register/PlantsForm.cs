@@ -9,7 +9,10 @@ using Ornaments_Register.Service.Interface;
 using Ornaments_Register.Service.Simple;
 using System.IO;
 using ExcelDataReader;
-using Spire.Xls;
+using ExcelLibrary.CompoundDocumentFormat;
+using ExcelLibrary.BinaryDrawingFormat;
+using ExcelLibrary.BinaryFileFormat;
+using ExcelLibrary.SpreadSheet;
 using System.ComponentModel;
 
 namespace Ornaments_Register
@@ -421,47 +424,61 @@ namespace Ornaments_Register
             
         }
 
-
         private void ImportExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataTable dt = ImportExcel();
-            backgroundWorker1.RunWorkerAsync(dt);
-            alert = new Alert();
-            alert.Show();
+            if (dt != null)
+            {
+                backgroundWorker1.RunWorkerAsync(dt);
+                alert = new Alert();
+                alert.Show();
+            }
         }
 
         private DataTable ImportExcel()
         {
             try
-            {
-                IExcelDataReader excelReader;
-                OpenFileDialog ope = new OpenFileDialog
+            {                
+                DialogResult res = MessageBox.Show("Are you sure you want to import a file? If you have plants in the database, new plants with same ID will be ignored.", "Import confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.No)
                 {
-                    Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
-                };
-                if (ope.ShowDialog() == DialogResult.Cancel)
                     RefreshView();
-                FileStream stream = new FileStream(ope.FileName, FileMode.Open);
-                if (".xls".Equals(Path.GetExtension(ope.FileName), StringComparison.OrdinalIgnoreCase))
-                {
-                    excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+                    return null;
                 }
                 else
                 {
-                    excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-                }
-                DataSet result = excelReader.AsDataSet();
+                    IExcelDataReader excelReader;
+                    OpenFileDialog ope = new OpenFileDialog
+                    {
+                        Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+                    };
+                    if (ope.ShowDialog() == DialogResult.Cancel)
+                        return null;
 
-                DataTable dt = result.Tables[0];
-                //backgroundWorker1.RunWorkerAsync(dt);
-               
-                excelReader.Close();
-                stream.Close();
-                return dt;
+                    FileStream stream = new FileStream(ope.FileName, FileMode.Open);
+                    if (".xls".Equals(Path.GetExtension(ope.FileName), StringComparison.OrdinalIgnoreCase))
+                    {
+                        excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+                    }
+                    else
+                    {
+                        excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                    }
+                    DataSet result = excelReader.AsDataSet();
+
+                    DataTable dt = result.Tables[0];
+
+                    excelReader.Close();
+                    stream.Close();
+                    return dt;
+                }
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("There is no data from excel.");
+
                 return null;
             } 
         }
@@ -474,13 +491,12 @@ namespace Ornaments_Register
 
         private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*printPreviewDialogPlants.Document = printDocumentPlants;
-            printPreviewDialogPlants.ShowDialog();*/
-
-            PrintDialog PrintDialogPlants = new PrintDialog();
-            PrintDialogPlants.AllowSomePages = true;
-            PrintDialogPlants.ShowHelp = true;
-            PrintDialogPlants.Document = printDocumentPlants;
+            PrintDialog PrintDialogPlants = new PrintDialog
+            {
+                AllowSomePages = true,
+                ShowHelp = true,
+                Document = printDocumentPlants
+            };
             DialogResult result = PrintDialogPlants.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -511,7 +527,8 @@ namespace Ornaments_Register
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                int counter = i+1/(dt.Rows.Count/100);
+                double onePercent = dt.Rows.Count / 100;
+                int counter = i/((int)Math.Ceiling(onePercent)); //still the same problem
 
                 if (worker.CancellationPending == true)
                 {
@@ -522,7 +539,7 @@ namespace Ornaments_Register
                 {
                     DataRow dr = dt.Rows[i];
                     string Genus = Convert.ToString(dr[1]).Trim() == "" ? "?" : Convert.ToString(dr[1]).Trim();
-                    string Species = Convert.ToString(dr[2]).Trim() == "" ? "?" : Convert.ToString(dr[2]).Trim();
+                    string Species = Convert.ToString(dr[2]).Trim() == "" ? "sp." : Convert.ToString(dr[2]).Trim();
                     string Subspecies = Convert.ToString(dr[3]).Trim() == "" ? null : Convert.ToString(dr[3]).Trim();
                     string FieldNumber = Convert.ToString(dr[4]).Trim() == "" ? null : Convert.ToString(dr[4]).Trim();
                     string Habitat = Convert.ToString(dr[5]).Trim() == "" ? null : Convert.ToString(dr[5]).Trim();
@@ -563,6 +580,17 @@ namespace Ornaments_Register
                 MessageBox.Show("The import is done. If there where any plants with conflicting ID, they were ignored.");
             }
             alert.Close();
+        }
+
+        private void ExportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet("DataSetToExcel")
+            {
+                Locale = System.Threading.Thread.CurrentThread.CurrentCulture
+            };
+            ds.Tables.Add(dataSetForPlantReg.Plants.Copy());
+            ExcelLibrary.DataSetHelper.CreateWorkbook("Ornaments_Register.xls", ds);
+            MessageBox.Show("Ornaments_Register.xls has been created");
         }
     }
 }

@@ -30,11 +30,9 @@ namespace Ornaments_Register
 
         public event EventHandler<EventArgs> Canceled;
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
-            EventHandler<EventArgs> ea = Canceled;
-            if (ea != null)
-                ea(this, e);
+            Canceled?.Invoke(this, e);
         }
 
 
