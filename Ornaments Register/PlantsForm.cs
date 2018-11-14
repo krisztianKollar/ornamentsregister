@@ -424,17 +424,13 @@ namespace Ornaments_Register
 
         private void ImportExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            if (backgroundWorker1.IsBusy != true)
-            {
-                alert = new Alert();
-                alert.Canceled += new EventHandler<EventArgs>(ButtonCancel_Click);
-                alert.Show();
-                backgroundWorker1.RunWorkerAsync();
-            }
+            DataTable dt = ImportExcel();
+            backgroundWorker1.RunWorkerAsync(dt);
+            alert = new Alert();
+            alert.Show();
         }
 
-        private void ImportExcel()
+        private DataTable ImportExcel()
         {
             try
             {
@@ -444,7 +440,7 @@ namespace Ornaments_Register
                     Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
                 };
                 if (ope.ShowDialog() == DialogResult.Cancel)
-                    return;
+                    RefreshView();
                 FileStream stream = new FileStream(ope.FileName, FileMode.Open);
                 if (".xls".Equals(Path.GetExtension(ope.FileName), StringComparison.OrdinalIgnoreCase))
                 {
@@ -457,32 +453,16 @@ namespace Ornaments_Register
                 DataSet result = excelReader.AsDataSet();
 
                 DataTable dt = result.Tables[0];
-                MessageBox.Show("Importing is in process. Please be patient.");
-                foreach (DataRow dr in dt.Rows)
-                {
-                    string Genus = Convert.ToString(dr[1]).Trim() == "" ? "?" : Convert.ToString(dr[1]).Trim();
-                    string Species = Convert.ToString(dr[2]).Trim() == "" ? "?" : Convert.ToString(dr[2]).Trim();
-                    string Subspecies = Convert.ToString(dr[3]).Trim() == "" ? null : Convert.ToString(dr[3]).Trim();
-                    string FieldNumber = Convert.ToString(dr[4]).Trim() == "" ? null : Convert.ToString(dr[4]).Trim();
-                    string Habitat = Convert.ToString(dr[5]).Trim() == "" ? null : Convert.ToString(dr[5]).Trim();
-                    string Synonym = Convert.ToString(dr[6]).Trim() == "" ? null : Convert.ToString(dr[6]).Trim();
-                    string Source = Convert.ToString(dr[7]).Trim() == "" ? "?" : Convert.ToString(dr[7]).Trim();
-                    string Replanted = Convert.ToString(dr[8]).Trim() == "" ? null : Convert.ToString(dr[8]).Trim();
-                    string Notes = Convert.ToString(dr[9]).Trim() == "" ? null : Convert.ToString(dr[9]).Trim();
-                    string Type = Convert.ToString(dr[10]).Trim() == "" ? "?" : Convert.ToString(dr[10]).Trim();
-                    int ID = Convert.ToInt32(Convert.ToString(dr[0]).Trim()) == 0 ? 0 : Convert.ToInt32(Convert.ToString(dr[0]).Trim());
-
-                    this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
-                    SaveGenusToDb(Genus);
-                }
-                RefreshView();
-                MessageBox.Show("The import is done. If there where any plants with conflicting ID, they were ignored.");
+                //backgroundWorker1.RunWorkerAsync(dt);
+               
                 excelReader.Close();
                 stream.Close();
+                return dt;
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return null;
             } 
         }
 
@@ -515,17 +495,6 @@ namespace Ornaments_Register
             e.Graphics.DrawImage(bitmap, 10, 10);
         }
 
-        private void ButtonStart_Click(object sender, EventArgs e)
-        {
-            if (backgroundWorker1.IsBusy != true)
-            {
-                alert = new Alert();
-                alert.Canceled += new EventHandler<EventArgs>(ButtonCancel_Click);
-                alert.Show();
-                backgroundWorker1.RunWorkerAsync();
-            }
-        }
-
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             if (backgroundWorker1.WorkerSupportsCancellation == true)
@@ -538,11 +507,12 @@ namespace Ornaments_Register
         private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
+            DataTable dt = (DataTable)e.Argument;
 
-
-
-            for (int i = 1; i <= 10; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
+                int counter = i+1/(dt.Rows.Count/100);
+
                 if (worker.CancellationPending == true)
                 {
                     e.Cancel = true;
@@ -550,10 +520,25 @@ namespace Ornaments_Register
                 }
                 else
                 {
-                    worker.ReportProgress(i * 10);
-                    System.Threading.Thread.Sleep(500);
+                    DataRow dr = dt.Rows[i];
+                    string Genus = Convert.ToString(dr[1]).Trim() == "" ? "?" : Convert.ToString(dr[1]).Trim();
+                    string Species = Convert.ToString(dr[2]).Trim() == "" ? "?" : Convert.ToString(dr[2]).Trim();
+                    string Subspecies = Convert.ToString(dr[3]).Trim() == "" ? null : Convert.ToString(dr[3]).Trim();
+                    string FieldNumber = Convert.ToString(dr[4]).Trim() == "" ? null : Convert.ToString(dr[4]).Trim();
+                    string Habitat = Convert.ToString(dr[5]).Trim() == "" ? null : Convert.ToString(dr[5]).Trim();
+                    string Synonym = Convert.ToString(dr[6]).Trim() == "" ? null : Convert.ToString(dr[6]).Trim();
+                    string Source = Convert.ToString(dr[7]).Trim() == "" ? "?" : Convert.ToString(dr[7]).Trim();
+                    string Replanted = Convert.ToString(dr[8]).Trim() == "" ? null : Convert.ToString(dr[8]).Trim();
+                    string Notes = Convert.ToString(dr[9]).Trim() == "" ? null : Convert.ToString(dr[9]).Trim();
+                    string Type = Convert.ToString(dr[10]).Trim() == "" ? "?" : Convert.ToString(dr[10]).Trim();
+                    int ID = Convert.ToInt32(Convert.ToString(dr[0]).Trim()) == 0 ? 0 : Convert.ToInt32(Convert.ToString(dr[0]).Trim());
+
+                    this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
+                    SaveGenusToDb(Genus);
+                    
+                    worker.ReportProgress(counter);
                 }
-            }            
+            }
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -564,6 +549,7 @@ namespace Ornaments_Register
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            RefreshView();
             if (e.Cancelled == true)
             {
                 MessageBox.Show("The import was canceled."); // what about transaction? Canceled import means that part of the file is in the db, but another part is not or what?
@@ -577,11 +563,6 @@ namespace Ornaments_Register
                 MessageBox.Show("The import is done. If there where any plants with conflicting ID, they were ignored.");
             }
             alert.Close();
-        }
-
-        private void ButtonImport_Click(object sender, EventArgs e)
-        {
-            ImportExcel();
         }
     }
 }

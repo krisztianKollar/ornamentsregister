@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
-            this.buttonStart = new System.Windows.Forms.Button();
             this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
             this.plantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetForPlantReg = new Ornaments_Register.DataSetForPlantReg();
@@ -130,7 +129,6 @@
             // PlantDetailsBox
             // 
             this.PlantDetailsBox.BackColor = System.Drawing.Color.Transparent;
-            this.PlantDetailsBox.Controls.Add(this.buttonStart);
             this.PlantDetailsBox.Controls.Add(this.dateTimePickerReplanted);
             this.PlantDetailsBox.Controls.Add(this.comboType);
             this.PlantDetailsBox.Controls.Add(this.txtGen);
@@ -169,16 +167,6 @@
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
             this.PlantDetailsBox.Text = "Plant Details";
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.Location = new System.Drawing.Point(924, 115);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(150, 23);
-            this.buttonStart.TabIndex = 31;
-            this.buttonStart.Text = "progress bar sample";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.ButtonStart_Click);
             // 
             // dateTimePickerReplanted
             // 
@@ -1016,7 +1004,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sourceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn replantedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.Button buttonStart;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
