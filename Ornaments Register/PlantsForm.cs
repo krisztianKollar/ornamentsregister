@@ -47,7 +47,7 @@ namespace Ornaments_Register
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
-             
+
             if (rbCacti.Checked)
             {
                 this.plantsTableAdapter.Search_cacti(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
@@ -64,10 +64,10 @@ namespace Ornaments_Register
             {
                 this.plantsTableAdapter.Search(this.dataSetForPlantReg.Plants, "%" + txtSearch.Text.Trim() + "%");
             }
-                       
+
             ChangePlantsLabelStatText();
         }
-               
+
         private void AutoCmpltTxtField(string sql, TextBox txtField, string column)
         {
             txtField.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -111,7 +111,7 @@ namespace Ornaments_Register
                         string type = dt.Rows[i]["Type"].ToString();
                         coll.Add(type);
                     }
-                    comboType.DataSource = coll;                    
+                    comboType.DataSource = coll;
                 }
             }
             catch (SqlException e)
@@ -343,7 +343,7 @@ namespace Ornaments_Register
                 if (id == GetNextID())
                 {
                     MessageBox.Show("This ID doesn't belong to any plant.");
-                    
+
                     RefreshView();
                 }
                 else
@@ -354,9 +354,9 @@ namespace Ornaments_Register
                         RefreshView();
                     else
                     {
-                    this.plantsTableAdapter.DeletePlant(id);
-                    MessageBox.Show("The plant has successfully deleted");
-                    RefreshView();
+                        this.plantsTableAdapter.DeletePlant(id);
+                        MessageBox.Show("The plant has successfully deleted");
+                        RefreshView();
                     }
                 }
             }
@@ -421,7 +421,7 @@ namespace Ornaments_Register
             //PlantsBox.Height = (PlantsBox.Parent.Width / 100) * 15;
             PlantsTableView.Width = PlantsTableView.Parent.Width;
 
-            
+
         }
 
         private void ImportExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -438,7 +438,7 @@ namespace Ornaments_Register
         private DataTable ImportExcel()
         {
             try
-            {                
+            {
                 DialogResult res = MessageBox.Show("Are you sure you want to import a file? If you have plants in the database, new plants with same ID will be ignored.", "Import confirmation",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.No)
@@ -480,7 +480,7 @@ namespace Ornaments_Register
                 MessageBox.Show("There is no data from excel.");
 
                 return null;
-            } 
+            }
         }
 
         private void ChangePlantsLabelStatText()
@@ -528,7 +528,7 @@ namespace Ornaments_Register
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 double onePercent = dt.Rows.Count / 100;
-                int counter = i/((int)Math.Ceiling(onePercent)); //still the same problem
+                int counter = i / ((int)Math.Ceiling(onePercent)); //still the same problem
 
                 if (worker.CancellationPending == true)
                 {
@@ -552,7 +552,7 @@ namespace Ornaments_Register
 
                     this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
                     SaveGenusToDb(Genus);
-                    
+
                     worker.ReportProgress(counter);
                 }
             }
@@ -588,9 +588,61 @@ namespace Ornaments_Register
             {
                 Locale = System.Threading.Thread.CurrentThread.CurrentCulture
             };
-            ds.Tables.Add(dataSetForPlantReg.Plants.Copy());
+
+            DataTable dt = dataSetForPlantReg.Plants;
+            DataTable dtCloned = dt.Clone();
+            dtCloned.Columns[0].DataType = typeof(Int32);
+            foreach (DataRow row in dt.Rows)
+            {
+                dtCloned.ImportRow(row);
+            }
+
+            ds.Tables.Add(dtCloned);
+
+            ChangeTypesForExcel(ds);
+
             ExcelLibrary.DataSetHelper.CreateWorkbook("Ornaments_Register.xls", ds);
             MessageBox.Show("Ornaments_Register.xls has been created");
+        }
+
+        private DataSet ChangeTypesForExcel(DataSet dataSet)
+        {
+            try
+            {
+                foreach (DataTable dt in dataSet.Tables)
+                    foreach (DataRow dr in dt.Rows)
+                        foreach (DataColumn dc in dt.Columns)
+                        {                            
+                            if (String.IsNullOrEmpty(Convert.ToString(dr[dc])))
+                            {
+                                dr[dc] = string.Empty;
+                            }
+                        }
+
+                /*foreach (DataTable dt in dataSet.Tables)
+                    foreach (DataRow dr in dt.Rows)
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            MessageBox.Show("WTFuck");
+                            if (dc.DataType == typeof(long) || dc.DataType == typeof(Int64))
+                            {
+                                Convert.ToInt32(dc.DataType);
+                                MessageBox.Show("WTF2");
+                            }
+                            if (dr[dc] != null)
+                            {
+                                MessageBox.Show("WTF");
+                                dr[dc] = string.Empty;
+                            }
+                        }*/
+
+
+                return dataSet;
+            }
+            catch (Exception ex)
+            {
+                return dataSet;
+            }
         }
     }
 }
