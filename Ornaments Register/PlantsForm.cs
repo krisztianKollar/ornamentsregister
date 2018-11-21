@@ -9,10 +9,6 @@ using Ornaments_Register.Service.Interface;
 using Ornaments_Register.Service.Simple;
 using System.IO;
 using ExcelDataReader;
-using ExcelLibrary.CompoundDocumentFormat;
-using ExcelLibrary.BinaryDrawingFormat;
-using ExcelLibrary.BinaryFileFormat;
-using ExcelLibrary.SpreadSheet;
 using System.ComponentModel;
 
 namespace Ornaments_Register

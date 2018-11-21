@@ -156,12 +156,13 @@
             this.PlantDetailsBox.Controls.Add(this.labSp);
             this.PlantDetailsBox.Controls.Add(this.labGen);
             this.PlantDetailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PlantDetailsBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.PlantDetailsBox.Location = new System.Drawing.Point(14, 33);
             this.PlantDetailsBox.Name = "PlantDetailsBox";
             this.PlantDetailsBox.Size = new System.Drawing.Size(1139, 236);
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
-            this.PlantDetailsBox.Text = "Plant Details";
+            this.PlantDetailsBox.Text = "PLANT DETAILS";
             // 
             // dateTimePickerReplanted
             // 
@@ -405,7 +406,7 @@
             // labReplanted
             // 
             this.labReplanted.AutoSize = true;
-            this.labReplanted.Location = new System.Drawing.Point(406, 105);
+            this.labReplanted.Location = new System.Drawing.Point(398, 105);
             this.labReplanted.Name = "labReplanted";
             this.labReplanted.Size = new System.Drawing.Size(65, 13);
             this.labReplanted.TabIndex = 6;
@@ -414,7 +415,7 @@
             // labSyn
             // 
             this.labSyn.AutoSize = true;
-            this.labSyn.Location = new System.Drawing.Point(406, 77);
+            this.labSyn.Location = new System.Drawing.Point(398, 77);
             this.labSyn.Name = "labSyn";
             this.labSyn.Size = new System.Drawing.Size(57, 13);
             this.labSyn.TabIndex = 5;
@@ -432,7 +433,7 @@
             // labFieldNo4
             // 
             this.labFieldNo4.AutoSize = true;
-            this.labFieldNo4.Location = new System.Drawing.Point(406, 49);
+            this.labFieldNo4.Location = new System.Drawing.Point(398, 49);
             this.labFieldNo4.Name = "labFieldNo4";
             this.labFieldNo4.Size = new System.Drawing.Size(81, 13);
             this.labFieldNo4.TabIndex = 3;
@@ -450,7 +451,7 @@
             // labSp
             // 
             this.labSp.AutoSize = true;
-            this.labSp.Location = new System.Drawing.Point(406, 21);
+            this.labSp.Location = new System.Drawing.Point(398, 21);
             this.labSp.Name = "labSp";
             this.labSp.Size = new System.Drawing.Size(52, 13);
             this.labSp.TabIndex = 1;
@@ -604,15 +605,16 @@
             this.PlantsBox.Size = new System.Drawing.Size(1131, 249);
             this.PlantsBox.TabIndex = 6;
             this.PlantsBox.TabStop = false;
-            this.PlantsBox.Text = "Plants";
+            this.PlantsBox.Text = "PLANTS";
             // 
             // plantsLabelStat
             // 
             this.plantsLabelStat.AutoSize = true;
-            this.plantsLabelStat.Location = new System.Drawing.Point(55, 0);
+            this.plantsLabelStat.Location = new System.Drawing.Point(7, 16);
             this.plantsLabelStat.Name = "plantsLabelStat";
-            this.plantsLabelStat.Size = new System.Drawing.Size(0, 13);
+            this.plantsLabelStat.Size = new System.Drawing.Size(12, 13);
             this.plantsLabelStat.TabIndex = 9;
+            this.plantsLabelStat.Text = "*";
             // 
             // PlantsTableView
             // 
@@ -636,10 +638,10 @@
             this.replantedDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
             this.PlantsTableView.DataSource = this.plantsBindingSource;
-            this.PlantsTableView.Location = new System.Drawing.Point(0, 20);
+            this.PlantsTableView.Location = new System.Drawing.Point(0, 32);
             this.PlantsTableView.Name = "PlantsTableView";
             this.PlantsTableView.RowHeadersVisible = false;
-            this.PlantsTableView.Size = new System.Drawing.Size(1125, 210);
+            this.PlantsTableView.Size = new System.Drawing.Size(1125, 198);
             this.PlantsTableView.TabIndex = 8;
             // 
             // iDDataGridViewTextBoxColumn
@@ -827,7 +829,7 @@
             this.bindingNavigatorMovePreviousItem1,
             this.bindingNavigatorMoveNextItem1,
             this.bindingNavigatorMoveLastItem1});
-            this.bindingNavigator2.Location = new System.Drawing.Point(931, 0);
+            this.bindingNavigator2.Location = new System.Drawing.Point(815, 0);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem1;
             this.bindingNavigator2.MoveNextItem = this.bindingNavigatorMoveNextItem1;
@@ -852,6 +854,7 @@
             this.Controls.Add(this.PlantsBox);
             this.Controls.Add(this.PlantDetailsBox);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MaximumSize = new System.Drawing.Size(1900, 980);
             this.Name = "PlantsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
