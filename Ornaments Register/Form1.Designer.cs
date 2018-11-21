@@ -77,6 +77,7 @@
             this.deleteActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadPictureForPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -114,7 +115,6 @@
             this.printPreviewDialogPlants = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialogPlants = new System.Windows.Forms.PrintDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -171,7 +171,7 @@
             // 
             // dateTimePickerReplanted
             // 
-            this.dateTimePickerReplanted.CustomFormat = "2018. nov.";
+            this.dateTimePickerReplanted.CustomFormat = "";
             this.dateTimePickerReplanted.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Replanted", true));
             this.dateTimePickerReplanted.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerReplanted.Location = new System.Drawing.Point(874, 70);
@@ -570,6 +570,13 @@
             this.importExcelFileToolStripMenuItem.Text = "Import Excel file";
             this.importExcelFileToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelFileToolStripMenuItem_Click);
             // 
+            // exportToExcelToolStripMenuItem
+            // 
+            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
+            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
+            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.ExportToExcelToolStripMenuItem_Click);
+            // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
@@ -880,13 +887,6 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
-            // 
-            // exportToExcelToolStripMenuItem
-            // 
-            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
-            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
-            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.ExportToExcelToolStripMenuItem_Click);
             // 
             // PlantsForm
             // 

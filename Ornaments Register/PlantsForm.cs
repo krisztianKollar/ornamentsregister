@@ -270,15 +270,15 @@ namespace Ornaments_Register
         {
             try
             {
-                string Genus = txtGen.Text.Length == 0 ? null : txtGen.Text.Trim();
-                string Species = txtSp.Text.Length == 0 ? null : txtSp.Text.Trim();
-                string Subspecies = txtSubsp.Text.Length == 0 ? null : txtSubsp.Text.Trim();
-                string FieldNumber = txtFieldNo.Text.Length == 0 ? null : txtFieldNo.Text.Trim();
-                string Habitat = txtHabit.Text.Length == 0 ? null : txtHabit.Text.Trim();
-                string Synonym = txtSyn.Text.Length == 0 ? null : txtSyn.Text.Trim();
-                string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
-                string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
-                string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
+                string Genus = txtGen.Text.Trim().Length == 0 ? null : txtGen.Text.Trim();
+                string Species = txtSp.Text.Trim().Length == 0 ? null : txtSp.Text.Trim();
+                string Subspecies = txtSubsp.Text.Trim().Length == 0 ? null : txtSubsp.Text.Trim();
+                string FieldNumber = txtFieldNo.Text.Trim().Length == 0 ? null : txtFieldNo.Text.Trim();
+                string Habitat = txtHabit.Text.Trim().Length == 0 ? null : txtHabit.Text.Trim();
+                string Synonym = txtSyn.Text.Trim().Length == 0 ? null : txtSyn.Text.Trim();
+                string Source = txtSource.Text.Trim().Length == 0 ? null : txtSource.Text.Trim();
+                string Replanted = txtReplanted.Text.Trim().Length == 0 ? null : txtReplanted.Text.Trim();
+                string Notes = txtNotes.Text.Trim().Length == 0 ? null : txtNotes.Text.Trim();
                 string Type = Convert.ToString(comboType.Text);
                 int ID = Convert.ToInt32(txtID.Text.Trim());
                 this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
@@ -311,15 +311,15 @@ namespace Ornaments_Register
                         RefreshView();
                     else
                     {
-                        string Genus = txtGen.Text.Length == 0 ? null : txtGen.Text.Trim();
-                        string Species = txtSp.Text.Length == 0 ? null : txtSp.Text.Trim();
-                        string Subspecies = txtSubsp.Text.Length == 0 ? null : txtSubsp.Text.Trim();
-                        string FieldNumber = txtFieldNo.Text.Length == 0 ? null : txtFieldNo.Text.Trim();
-                        string Habitat = txtHabit.Text.Length == 0 ? null : txtHabit.Text.Trim();
-                        string Synonym = txtSyn.Text.Length == 0 ? null : txtSyn.Text.Trim();
-                        string Source = txtSource.Text.Length == 0 ? null : txtSource.Text.Trim();
-                        string Replanted = txtReplanted.Text.Length == 0 ? null : txtReplanted.Text.Trim();
-                        string Notes = txtNotes.Text.Length == 0 ? null : txtNotes.Text.Trim();
+                        string Genus = txtGen.Text.Trim().Length == 0 ? null : txtGen.Text.Trim();
+                        string Species = txtSp.Text.Trim().Length == 0 ? null : txtSp.Text.Trim();
+                        string Subspecies = txtSubsp.Text.Trim().Length == 0 ? null : txtSubsp.Text.Trim();
+                        string FieldNumber = txtFieldNo.Text.Trim().Length == 0 ? null : txtFieldNo.Text.Trim();
+                        string Habitat = txtHabit.Text.Trim().Length == 0 ? null : txtHabit.Text.Trim();
+                        string Synonym = txtSyn.Text.Trim().Length == 0 ? null : txtSyn.Text.Trim();
+                        string Source = txtSource.Text.Trim().Length == 0 ? null : txtSource.Text.Trim();
+                        string Replanted = txtReplanted.Text.Trim().Length == 0 ? null : txtReplanted.Text.Trim();
+                        string Notes = txtNotes.Text.Trim().Length == 0 ? null : txtNotes.Text.Trim();
                         string Type = Convert.ToString(comboType.Text);
                         int ID = Convert.ToInt32(txtID.Text.Trim());
                         this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
@@ -618,25 +618,6 @@ namespace Ornaments_Register
                                 dr[dc] = string.Empty;
                             }
                         }
-
-                /*foreach (DataTable dt in dataSet.Tables)
-                    foreach (DataRow dr in dt.Rows)
-                        foreach (DataColumn dc in dt.Columns)
-                        {
-                            MessageBox.Show("WTFuck");
-                            if (dc.DataType == typeof(long) || dc.DataType == typeof(Int64))
-                            {
-                                Convert.ToInt32(dc.DataType);
-                                MessageBox.Show("WTF2");
-                            }
-                            if (dr[dc] != null)
-                            {
-                                MessageBox.Show("WTF");
-                                dr[dc] = string.Empty;
-                            }
-                        }*/
-
-
                 return dataSet;
             }
             catch (Exception ex)
