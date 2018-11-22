@@ -251,6 +251,13 @@ namespace Ornaments_Register
             }
         }
 
+        private bool IsGenusNew(string Genus)
+        {
+            if (this.genusTableAdapter.SelectByGenus(Genus).Rows.Count == 0)
+                return true;
+            return false;
+        }
+
         private bool SaveGenusToDb(string Genus)
         {
             if (this.genusTableAdapter.SelectByGenus(Genus).Rows.Count == 0)
@@ -297,8 +304,19 @@ namespace Ornaments_Register
                 string Type = Convert.ToString(comboType.Text);
                 int ID = Convert.ToInt32(txtID.Text.Trim());
 
-                if (!SaveGenusToDb(Genus))
-                    return;
+                if (IsGenusNew(Genus))
+                {
+                    if (SaveGenusToDb(Genus))
+                    {
+                        this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
+                        MessageBox.Show("The plant has successfully saved");
+                        RefreshView();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
                 else
                 {
                     this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
@@ -343,8 +361,19 @@ namespace Ornaments_Register
                         string Type = Convert.ToString(comboType.Text);
                         int ID = Convert.ToInt32(txtID.Text.Trim());
 
-                        if (!SaveGenusToDb(Genus))
-                            return;
+                        if (IsGenusNew(Genus))
+                        {
+                            if (SaveGenusToDb(Genus))
+                            {
+                                this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
+                                MessageBox.Show("The plant has successfully updated");
+                                RefreshView();
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
                         else
                         {
                             this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
@@ -381,7 +410,7 @@ namespace Ornaments_Register
                     {
                         this.plantsTableAdapter.DeletePlant(id);
                         MessageBox.Show("The plant has successfully deleted");
-                        RefreshView();
+                        return;
                     }
                 }
             }

@@ -158,7 +158,7 @@
             this.PlantDetailsBox.Controls.Add(this.labGen);
             this.PlantDetailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlantDetailsBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PlantDetailsBox.Location = new System.Drawing.Point(14, 33);
+            this.PlantDetailsBox.Location = new System.Drawing.Point(12, 33);
             this.PlantDetailsBox.Name = "PlantDetailsBox";
             this.PlantDetailsBox.Size = new System.Drawing.Size(1139, 236);
             this.PlantDetailsBox.TabIndex = 0;
@@ -604,7 +604,7 @@
             this.PlantsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlantsBox.Location = new System.Drawing.Point(12, 276);
             this.PlantsBox.Name = "PlantsBox";
-            this.PlantsBox.Size = new System.Drawing.Size(1131, 249);
+            this.PlantsBox.Size = new System.Drawing.Size(1139, 249);
             this.PlantsBox.TabIndex = 6;
             this.PlantsBox.TabStop = false;
             this.PlantsBox.Text = "PLANTS";
@@ -839,7 +839,7 @@
             this.bindingNavigator2.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(158, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(127, 25);
             this.bindingNavigator2.TabIndex = 31;
             this.bindingNavigator2.Text = "bindingNavigator2";
             // 
