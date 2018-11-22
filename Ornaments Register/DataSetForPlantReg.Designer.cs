@@ -4277,7 +4277,8 @@ WHERE        (ID = :Original_ID)";
             this._commandCollection[2].Parameters.Add(param);
             this._commandCollection[3] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO \"main\".\"Genus\" (\"Genus\") VALUES (:Genus)";
+            this._commandCollection[3].CommandText = "INSERT INTO Genus\r\n                         (Genus, Type)\r\nVALUES        (:Genus," +
+                " :Type)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Genus";
@@ -4285,6 +4286,13 @@ WHERE        (ID = :Original_ID)";
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Genus";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Type";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceColumn = "Type";
             this._commandCollection[3].Parameters.Add(param);
             this._commandCollection[4] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[4].Connection = this.Connection;
@@ -4460,13 +4468,19 @@ WHERE        (ID = :Original_ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertNewGenus(string Genus) {
+        public virtual int InsertNewGenus(string Genus, string Type) {
             global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[3];
             if ((Genus == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Genus");
             }
             else {
                 command.Parameters[0].Value = ((string)(Genus));
+            }
+            if ((Type == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Type));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

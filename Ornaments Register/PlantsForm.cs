@@ -166,7 +166,7 @@ namespace Ornaments_Register
             string genus = txtGen.Text.Trim();
             if (this.genusTableAdapter.SelectByGenus(genus).Rows.Count == 1)
             {
-                comboType.Text = this.genusTableAdapter.SelectTypeByGenus(genus).ToString();                
+                comboType.Text = this.genusTableAdapter.SelectTypeByGenus(genus).ToString();
             }
         }
 
@@ -251,10 +251,20 @@ namespace Ornaments_Register
             }
         }
 
-        private void SaveGenusToDb(string Genus)
+        private bool SaveGenusToDb(string Genus)
         {
             if (this.genusTableAdapter.SelectByGenus(Genus).Rows.Count == 0)
-                this.genusTableAdapter.InsertNewGenus(Genus);
+            {
+                DialogResult res = MessageBox.Show(Genus.ToUpper() + " genus doesn't exists in the database. Would you like to save the genus?", "Saving new genus to db?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.No)
+                    return false;
+                else
+                {
+                    this.genusTableAdapter.InsertNewGenus(Genus, comboType.Text.Trim());
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void CreateNewPlantToolStripMenuItem_Click(object sender, EventArgs e)
@@ -286,10 +296,15 @@ namespace Ornaments_Register
                 string Notes = txtNotes.Text.Trim().Length == 0 ? null : txtNotes.Text.Trim();
                 string Type = Convert.ToString(comboType.Text);
                 int ID = Convert.ToInt32(txtID.Text.Trim());
-                this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
-                SaveGenusToDb(Genus);
-                MessageBox.Show("The plant has successfully saved");
-                RefreshView();
+
+                if (!SaveGenusToDb(Genus))
+                    return;
+                else
+                {
+                    this.plantsTableAdapter.InsertPlant(ID, Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type);
+                    MessageBox.Show("The plant has successfully saved");
+                    RefreshView();
+                }
             }
             catch (System.Exception ex)
             {
@@ -327,10 +342,15 @@ namespace Ornaments_Register
                         string Notes = txtNotes.Text.Trim().Length == 0 ? null : txtNotes.Text.Trim();
                         string Type = Convert.ToString(comboType.Text);
                         int ID = Convert.ToInt32(txtID.Text.Trim());
-                        this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
-                        SaveGenusToDb(Genus);
-                        MessageBox.Show("The plant has successfully updated");
-                        RefreshView();
+
+                        if (!SaveGenusToDb(Genus))
+                            return;
+                        else
+                        {
+                            this.plantsTableAdapter.UpdatePlant(Genus, Species, Subspecies, FieldNumber, Habitat, Synonym, Source, Replanted, Notes, Type, ID);
+                            MessageBox.Show("The plant has successfully updated");
+                            RefreshView();
+                        }
                     }
                 }
             }
