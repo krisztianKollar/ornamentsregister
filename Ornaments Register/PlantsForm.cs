@@ -655,5 +655,10 @@ namespace Ornaments_Register
         {
             SetCurrentTypeByGenus();
         }
+
+        private void ToolStripButtonRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshView();
+        }
     }
 }

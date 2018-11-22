@@ -109,6 +109,7 @@
             this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -829,7 +830,8 @@
             this.bindingNavigatorMoveFirstItem1,
             this.bindingNavigatorMovePreviousItem1,
             this.bindingNavigatorMoveNextItem1,
-            this.bindingNavigatorMoveLastItem1});
+            this.bindingNavigatorMoveLastItem1,
+            this.toolStripButtonRefresh});
             this.bindingNavigator2.Location = new System.Drawing.Point(815, 0);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem1;
@@ -837,9 +839,19 @@
             this.bindingNavigator2.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(104, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(158, 25);
             this.bindingNavigator2.TabIndex = 31;
             this.bindingNavigator2.Text = "bindingNavigator2";
+            // 
+            // toolStripButtonRefresh
+            // 
+            this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRefresh.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRefresh.Image")));
+            this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
+            this.toolStripButtonRefresh.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonRefresh.Text = "Refresh";
+            this.toolStripButtonRefresh.Click += new System.EventHandler(this.ToolStripButtonRefresh_Click);
             // 
             // PlantsForm
             // 
@@ -963,6 +975,7 @@
         private System.Windows.Forms.BindingNavigator bindingNavigator2;
         private System.Windows.Forms.ToolStripMenuItem importFromExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
     }
 }
 
