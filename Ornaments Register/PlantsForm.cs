@@ -161,6 +161,15 @@ namespace Ornaments_Register
             AutoCmpltTxtField("SELECT Notes FROM Plants", txtNotes, "Notes");
         }
 
+        private void SetCurrentTypeByGenus()
+        {
+            string genus = txtGen.Text.Trim();
+            if (this.genusTableAdapter.SelectByGenus(genus).Rows.Count == 1)
+            {
+                comboType.Text = this.genusTableAdapter.SelectTypeByGenus(genus).ToString();                
+            }
+        }
+
         private int GetNextID()
         {
             return Convert.ToInt32(this.plantsTableAdapter.GetLastID()) + 1;
@@ -608,7 +617,7 @@ namespace Ornaments_Register
                 foreach (DataTable dt in dataSet.Tables)
                     foreach (DataRow dr in dt.Rows)
                         foreach (DataColumn dc in dt.Columns)
-                        {                            
+                        {
                             if (String.IsNullOrEmpty(Convert.ToString(dr[dc])))
                             {
                                 dr[dc] = string.Empty;
@@ -620,6 +629,11 @@ namespace Ornaments_Register
             {
                 return dataSet;
             }
+        }
+
+        private void TxtGen_TextChanged(object sender, EventArgs e)
+        {
+            SetCurrentTypeByGenus();
         }
     }
 }

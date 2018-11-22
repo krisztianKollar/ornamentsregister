@@ -206,6 +206,7 @@
             this.txtGen.Name = "txtGen";
             this.txtGen.Size = new System.Drawing.Size(267, 20);
             this.txtGen.TabIndex = 9;
+            this.txtGen.TextChanged += new System.EventHandler(this.TxtGen_TextChanged);
             // 
             // txtID
             // 
@@ -569,14 +570,14 @@
             // importFromExcelToolStripMenuItem
             // 
             this.importFromExcelToolStripMenuItem.Name = "importFromExcelToolStripMenuItem";
-            this.importFromExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importFromExcelToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.importFromExcelToolStripMenuItem.Text = "Import from Excel";
             this.importFromExcelToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelFileToolStripMenuItem_Click);
             // 
             // exportToExcelToolStripMenuItem1
             // 
             this.exportToExcelToolStripMenuItem1.Name = "exportToExcelToolStripMenuItem1";
-            this.exportToExcelToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.exportToExcelToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.exportToExcelToolStripMenuItem1.Text = "Export to Excel";
             this.exportToExcelToolStripMenuItem1.Click += new System.EventHandler(this.ExportToExcelToolStripMenuItem_Click);
             // 
