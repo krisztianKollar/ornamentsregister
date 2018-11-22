@@ -319,16 +319,16 @@ namespace Ornaments_Register
                 int id = Convert.ToInt32(txtID.Text.Trim());
                 if (id == GetNextID())
                 {
-                    MessageBox.Show("This ID doesn't belong to any plant. You can not update it. Please choose a real plant.");
+                    MessageBox.Show("This ID doesn't belong to any plant. You can not update it. Please choose a real plant or press save.");
 
-                    RefreshView();
+                    return;
                 }
                 else
                 {
                     DialogResult res = MessageBox.Show("Are you sure you want to update this plant? Existing plant with same ID will be overwritten.", "Update confirmation",
                              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.No)
-                        RefreshView();
+                        return;
                     else
                     {
                         string Genus = txtGen.Text.Trim().Length == 0 ? null : txtGen.Text.Trim();
@@ -369,14 +369,14 @@ namespace Ornaments_Register
                 {
                     MessageBox.Show("This ID doesn't belong to any plant.");
 
-                    RefreshView();
+                    return;
                 }
                 else
                 {
                     DialogResult res = MessageBox.Show("Are you sure you want to delete this plant?", "Delete confirmation",
                              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.No)
-                        RefreshView();
+                        return;
                     else
                     {
                         this.plantsTableAdapter.DeletePlant(id);
