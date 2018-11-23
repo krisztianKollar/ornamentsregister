@@ -53,7 +53,7 @@
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(118, 22);
+            this.labelMessage.Location = new System.Drawing.Point(112, 22);
             this.labelMessage.Name = "labelMessage";
             this.labelMessage.Size = new System.Drawing.Size(47, 13);
             this.labelMessage.TabIndex = 2;

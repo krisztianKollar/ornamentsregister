@@ -643,8 +643,10 @@
             this.PlantsTableView.Location = new System.Drawing.Point(0, 32);
             this.PlantsTableView.Name = "PlantsTableView";
             this.PlantsTableView.RowHeadersVisible = false;
+            this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PlantsTableView.Size = new System.Drawing.Size(1125, 198);
             this.PlantsTableView.TabIndex = 8;
+            this.PlantsTableView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.PlantsTableView_DataBindingComplete);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -873,6 +875,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome to the Ornamental Plant Register!";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlantsForm_FormClosing);
             this.Load += new System.EventHandler(this.PlantsForm_Load);
             this.Resize += new System.EventHandler(this.PlantsForm_Resize);
             this.PlantDetailsBox.ResumeLayout(false);

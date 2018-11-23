@@ -410,7 +410,7 @@ namespace Ornaments_Register
                     {
                         this.plantsTableAdapter.DeletePlant(id);
                         MessageBox.Show("The plant has successfully deleted");
-                        return;
+                        RefreshView();
                     }
                 }
             }
@@ -582,7 +582,7 @@ namespace Ornaments_Register
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 double onePercent = dt.Rows.Count / 100;
-                int counter = i / ((int)Math.Ceiling(onePercent)); //still the same problem
+                int counter = i / ((int)Math.Ceiling(onePercent)); 
 
                 if (worker.CancellationPending == true)
                 {
@@ -614,7 +614,7 @@ namespace Ornaments_Register
 
         private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            alert.Message = "In progress, please wait... " + e.ProgressPercentage.ToString() + "%";
+            alert.Message = e.ProgressPercentage.ToString() + "%";
             alert.ProgressValue = e.ProgressPercentage;
         }
 
@@ -688,6 +688,19 @@ namespace Ornaments_Register
         private void ToolStripButtonRefresh_Click(object sender, EventArgs e)
         {
             RefreshView();
+        }
+
+        private void PlantsTableView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+        }
+
+        private void PlantsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to close?", "Infomate", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
