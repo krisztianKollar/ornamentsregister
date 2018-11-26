@@ -160,7 +160,7 @@
             this.PlantDetailsBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.PlantDetailsBox.Location = new System.Drawing.Point(12, 33);
             this.PlantDetailsBox.Name = "PlantDetailsBox";
-            this.PlantDetailsBox.Size = new System.Drawing.Size(1139, 236);
+            this.PlantDetailsBox.Size = new System.Drawing.Size(1190, 236);
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
             this.PlantDetailsBox.Text = "PLANT DETAILS";
@@ -604,7 +604,7 @@
             this.PlantsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlantsBox.Location = new System.Drawing.Point(12, 276);
             this.PlantsBox.Name = "PlantsBox";
-            this.PlantsBox.Size = new System.Drawing.Size(1139, 249);
+            this.PlantsBox.Size = new System.Drawing.Size(1190, 249);
             this.PlantsBox.TabIndex = 6;
             this.PlantsBox.TabStop = false;
             this.PlantsBox.Text = "PLANTS";
@@ -646,7 +646,6 @@
             this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PlantsTableView.Size = new System.Drawing.Size(1125, 198);
             this.PlantsTableView.TabIndex = 8;
-            this.PlantsTableView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.PlantsTableView_DataBindingComplete);
             // 
             // iDDataGridViewTextBoxColumn
             // 

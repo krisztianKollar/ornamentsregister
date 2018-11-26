@@ -87,7 +87,7 @@ namespace Ornaments_Register
             }
             catch (SqlException e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -184,7 +184,7 @@ namespace Ornaments_Register
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -197,7 +197,7 @@ namespace Ornaments_Register
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -210,7 +210,7 @@ namespace Ornaments_Register
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -223,7 +223,7 @@ namespace Ornaments_Register
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -326,7 +326,7 @@ namespace Ornaments_Register
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -582,7 +582,7 @@ namespace Ornaments_Register
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 double onePercent = dt.Rows.Count / 100;
-                int counter = i / ((int)Math.Ceiling(onePercent)); 
+                int counter = i / ((int)Math.Ceiling(onePercent));
 
                 if (worker.CancellationPending == true)
                 {
@@ -610,6 +610,7 @@ namespace Ornaments_Register
                     worker.ReportProgress(counter);
                 }
             }
+            PlantsTableView.Refresh();
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -690,14 +691,9 @@ namespace Ornaments_Register
             RefreshView();
         }
 
-        private void PlantsTableView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-
-        }
-
         private void PlantsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close?", "Infomate", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to close?", "Exit now?", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 e.Cancel = true;
             }
