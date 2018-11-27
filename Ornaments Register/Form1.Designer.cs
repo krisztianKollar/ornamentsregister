@@ -47,7 +47,6 @@
             this.rbCacti = new System.Windows.Forms.RadioButton();
             this.labShow = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSubsp = new System.Windows.Forms.TextBox();
             this.txtReplanted = new System.Windows.Forms.TextBox();
             this.txtSource = new System.Windows.Forms.TextBox();
@@ -110,16 +109,21 @@
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
+            this.PictureGroupBox = new System.Windows.Forms.GroupBox();
+            this.AddPicBtn = new System.Windows.Forms.Button();
+            this.DelPicBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genusBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.PlantsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlantsTableView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
+            this.PictureGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PlantDetailsBox
@@ -139,7 +143,6 @@
             this.PlantDetailsBox.Controls.Add(this.rbCacti);
             this.PlantDetailsBox.Controls.Add(this.labShow);
             this.PlantDetailsBox.Controls.Add(this.txtNotes);
-            this.PlantDetailsBox.Controls.Add(this.pictureBox1);
             this.PlantDetailsBox.Controls.Add(this.txtSubsp);
             this.PlantDetailsBox.Controls.Add(this.txtReplanted);
             this.PlantDetailsBox.Controls.Add(this.txtSource);
@@ -160,7 +163,7 @@
             this.PlantDetailsBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.PlantDetailsBox.Location = new System.Drawing.Point(12, 33);
             this.PlantDetailsBox.Name = "PlantDetailsBox";
-            this.PlantDetailsBox.Size = new System.Drawing.Size(1190, 236);
+            this.PlantDetailsBox.Size = new System.Drawing.Size(767, 236);
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
             this.PlantDetailsBox.Text = "PLANT DETAILS";
@@ -170,9 +173,9 @@
             this.dateTimePickerReplanted.CustomFormat = "";
             this.dateTimePickerReplanted.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Replanted", true));
             this.dateTimePickerReplanted.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerReplanted.Location = new System.Drawing.Point(874, 70);
+            this.dateTimePickerReplanted.Location = new System.Drawing.Point(639, 217);
             this.dateTimePickerReplanted.Name = "dateTimePickerReplanted";
-            this.dateTimePickerReplanted.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerReplanted.Size = new System.Drawing.Size(117, 20);
             this.dateTimePickerReplanted.TabIndex = 30;
             // 
             // plantsBindingSource
@@ -317,14 +320,6 @@
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(445, 50);
             this.txtNotes.TabIndex = 17;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(801, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(318, 197);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // txtSubsp
             // 
@@ -481,7 +476,7 @@
             this.printToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1216, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -604,7 +599,7 @@
             this.PlantsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlantsBox.Location = new System.Drawing.Point(12, 276);
             this.PlantsBox.Name = "PlantsBox";
-            this.PlantsBox.Size = new System.Drawing.Size(1190, 249);
+            this.PlantsBox.Size = new System.Drawing.Size(1131, 371);
             this.PlantsBox.TabIndex = 6;
             this.PlantsBox.TabStop = false;
             this.PlantsBox.Text = "PLANTS";
@@ -644,7 +639,7 @@
             this.PlantsTableView.Name = "PlantsTableView";
             this.PlantsTableView.RowHeadersVisible = false;
             this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.PlantsTableView.Size = new System.Drawing.Size(1125, 198);
+            this.PlantsTableView.Size = new System.Drawing.Size(1125, 320);
             this.PlantsTableView.TabIndex = 8;
             // 
             // iDDataGridViewTextBoxColumn
@@ -854,6 +849,46 @@
             this.toolStripButtonRefresh.Text = "Refresh";
             this.toolStripButtonRefresh.Click += new System.EventHandler(this.ToolStripButtonRefresh_Click);
             // 
+            // PictureGroupBox
+            // 
+            this.PictureGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.PictureGroupBox.Controls.Add(this.pictureBox1);
+            this.PictureGroupBox.Controls.Add(this.DelPicBtn);
+            this.PictureGroupBox.Controls.Add(this.AddPicBtn);
+            this.PictureGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PictureGroupBox.Location = new System.Drawing.Point(785, 33);
+            this.PictureGroupBox.Name = "PictureGroupBox";
+            this.PictureGroupBox.Size = new System.Drawing.Size(358, 236);
+            this.PictureGroupBox.TabIndex = 32;
+            this.PictureGroupBox.TabStop = false;
+            this.PictureGroupBox.Text = "PICTURES OF THE PLANT";
+            // 
+            // AddPicBtn
+            // 
+            this.AddPicBtn.Location = new System.Drawing.Point(6, 207);
+            this.AddPicBtn.Name = "AddPicBtn";
+            this.AddPicBtn.Size = new System.Drawing.Size(162, 23);
+            this.AddPicBtn.TabIndex = 0;
+            this.AddPicBtn.Text = "Add image to plant";
+            this.AddPicBtn.UseVisualStyleBackColor = true;
+            // 
+            // DelPicBtn
+            // 
+            this.DelPicBtn.Location = new System.Drawing.Point(190, 207);
+            this.DelPicBtn.Name = "DelPicBtn";
+            this.DelPicBtn.Size = new System.Drawing.Size(162, 23);
+            this.DelPicBtn.TabIndex = 1;
+            this.DelPicBtn.Text = "Delete image";
+            this.DelPicBtn.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(128, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(222, 172);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -863,7 +898,8 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1216, 525);
+            this.ClientSize = new System.Drawing.Size(1164, 641);
+            this.Controls.Add(this.PictureGroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.PlantsBox);
             this.Controls.Add(this.PlantDetailsBox);
@@ -881,7 +917,6 @@
             this.PlantDetailsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.genusBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -891,6 +926,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();
+            this.PictureGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -916,7 +953,6 @@
         private System.Windows.Forms.TextBox txtFieldNo;
         private System.Windows.Forms.TextBox txtSp;
         private System.Windows.Forms.TextBox txtNotes;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem createNewPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveActualPlantToolStripMenuItem;
@@ -978,6 +1014,10 @@
         private System.Windows.Forms.ToolStripMenuItem importFromExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
+        private System.Windows.Forms.GroupBox PictureGroupBox;
+        private System.Windows.Forms.Button AddPicBtn;
+        private System.Windows.Forms.Button DelPicBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

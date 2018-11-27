@@ -38,6 +38,8 @@ namespace Ornaments_Register
         {
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
             rbAll.Checked = true;
+            this.PictureGroupBox.Width = this.Width - (PlantDetailsBox.Width + 55);
+            this.PlantsTableView.Width = this.Width - 50;
             ViewAll();
         }
 

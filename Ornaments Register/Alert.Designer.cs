@@ -69,7 +69,7 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.buttonCancel);
             this.Name = "Alert";
-            this.Text = "Alert";
+            this.Text = "Import ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
