@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
             this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
@@ -37,11 +40,11 @@
             this.comboType = new System.Windows.Forms.ComboBox();
             this.txtGen = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.labType = new System.Windows.Forms.Label();
             this.labID = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.labSearch = new System.Windows.Forms.Label();
-            this.labType = new System.Windows.Forms.Label();
             this.rbAll = new System.Windows.Forms.RadioButton();
+            this.labSearch = new System.Windows.Forms.Label();
             this.rbOther = new System.Windows.Forms.RadioButton();
             this.rbSucc = new System.Windows.Forms.RadioButton();
             this.rbCacti = new System.Windows.Forms.RadioButton();
@@ -74,11 +77,15 @@
             this.saveActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteActualPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uploadPictureForPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importFromExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToExcelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPictureToPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteImageFromPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAllImagesFromPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAllImagesFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.PlantsBox = new System.Windows.Forms.GroupBox();
             this.plantsLabelStat = new System.Windows.Forms.Label();
@@ -110,8 +117,11 @@
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.PictureGroupBox = new System.Windows.Forms.GroupBox();
-            this.AddPicBtn = new System.Windows.Forms.Button();
-            this.DelPicBtn = new System.Windows.Forms.Button();
+            this.dataGridPic = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
@@ -123,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
             this.PictureGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,11 +144,11 @@
             this.PlantDetailsBox.Controls.Add(this.comboType);
             this.PlantDetailsBox.Controls.Add(this.txtGen);
             this.PlantDetailsBox.Controls.Add(this.txtID);
+            this.PlantDetailsBox.Controls.Add(this.labType);
             this.PlantDetailsBox.Controls.Add(this.labID);
             this.PlantDetailsBox.Controls.Add(this.txtSearch);
-            this.PlantDetailsBox.Controls.Add(this.labSearch);
-            this.PlantDetailsBox.Controls.Add(this.labType);
             this.PlantDetailsBox.Controls.Add(this.rbAll);
+            this.PlantDetailsBox.Controls.Add(this.labSearch);
             this.PlantDetailsBox.Controls.Add(this.rbOther);
             this.PlantDetailsBox.Controls.Add(this.rbSucc);
             this.PlantDetailsBox.Controls.Add(this.rbCacti);
@@ -163,7 +174,7 @@
             this.PlantDetailsBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.PlantDetailsBox.Location = new System.Drawing.Point(12, 33);
             this.PlantDetailsBox.Name = "PlantDetailsBox";
-            this.PlantDetailsBox.Size = new System.Drawing.Size(767, 236);
+            this.PlantDetailsBox.Size = new System.Drawing.Size(465, 258);
             this.PlantDetailsBox.TabIndex = 0;
             this.PlantDetailsBox.TabStop = false;
             this.PlantDetailsBox.Text = "PLANT DETAILS";
@@ -173,7 +184,7 @@
             this.dateTimePickerReplanted.CustomFormat = "";
             this.dateTimePickerReplanted.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Replanted", true));
             this.dateTimePickerReplanted.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerReplanted.Location = new System.Drawing.Point(639, 217);
+            this.dateTimePickerReplanted.Location = new System.Drawing.Point(332, 144);
             this.dateTimePickerReplanted.Name = "dateTimePickerReplanted";
             this.dateTimePickerReplanted.Size = new System.Drawing.Size(117, 20);
             this.dateTimePickerReplanted.TabIndex = 30;
@@ -196,34 +207,54 @@
             this.comboType.DisplayMember = "Type";
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboType.FormattingEnabled = true;
-            this.comboType.Location = new System.Drawing.Point(635, 168);
+            this.comboType.Location = new System.Drawing.Point(332, 173);
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(121, 21);
             this.comboType.TabIndex = 29;
+            this.comboType.TabStop = false;
             this.toolTipComboType.SetToolTip(this.comboType, "You can choose the type of plant");
             this.comboType.ValueMember = "Type";
+            this.comboType.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboType_DrawItem);
+            this.comboType.Enter += new System.EventHandler(this.ComboBoxColor);
+            this.comboType.Leave += new System.EventHandler(this.ComboBoxColor);
             // 
             // txtGen
             // 
+            this.txtGen.BackColor = System.Drawing.SystemColors.Window;
             this.txtGen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Genus", true));
             this.txtGen.Location = new System.Drawing.Point(103, 17);
             this.txtGen.Name = "txtGen";
-            this.txtGen.Size = new System.Drawing.Size(267, 20);
+            this.txtGen.Size = new System.Drawing.Size(150, 20);
             this.txtGen.TabIndex = 9;
+            this.txtGen.TabStop = false;
             this.txtGen.TextChanged += new System.EventHandler(this.TxtGen_TextChanged);
+            this.txtGen.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtGen.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtID
             // 
             this.txtID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "ID", true));
-            this.txtID.Location = new System.Drawing.Point(635, 137);
+            this.txtID.Location = new System.Drawing.Point(362, 17);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(121, 20);
+            this.txtID.Size = new System.Drawing.Size(91, 20);
             this.txtID.TabIndex = 18;
+            this.txtID.TabStop = false;
+            this.txtID.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtID.Leave += new System.EventHandler(this.BoxColor_Leave);
+            // 
+            // labType
+            // 
+            this.labType.AutoSize = true;
+            this.labType.Location = new System.Drawing.Point(272, 177);
+            this.labType.Name = "labType";
+            this.labType.Size = new System.Drawing.Size(35, 13);
+            this.labType.TabIndex = 24;
+            this.labType.Text = "Type";
             // 
             // labID
             // 
             this.labID.AutoSize = true;
-            this.labID.Location = new System.Drawing.Point(578, 141);
+            this.labID.Location = new System.Drawing.Point(336, 21);
             this.labID.Name = "labID";
             this.labID.Size = new System.Drawing.Size(20, 13);
             this.labID.TabIndex = 28;
@@ -231,46 +262,40 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(635, 196);
+            this.txtSearch.Location = new System.Drawing.Point(332, 199);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(121, 20);
             this.txtSearch.TabIndex = 20;
+            this.txtSearch.TabStop = false;
+            this.txtSearch.Enter += new System.EventHandler(this.BoxColor_Enter);
             this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
+            this.txtSearch.Leave += new System.EventHandler(this.BoxColor_Leave);
+            // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Location = new System.Drawing.Point(381, 229);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(77, 17);
+            this.rbAll.TabIndex = 24;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All plants";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.RbAll_CheckedChanged);
             // 
             // labSearch
             // 
             this.labSearch.AutoSize = true;
-            this.labSearch.Location = new System.Drawing.Point(575, 200);
+            this.labSearch.Location = new System.Drawing.Point(272, 204);
             this.labSearch.Name = "labSearch";
             this.labSearch.Size = new System.Drawing.Size(47, 13);
             this.labSearch.TabIndex = 26;
             this.labSearch.Text = "Search";
             // 
-            // labType
-            // 
-            this.labType.AutoSize = true;
-            this.labType.Location = new System.Drawing.Point(575, 171);
-            this.labType.Name = "labType";
-            this.labType.Size = new System.Drawing.Size(35, 13);
-            this.labType.TabIndex = 24;
-            this.labType.Text = "Type";
-            // 
-            // rbAll
-            // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Location = new System.Drawing.Point(432, 198);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(115, 17);
-            this.rbAll.TabIndex = 24;
-            this.rbAll.TabStop = true;
-            this.rbAll.Text = "All of the Plants";
-            this.rbAll.UseVisualStyleBackColor = true;
-            this.rbAll.CheckedChanged += new System.EventHandler(this.RbAll_CheckedChanged);
-            // 
             // rbOther
             // 
             this.rbOther.AutoSize = true;
-            this.rbOther.Location = new System.Drawing.Point(321, 198);
+            this.rbOther.Location = new System.Drawing.Point(273, 229);
             this.rbOther.Name = "rbOther";
             this.rbOther.Size = new System.Drawing.Size(95, 17);
             this.rbOther.TabIndex = 23;
@@ -282,7 +307,7 @@
             // rbSucc
             // 
             this.rbSucc.AutoSize = true;
-            this.rbSucc.Location = new System.Drawing.Point(173, 198);
+            this.rbSucc.Location = new System.Drawing.Point(128, 229);
             this.rbSucc.Name = "rbSucc";
             this.rbSucc.Size = new System.Drawing.Size(132, 17);
             this.rbSucc.TabIndex = 22;
@@ -294,7 +319,7 @@
             // rbCacti
             // 
             this.rbCacti.AutoSize = true;
-            this.rbCacti.Location = new System.Drawing.Point(103, 198);
+            this.rbCacti.Location = new System.Drawing.Point(61, 229);
             this.rbCacti.Name = "rbCacti";
             this.rbCacti.Size = new System.Drawing.Size(54, 17);
             this.rbCacti.TabIndex = 21;
@@ -306,84 +331,108 @@
             // labShow
             // 
             this.labShow.AutoSize = true;
-            this.labShow.Location = new System.Drawing.Point(10, 200);
+            this.labShow.Location = new System.Drawing.Point(10, 231);
             this.labShow.Name = "labShow";
-            this.labShow.Size = new System.Drawing.Size(77, 13);
+            this.labShow.Size = new System.Drawing.Size(38, 13);
             this.labShow.TabIndex = 19;
-            this.labShow.Text = "Filter plants:";
+            this.labShow.Text = "View:";
             // 
             // txtNotes
             // 
             this.txtNotes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Notes", true));
-            this.txtNotes.Location = new System.Drawing.Point(102, 136);
+            this.txtNotes.Location = new System.Drawing.Point(275, 43);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(445, 50);
+            this.txtNotes.Size = new System.Drawing.Size(178, 124);
             this.txtNotes.TabIndex = 17;
+            this.txtNotes.TabStop = false;
+            this.txtNotes.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtNotes.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtSubsp
             // 
             this.txtSubsp.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Subspecies", true));
-            this.txtSubsp.Location = new System.Drawing.Point(102, 47);
+            this.txtSubsp.Location = new System.Drawing.Point(103, 69);
             this.txtSubsp.Name = "txtSubsp";
-            this.txtSubsp.Size = new System.Drawing.Size(268, 20);
+            this.txtSubsp.Size = new System.Drawing.Size(150, 20);
             this.txtSubsp.TabIndex = 11;
+            this.txtSubsp.TabStop = false;
+            this.txtSubsp.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtSubsp.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtReplanted
             // 
             this.txtReplanted.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Replanted", true));
-            this.txtReplanted.Location = new System.Drawing.Point(488, 104);
+            this.txtReplanted.Location = new System.Drawing.Point(103, 199);
             this.txtReplanted.Name = "txtReplanted";
-            this.txtReplanted.Size = new System.Drawing.Size(268, 20);
+            this.txtReplanted.Size = new System.Drawing.Size(150, 20);
             this.txtReplanted.TabIndex = 16;
+            this.txtReplanted.TabStop = false;
+            this.txtReplanted.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtReplanted.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtSource
             // 
             this.txtSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Source", true));
-            this.txtSource.Location = new System.Drawing.Point(102, 105);
+            this.txtSource.Location = new System.Drawing.Point(103, 173);
             this.txtSource.Margin = new System.Windows.Forms.Padding(10);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(268, 20);
+            this.txtSource.Size = new System.Drawing.Size(150, 20);
             this.txtSource.TabIndex = 15;
+            this.txtSource.TabStop = false;
+            this.txtSource.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtSource.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtSyn
             // 
             this.txtSyn.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Synonym", true));
-            this.txtSyn.Location = new System.Drawing.Point(488, 75);
+            this.txtSyn.Location = new System.Drawing.Point(103, 147);
             this.txtSyn.Name = "txtSyn";
-            this.txtSyn.Size = new System.Drawing.Size(268, 20);
+            this.txtSyn.Size = new System.Drawing.Size(150, 20);
             this.txtSyn.TabIndex = 14;
+            this.txtSyn.TabStop = false;
+            this.txtSyn.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtSyn.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtHabit
             // 
             this.txtHabit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Habitat", true));
-            this.txtHabit.Location = new System.Drawing.Point(102, 76);
+            this.txtHabit.Location = new System.Drawing.Point(103, 121);
             this.txtHabit.Name = "txtHabit";
-            this.txtHabit.Size = new System.Drawing.Size(268, 20);
+            this.txtHabit.Size = new System.Drawing.Size(150, 20);
             this.txtHabit.TabIndex = 13;
+            this.txtHabit.TabStop = false;
+            this.txtHabit.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtHabit.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtFieldNo
             // 
             this.txtFieldNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "FieldNumber", true));
-            this.txtFieldNo.Location = new System.Drawing.Point(488, 46);
+            this.txtFieldNo.Location = new System.Drawing.Point(103, 95);
             this.txtFieldNo.Name = "txtFieldNo";
-            this.txtFieldNo.Size = new System.Drawing.Size(268, 20);
+            this.txtFieldNo.Size = new System.Drawing.Size(150, 20);
             this.txtFieldNo.TabIndex = 12;
+            this.txtFieldNo.TabStop = false;
+            this.txtFieldNo.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtFieldNo.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // txtSp
             // 
             this.txtSp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtSp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtSp.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantsBindingSource, "Species", true));
-            this.txtSp.Location = new System.Drawing.Point(488, 17);
+            this.txtSp.Location = new System.Drawing.Point(103, 43);
             this.txtSp.Name = "txtSp";
-            this.txtSp.Size = new System.Drawing.Size(268, 20);
+            this.txtSp.Size = new System.Drawing.Size(150, 20);
             this.txtSp.TabIndex = 10;
+            this.txtSp.TabStop = false;
+            this.txtSp.Enter += new System.EventHandler(this.BoxColor_Enter);
+            this.txtSp.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
             // labNotes
             // 
             this.labNotes.AutoSize = true;
-            this.labNotes.Location = new System.Drawing.Point(7, 140);
+            this.labNotes.Location = new System.Drawing.Point(274, 21);
             this.labNotes.Name = "labNotes";
             this.labNotes.Size = new System.Drawing.Size(40, 13);
             this.labNotes.TabIndex = 8;
@@ -394,7 +443,7 @@
             // labSource
             // 
             this.labSource.AutoSize = true;
-            this.labSource.Location = new System.Drawing.Point(7, 105);
+            this.labSource.Location = new System.Drawing.Point(7, 177);
             this.labSource.Name = "labSource";
             this.labSource.Size = new System.Drawing.Size(47, 13);
             this.labSource.TabIndex = 7;
@@ -403,7 +452,7 @@
             // labReplanted
             // 
             this.labReplanted.AutoSize = true;
-            this.labReplanted.Location = new System.Drawing.Point(398, 105);
+            this.labReplanted.Location = new System.Drawing.Point(7, 203);
             this.labReplanted.Name = "labReplanted";
             this.labReplanted.Size = new System.Drawing.Size(65, 13);
             this.labReplanted.TabIndex = 6;
@@ -412,7 +461,7 @@
             // labSyn
             // 
             this.labSyn.AutoSize = true;
-            this.labSyn.Location = new System.Drawing.Point(398, 77);
+            this.labSyn.Location = new System.Drawing.Point(7, 151);
             this.labSyn.Name = "labSyn";
             this.labSyn.Size = new System.Drawing.Size(57, 13);
             this.labSyn.TabIndex = 5;
@@ -421,7 +470,7 @@
             // labHabit
             // 
             this.labHabit.AutoSize = true;
-            this.labHabit.Location = new System.Drawing.Point(7, 77);
+            this.labHabit.Location = new System.Drawing.Point(7, 125);
             this.labHabit.Name = "labHabit";
             this.labHabit.Size = new System.Drawing.Size(73, 13);
             this.labHabit.TabIndex = 4;
@@ -430,7 +479,7 @@
             // labFieldNo4
             // 
             this.labFieldNo4.AutoSize = true;
-            this.labFieldNo4.Location = new System.Drawing.Point(398, 49);
+            this.labFieldNo4.Location = new System.Drawing.Point(7, 99);
             this.labFieldNo4.Name = "labFieldNo4";
             this.labFieldNo4.Size = new System.Drawing.Size(81, 13);
             this.labFieldNo4.TabIndex = 3;
@@ -439,7 +488,7 @@
             // labSubsp
             // 
             this.labSubsp.AutoSize = true;
-            this.labSubsp.Location = new System.Drawing.Point(7, 49);
+            this.labSubsp.Location = new System.Drawing.Point(7, 73);
             this.labSubsp.Name = "labSubsp";
             this.labSubsp.Size = new System.Drawing.Size(72, 13);
             this.labSubsp.TabIndex = 2;
@@ -448,7 +497,7 @@
             // labSp
             // 
             this.labSp.AutoSize = true;
-            this.labSp.Location = new System.Drawing.Point(398, 21);
+            this.labSp.Location = new System.Drawing.Point(7, 47);
             this.labSp.Name = "labSp";
             this.labSp.Size = new System.Drawing.Size(52, 13);
             this.labSp.TabIndex = 1;
@@ -465,18 +514,21 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewPlantsToolStripMenuItem,
             this.createNewPlantToolStripMenuItem,
             this.saveActualPlantToolStripMenuItem,
             this.updateActualPlantToolStripMenuItem,
             this.deleteActualPlantToolStripMenuItem,
-            this.uploadPictureForPlantToolStripMenuItem,
             this.importExcelFileToolStripMenuItem,
-            this.printToolStripMenuItem});
+            this.printToolStripMenuItem,
+            this.picturesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(1167, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -488,71 +540,64 @@
             this.otherPlantsToolStripMenuItem,
             this.viewAllPlantsToolStripMenuItem});
             this.viewPlantsToolStripMenuItem.Name = "viewPlantsToolStripMenuItem";
-            this.viewPlantsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.viewPlantsToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.viewPlantsToolStripMenuItem.Text = "View Plants";
             // 
             // cactiToolStripMenuItem
             // 
             this.cactiToolStripMenuItem.Name = "cactiToolStripMenuItem";
-            this.cactiToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.cactiToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.cactiToolStripMenuItem.Text = "View cacti";
             this.cactiToolStripMenuItem.Click += new System.EventHandler(this.CactiToolStripMenuItem_Click);
             // 
             // furtherSucculentsToolStripMenuItem
             // 
             this.furtherSucculentsToolStripMenuItem.Name = "furtherSucculentsToolStripMenuItem";
-            this.furtherSucculentsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.furtherSucculentsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.furtherSucculentsToolStripMenuItem.Text = "View further succulents";
             this.furtherSucculentsToolStripMenuItem.Click += new System.EventHandler(this.FurtherSucculentsToolStripMenuItem_Click);
             // 
             // otherPlantsToolStripMenuItem
             // 
             this.otherPlantsToolStripMenuItem.Name = "otherPlantsToolStripMenuItem";
-            this.otherPlantsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.otherPlantsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.otherPlantsToolStripMenuItem.Text = "View other plants";
             this.otherPlantsToolStripMenuItem.Click += new System.EventHandler(this.OtherPlantsToolStripMenuItem_Click);
             // 
             // viewAllPlantsToolStripMenuItem
             // 
             this.viewAllPlantsToolStripMenuItem.Name = "viewAllPlantsToolStripMenuItem";
-            this.viewAllPlantsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.viewAllPlantsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.viewAllPlantsToolStripMenuItem.Text = "View all plants";
             this.viewAllPlantsToolStripMenuItem.Click += new System.EventHandler(this.ViewAllPlantsToolStripMenuItem_Click);
             // 
             // createNewPlantToolStripMenuItem
             // 
             this.createNewPlantToolStripMenuItem.Name = "createNewPlantToolStripMenuItem";
-            this.createNewPlantToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
+            this.createNewPlantToolStripMenuItem.Size = new System.Drawing.Size(114, 20);
             this.createNewPlantToolStripMenuItem.Text = "Create new plant";
             this.createNewPlantToolStripMenuItem.Click += new System.EventHandler(this.CreateNewPlantToolStripMenuItem_Click);
             // 
             // saveActualPlantToolStripMenuItem
             // 
             this.saveActualPlantToolStripMenuItem.Name = "saveActualPlantToolStripMenuItem";
-            this.saveActualPlantToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.saveActualPlantToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.saveActualPlantToolStripMenuItem.Text = "Save new plant";
             this.saveActualPlantToolStripMenuItem.Click += new System.EventHandler(this.SaveActualPlantToolStripMenuItem_Click);
             // 
             // updateActualPlantToolStripMenuItem
             // 
             this.updateActualPlantToolStripMenuItem.Name = "updateActualPlantToolStripMenuItem";
-            this.updateActualPlantToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.updateActualPlantToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
             this.updateActualPlantToolStripMenuItem.Text = "Update actual plant";
             this.updateActualPlantToolStripMenuItem.Click += new System.EventHandler(this.UpdateActualPlantToolStripMenuItem_Click);
             // 
             // deleteActualPlantToolStripMenuItem
             // 
             this.deleteActualPlantToolStripMenuItem.Name = "deleteActualPlantToolStripMenuItem";
-            this.deleteActualPlantToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
+            this.deleteActualPlantToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
             this.deleteActualPlantToolStripMenuItem.Text = "Delete actual plant";
             this.deleteActualPlantToolStripMenuItem.Click += new System.EventHandler(this.DeleteActualPlantToolStripMenuItem_Click);
-            // 
-            // uploadPictureForPlantToolStripMenuItem
-            // 
-            this.uploadPictureForPlantToolStripMenuItem.Name = "uploadPictureForPlantToolStripMenuItem";
-            this.uploadPictureForPlantToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
-            this.uploadPictureForPlantToolStripMenuItem.Text = "Upload picture for plant";
-            this.uploadPictureForPlantToolStripMenuItem.Click += new System.EventHandler(this.UploadPictureForPlantToolStripMenuItem_Click);
             // 
             // importExcelFileToolStripMenuItem
             // 
@@ -560,29 +605,65 @@
             this.importFromExcelToolStripMenuItem,
             this.exportToExcelToolStripMenuItem1});
             this.importExcelFileToolStripMenuItem.Name = "importExcelFileToolStripMenuItem";
-            this.importExcelFileToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.importExcelFileToolStripMenuItem.Text = "Import/Excel";
+            this.importExcelFileToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.importExcelFileToolStripMenuItem.Text = "Import/Export";
             // 
             // importFromExcelToolStripMenuItem
             // 
             this.importFromExcelToolStripMenuItem.Name = "importFromExcelToolStripMenuItem";
-            this.importFromExcelToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.importFromExcelToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.importFromExcelToolStripMenuItem.Text = "Import from Excel";
             this.importFromExcelToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelFileToolStripMenuItem_Click);
             // 
             // exportToExcelToolStripMenuItem1
             // 
             this.exportToExcelToolStripMenuItem1.Name = "exportToExcelToolStripMenuItem1";
-            this.exportToExcelToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
+            this.exportToExcelToolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
             this.exportToExcelToolStripMenuItem1.Text = "Export to Excel";
             this.exportToExcelToolStripMenuItem1.Click += new System.EventHandler(this.ExportToExcelToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
+            // 
+            // picturesToolStripMenuItem
+            // 
+            this.picturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPictureToPlantToolStripMenuItem,
+            this.deleteImageFromPlantToolStripMenuItem,
+            this.deleteAllImagesFromPlantToolStripMenuItem,
+            this.deleteAllImagesFromDatabaseToolStripMenuItem});
+            this.picturesToolStripMenuItem.Name = "picturesToolStripMenuItem";
+            this.picturesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.picturesToolStripMenuItem.Text = "Pictures";
+            // 
+            // addPictureToPlantToolStripMenuItem
+            // 
+            this.addPictureToPlantToolStripMenuItem.Name = "addPictureToPlantToolStripMenuItem";
+            this.addPictureToPlantToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.addPictureToPlantToolStripMenuItem.Text = "Add picture to plant";
+            this.addPictureToPlantToolStripMenuItem.Click += new System.EventHandler(this.AddPictureToPlantToolStripMenuItem_Click);
+            // 
+            // deleteImageFromPlantToolStripMenuItem
+            // 
+            this.deleteImageFromPlantToolStripMenuItem.Name = "deleteImageFromPlantToolStripMenuItem";
+            this.deleteImageFromPlantToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.deleteImageFromPlantToolStripMenuItem.Text = "Delete image from plant";
+            // 
+            // deleteAllImagesFromPlantToolStripMenuItem
+            // 
+            this.deleteAllImagesFromPlantToolStripMenuItem.Name = "deleteAllImagesFromPlantToolStripMenuItem";
+            this.deleteAllImagesFromPlantToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.deleteAllImagesFromPlantToolStripMenuItem.Text = "Delete all images from plant";
+            // 
+            // deleteAllImagesFromDatabaseToolStripMenuItem
+            // 
+            this.deleteAllImagesFromDatabaseToolStripMenuItem.Name = "deleteAllImagesFromDatabaseToolStripMenuItem";
+            this.deleteAllImagesFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.deleteAllImagesFromDatabaseToolStripMenuItem.Text = "Delete all images from database";
             // 
             // imageList1
             // 
@@ -597,9 +678,9 @@
             this.PlantsBox.Controls.Add(this.plantsLabelStat);
             this.PlantsBox.Controls.Add(this.PlantsTableView);
             this.PlantsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlantsBox.Location = new System.Drawing.Point(12, 276);
+            this.PlantsBox.Location = new System.Drawing.Point(12, 297);
             this.PlantsBox.Name = "PlantsBox";
-            this.PlantsBox.Size = new System.Drawing.Size(1131, 371);
+            this.PlantsBox.Size = new System.Drawing.Size(1131, 383);
             this.PlantsBox.TabIndex = 6;
             this.PlantsBox.TabStop = false;
             this.PlantsBox.Text = "PLANTS";
@@ -620,8 +701,18 @@
             this.PlantsTableView.AutoGenerateColumns = false;
             this.PlantsTableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.PlantsTableView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.PlantsTableView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PlantsTableView.BackgroundColor = System.Drawing.Color.Khaki;
             this.PlantsTableView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PlantsTableView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.PlantsTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlantsTableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -635,10 +726,29 @@
             this.replantedDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
             this.PlantsTableView.DataSource = this.plantsBindingSource;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle8;
+            this.PlantsTableView.EnableHeadersVisualStyles = false;
+            this.PlantsTableView.GridColor = System.Drawing.Color.SaddleBrown;
             this.PlantsTableView.Location = new System.Drawing.Point(0, 32);
             this.PlantsTableView.Name = "PlantsTableView";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.PlantsTableView.RowHeadersVisible = false;
             this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.PlantsTableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PlantsTableView.Size = new System.Drawing.Size(1125, 320);
             this.PlantsTableView.TabIndex = 8;
             // 
@@ -818,24 +928,26 @@
             // bindingNavigator2
             // 
             this.bindingNavigator2.AddNewItem = null;
+            this.bindingNavigator2.BackColor = System.Drawing.Color.Transparent;
             this.bindingNavigator2.BindingSource = this.plantsBindingSource;
             this.bindingNavigator2.CountItem = null;
             this.bindingNavigator2.DeleteItem = null;
             this.bindingNavigator2.Dock = System.Windows.Forms.DockStyle.None;
+            this.bindingNavigator2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.bindingNavigator2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem1,
             this.bindingNavigatorMovePreviousItem1,
             this.bindingNavigatorMoveNextItem1,
             this.bindingNavigatorMoveLastItem1,
             this.toolStripButtonRefresh});
-            this.bindingNavigator2.Location = new System.Drawing.Point(815, 0);
+            this.bindingNavigator2.Location = new System.Drawing.Point(770, 0);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem1;
             this.bindingNavigator2.MoveNextItem = this.bindingNavigatorMoveNextItem1;
             this.bindingNavigator2.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(127, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(118, 25);
             this.bindingNavigator2.TabIndex = 31;
             this.bindingNavigator2.Text = "bindingNavigator2";
             // 
@@ -852,40 +964,65 @@
             // PictureGroupBox
             // 
             this.PictureGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.PictureGroupBox.Controls.Add(this.dataGridPic);
             this.PictureGroupBox.Controls.Add(this.pictureBox1);
-            this.PictureGroupBox.Controls.Add(this.DelPicBtn);
-            this.PictureGroupBox.Controls.Add(this.AddPicBtn);
             this.PictureGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PictureGroupBox.Location = new System.Drawing.Point(785, 33);
+            this.PictureGroupBox.Location = new System.Drawing.Point(489, 33);
             this.PictureGroupBox.Name = "PictureGroupBox";
-            this.PictureGroupBox.Size = new System.Drawing.Size(358, 236);
+            this.PictureGroupBox.Size = new System.Drawing.Size(654, 258);
             this.PictureGroupBox.TabIndex = 32;
             this.PictureGroupBox.TabStop = false;
             this.PictureGroupBox.Text = "PICTURES OF THE PLANT";
             // 
-            // AddPicBtn
+            // dataGridPic
             // 
-            this.AddPicBtn.Location = new System.Drawing.Point(6, 207);
-            this.AddPicBtn.Name = "AddPicBtn";
-            this.AddPicBtn.Size = new System.Drawing.Size(162, 23);
-            this.AddPicBtn.TabIndex = 0;
-            this.AddPicBtn.Text = "Add image to plant";
-            this.AddPicBtn.UseVisualStyleBackColor = true;
+            this.dataGridPic.AllowUserToDeleteRows = false;
+            this.dataGridPic.AllowUserToResizeColumns = false;
+            this.dataGridPic.AllowUserToResizeRows = false;
+            this.dataGridPic.BackgroundColor = System.Drawing.Color.Peru;
+            this.dataGridPic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPic.ColumnHeadersVisible = false;
+            this.dataGridPic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dataGridPic.Location = new System.Drawing.Point(224, 17);
+            this.dataGridPic.Name = "dataGridPic";
+            this.dataGridPic.RowHeadersVisible = false;
+            this.dataGridPic.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridPic.Size = new System.Drawing.Size(424, 227);
+            this.dataGridPic.TabIndex = 3;
             // 
-            // DelPicBtn
+            // Column1
             // 
-            this.DelPicBtn.Location = new System.Drawing.Point(190, 207);
-            this.DelPicBtn.Name = "DelPicBtn";
-            this.DelPicBtn.Size = new System.Drawing.Size(162, 23);
-            this.DelPicBtn.TabIndex = 1;
-            this.DelPicBtn.Text = "Delete image";
-            this.DelPicBtn.UseVisualStyleBackColor = true;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Column4";
+            this.Column4.Name = "Column4";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(128, 17);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 17);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(222, 172);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(10);
+            this.pictureBox1.Size = new System.Drawing.Size(204, 229);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -898,7 +1035,7 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1164, 641);
+            this.ClientSize = new System.Drawing.Size(1184, 641);
             this.Controls.Add(this.PictureGroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.PlantsBox);
@@ -927,6 +1064,7 @@
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();
             this.PictureGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -957,7 +1095,6 @@
         private System.Windows.Forms.ToolStripMenuItem createNewPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveActualPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteActualPlantToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem uploadPictureForPlantToolStripMenuItem;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbOther;
         private System.Windows.Forms.RadioButton rbSucc;
@@ -989,7 +1126,6 @@
         private System.Windows.Forms.ToolTip toolTipNotes;
         private System.Windows.Forms.ToolTip toolTipReplanted;
         private System.Windows.Forms.ToolStripMenuItem importExcelFileToolStripMenuItem;
-        private System.Windows.Forms.DateTimePicker dateTimePickerReplanted;
         private System.Windows.Forms.Label plantsLabelStat;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Drawing.Printing.PrintDocument printDocumentPlants;
@@ -1015,9 +1151,18 @@
         private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.GroupBox PictureGroupBox;
-        private System.Windows.Forms.Button AddPicBtn;
-        private System.Windows.Forms.Button DelPicBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem picturesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPictureToPlantToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteImageFromPlantToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteAllImagesFromPlantToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteAllImagesFromDatabaseToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridPic;
+        private System.Windows.Forms.DataGridViewImageColumn Column1;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
+        private System.Windows.Forms.DataGridViewImageColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn Column4;
+        private System.Windows.Forms.DateTimePicker dateTimePickerReplanted;
     }
 }
 

@@ -10,6 +10,9 @@ using Ornaments_Register.Service.Simple;
 using System.IO;
 using ExcelDataReader;
 using System.ComponentModel;
+using Ornaments_Register.Models;
+using Ornaments_Register.Service;
+using System.Drawing.Drawing2D;
 
 namespace Ornaments_Register
 {
@@ -22,6 +25,7 @@ namespace Ornaments_Register
         public PlantsForm()
         {
             InitializeComponent();
+            menuStrip1.Renderer = new MyRenderer();
             FillComboType();
             AutoCmpltTxtGen();
             AutoCmpltTxtSp();
@@ -40,7 +44,21 @@ namespace Ornaments_Register
             rbAll.Checked = true;
             this.PictureGroupBox.Width = this.Width - (PlantDetailsBox.Width + 55);
             this.PlantsTableView.Width = this.Width - 50;
+            PlantsTableView.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            PlantsTableView.DefaultCellStyle.SelectionBackColor = Color.SaddleBrown;
+            ChangeBoxColor();
             ViewAll();
+        }
+
+        private void ChangeBoxColor()
+        {
+            TextBox[] textBoxes = new TextBox[] { txtGen, txtSp, txtSubsp, txtFieldNo, txtHabit, txtSyn, txtSource, txtReplanted, txtNotes, txtID, txtSearch };
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.ForeColor = Color.SaddleBrown;
+            }
+            comboType.ForeColor = Color.SaddleBrown;
+
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -422,11 +440,6 @@ namespace Ornaments_Register
             }
         }
 
-        private void UploadPictureForPlantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void RbCacti_CheckedChanged(object sender, EventArgs e)
         {
             ViewCacti();
@@ -569,11 +582,7 @@ namespace Ornaments_Register
 
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.WorkerSupportsCancellation == true)
-            {
-                backgroundWorker1.CancelAsync();
-                alert.Close();
-            }
+
         }
 
         private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -700,5 +709,119 @@ namespace Ornaments_Register
                 e.Cancel = true;
             }
         }
+
+        private void OpenPic()
+        {
+            Picture picture = null;
+            try
+            {
+                OpenFileDialog ope = new OpenFileDialog
+                {
+                    Filter = "Image Files  (*.jpg ; *.jpeg ; *.png ; *.gif ; *.tiff) | *.jpg; *.jpeg; *.png; *.gif; *.tiff"
+                };
+                ope.Multiselect = true;
+                DialogResult dr = ope.ShowDialog();
+
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    string[] files = ope.FileNames;
+                    int x = pictureBox1.Width + 30;
+                    int y = 20;
+                    int maxHeight = -1;
+
+                    /*foreach (string img in files)
+                    {
+                        tablePicPanel.Controls.Add(new PictureBox
+                        {
+                            SizeMode = PictureBoxSizeMode.Zoom,
+                            Image = Image.FromFile(img),
+
+                        });
+                    }*/
+                }
+
+                /*if (ope.ShowDialog() == DialogResult.OK)
+                {
+                    FileInfo info = new FileInfo(ope.FileName);
+                    long fileSize = info.Length;
+
+                    int maxImageSize = (Int32)fileSize;
+
+                    using (FileStream stream = File.Open(ope.FileName, FileMode.Open))
+                    {
+                        BinaryReader br = new BinaryReader(stream);
+                        byte[] data = br.ReadBytes(maxImageSize);
+                        picture = new Picture(ope.FileName, data);
+                        stream.Close();
+                        pictureBox1.ImageLocation = ope.FileName;
+                    }
+
+                }
+                return picture;*/
+            }
+
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //return null;
+            }
+        }
+
+        private void AddPictureToPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture picture = null;
+            OpenPic();
+            //pictureBox1.Image = picture;
+            //StorePic(picture);
+        }
+
+        private void BoxColor_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.BackColor = Color.SaddleBrown;
+            textBox.ForeColor = Color.White;
+        }
+
+        private void BoxColor_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.BackColor = Color.White;
+            textBox.ForeColor = Color.SaddleBrown;
+        }
+
+        private void ComboBoxColor(object sender, EventArgs e)
+        {
+            ComboBox comBox = (ComboBox)sender;
+
+            if (comBox.BackColor == Color.White && comBox.ForeColor == Color.SaddleBrown)
+            {
+                comBox.BackColor = Color.SaddleBrown;
+                comBox.ForeColor = Color.White;
+            }
+            else
+            {
+                comBox.BackColor = Color.White;
+                comBox.ForeColor = Color.SaddleBrown;
+            }
+
+        }
+
+        private void ComboType_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Brush brush = null;
+            ComboBox combo;
+
+            try
+            {
+                e.DrawBackground();
+                combo = (ComboBox)sender;
+                brush = Brushes.SaddleBrown;
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            }
+            catch (Exception Ex)
+            {
+            }
+        }
     }
 }
+
