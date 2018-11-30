@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
             this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
@@ -117,11 +117,19 @@
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.PictureGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataGridPic = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tableLayPanPic = new System.Windows.Forms.TableLayoutPanel();
+            this.picBox12 = new System.Windows.Forms.PictureBox();
+            this.picBox11 = new System.Windows.Forms.PictureBox();
+            this.picBox10 = new System.Windows.Forms.PictureBox();
+            this.picBox9 = new System.Windows.Forms.PictureBox();
+            this.picBox8 = new System.Windows.Forms.PictureBox();
+            this.picBox7 = new System.Windows.Forms.PictureBox();
+            this.picBox6 = new System.Windows.Forms.PictureBox();
+            this.picBox5 = new System.Windows.Forms.PictureBox();
+            this.picBox4 = new System.Windows.Forms.PictureBox();
+            this.picBox3 = new System.Windows.Forms.PictureBox();
+            this.picBox2 = new System.Windows.Forms.PictureBox();
+            this.picBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
@@ -133,7 +141,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
             this.PictureGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPic)).BeginInit();
+            this.tableLayPanPic.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -704,15 +724,15 @@
             this.PlantsTableView.BackgroundColor = System.Drawing.Color.Khaki;
             this.PlantsTableView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PlantsTableView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PlantsTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlantsTableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -726,26 +746,26 @@
             this.replantedDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
             this.PlantsTableView.DataSource = this.plantsBindingSource;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle5;
             this.PlantsTableView.EnableHeadersVisualStyles = false;
             this.PlantsTableView.GridColor = System.Drawing.Color.SaddleBrown;
             this.PlantsTableView.Location = new System.Drawing.Point(0, 32);
             this.PlantsTableView.Name = "PlantsTableView";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PlantsTableView.RowHeadersVisible = false;
             this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PlantsTableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -964,7 +984,7 @@
             // PictureGroupBox
             // 
             this.PictureGroupBox.BackColor = System.Drawing.Color.Transparent;
-            this.PictureGroupBox.Controls.Add(this.dataGridPic);
+            this.PictureGroupBox.Controls.Add(this.tableLayPanPic);
             this.PictureGroupBox.Controls.Add(this.pictureBox1);
             this.PictureGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PictureGroupBox.Location = new System.Drawing.Point(489, 33);
@@ -974,49 +994,173 @@
             this.PictureGroupBox.TabStop = false;
             this.PictureGroupBox.Text = "PICTURES OF THE PLANT";
             // 
-            // dataGridPic
+            // tableLayPanPic
             // 
-            this.dataGridPic.AllowUserToDeleteRows = false;
-            this.dataGridPic.AllowUserToResizeColumns = false;
-            this.dataGridPic.AllowUserToResizeRows = false;
-            this.dataGridPic.BackgroundColor = System.Drawing.Color.Peru;
-            this.dataGridPic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPic.ColumnHeadersVisible = false;
-            this.dataGridPic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridPic.Location = new System.Drawing.Point(224, 17);
-            this.dataGridPic.Name = "dataGridPic";
-            this.dataGridPic.RowHeadersVisible = false;
-            this.dataGridPic.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridPic.Size = new System.Drawing.Size(424, 227);
-            this.dataGridPic.TabIndex = 3;
+            this.tableLayPanPic.ColumnCount = 4;
+            this.tableLayPanPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayPanPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayPanPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayPanPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayPanPic.Controls.Add(this.picBox12, 3, 2);
+            this.tableLayPanPic.Controls.Add(this.picBox11, 2, 2);
+            this.tableLayPanPic.Controls.Add(this.picBox10, 1, 2);
+            this.tableLayPanPic.Controls.Add(this.picBox9, 0, 2);
+            this.tableLayPanPic.Controls.Add(this.picBox8, 3, 1);
+            this.tableLayPanPic.Controls.Add(this.picBox7, 2, 1);
+            this.tableLayPanPic.Controls.Add(this.picBox6, 1, 1);
+            this.tableLayPanPic.Controls.Add(this.picBox5, 0, 1);
+            this.tableLayPanPic.Controls.Add(this.picBox4, 3, 0);
+            this.tableLayPanPic.Controls.Add(this.picBox3, 2, 0);
+            this.tableLayPanPic.Controls.Add(this.picBox2, 1, 0);
+            this.tableLayPanPic.Controls.Add(this.picBox1, 0, 0);
+            this.tableLayPanPic.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.tableLayPanPic.Location = new System.Drawing.Point(224, 17);
+            this.tableLayPanPic.Name = "tableLayPanPic";
+            this.tableLayPanPic.RowCount = 3;
+            this.tableLayPanPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayPanPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayPanPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayPanPic.Size = new System.Drawing.Size(424, 229);
+            this.tableLayPanPic.TabIndex = 5;
             // 
-            // Column1
+            // picBox12
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
+            this.picBox12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox12.Location = new System.Drawing.Point(321, 155);
+            this.picBox12.Name = "picBox12";
+            this.picBox12.Size = new System.Drawing.Size(100, 71);
+            this.picBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox12.TabIndex = 11;
+            this.picBox12.TabStop = false;
+            this.picBox12.Click += new System.EventHandler(this.PicBox_Click);
             // 
-            // Column2
+            // picBox11
             // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
+            this.picBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox11.Location = new System.Drawing.Point(215, 155);
+            this.picBox11.Name = "picBox11";
+            this.picBox11.Size = new System.Drawing.Size(100, 71);
+            this.picBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox11.TabIndex = 10;
+            this.picBox11.TabStop = false;
+            this.picBox11.Click += new System.EventHandler(this.PicBox_Click);
             // 
-            // Column3
+            // picBox10
             // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
+            this.picBox10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox10.Location = new System.Drawing.Point(109, 155);
+            this.picBox10.Name = "picBox10";
+            this.picBox10.Size = new System.Drawing.Size(100, 71);
+            this.picBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox10.TabIndex = 9;
+            this.picBox10.TabStop = false;
+            this.picBox10.Click += new System.EventHandler(this.PicBox_Click);
             // 
-            // Column4
+            // picBox9
             // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
+            this.picBox9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox9.Location = new System.Drawing.Point(3, 155);
+            this.picBox9.Name = "picBox9";
+            this.picBox9.Size = new System.Drawing.Size(100, 71);
+            this.picBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox9.TabIndex = 8;
+            this.picBox9.TabStop = false;
+            this.picBox9.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox8
+            // 
+            this.picBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox8.Location = new System.Drawing.Point(321, 79);
+            this.picBox8.Name = "picBox8";
+            this.picBox8.Size = new System.Drawing.Size(100, 70);
+            this.picBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox8.TabIndex = 7;
+            this.picBox8.TabStop = false;
+            this.picBox8.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox7
+            // 
+            this.picBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox7.Location = new System.Drawing.Point(215, 79);
+            this.picBox7.Name = "picBox7";
+            this.picBox7.Size = new System.Drawing.Size(100, 70);
+            this.picBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox7.TabIndex = 6;
+            this.picBox7.TabStop = false;
+            this.picBox7.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox6
+            // 
+            this.picBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox6.Location = new System.Drawing.Point(109, 79);
+            this.picBox6.Name = "picBox6";
+            this.picBox6.Size = new System.Drawing.Size(100, 70);
+            this.picBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox6.TabIndex = 5;
+            this.picBox6.TabStop = false;
+            this.picBox6.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox5
+            // 
+            this.picBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox5.Location = new System.Drawing.Point(3, 79);
+            this.picBox5.Name = "picBox5";
+            this.picBox5.Size = new System.Drawing.Size(100, 70);
+            this.picBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox5.TabIndex = 4;
+            this.picBox5.TabStop = false;
+            this.picBox5.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox4
+            // 
+            this.picBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox4.Location = new System.Drawing.Point(321, 3);
+            this.picBox4.Name = "picBox4";
+            this.picBox4.Size = new System.Drawing.Size(100, 70);
+            this.picBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox4.TabIndex = 3;
+            this.picBox4.TabStop = false;
+            this.picBox4.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox3
+            // 
+            this.picBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox3.Location = new System.Drawing.Point(215, 3);
+            this.picBox3.Name = "picBox3";
+            this.picBox3.Size = new System.Drawing.Size(100, 70);
+            this.picBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox3.TabIndex = 2;
+            this.picBox3.TabStop = false;
+            this.picBox3.Click += new System.EventHandler(this.PicBox_Click);
+            // 
+            // picBox2
+            // 
+            this.picBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox2.Location = new System.Drawing.Point(109, 3);
+            this.picBox2.Name = "picBox2";
+            this.picBox2.Size = new System.Drawing.Size(100, 70);
+            this.picBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox2.TabIndex = 1;
+            this.picBox2.TabStop = false;
+            this.picBox2.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox2.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox2.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
+            // 
+            // picBox1
+            // 
+            this.picBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox1.Location = new System.Drawing.Point(3, 3);
+            this.picBox1.Name = "picBox1";
+            this.picBox1.Size = new System.Drawing.Size(100, 70);
+            this.picBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox1.TabIndex = 0;
+            this.picBox1.TabStop = false;
+            this.picBox1.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox1.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox1.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(10, 17);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Name = "pictureBox1";
@@ -1064,7 +1208,19 @@
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();
             this.PictureGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPic)).EndInit();
+            this.tableLayPanPic.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1157,12 +1313,20 @@
         private System.Windows.Forms.ToolStripMenuItem deleteImageFromPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteAllImagesFromPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteAllImagesFromDatabaseToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridPic;
-        private System.Windows.Forms.DataGridViewImageColumn Column1;
-        private System.Windows.Forms.DataGridViewImageColumn Column2;
-        private System.Windows.Forms.DataGridViewImageColumn Column3;
-        private System.Windows.Forms.DataGridViewImageColumn Column4;
         private System.Windows.Forms.DateTimePicker dateTimePickerReplanted;
+        private System.Windows.Forms.TableLayoutPanel tableLayPanPic;
+        private System.Windows.Forms.PictureBox picBox12;
+        private System.Windows.Forms.PictureBox picBox11;
+        private System.Windows.Forms.PictureBox picBox10;
+        private System.Windows.Forms.PictureBox picBox9;
+        private System.Windows.Forms.PictureBox picBox8;
+        private System.Windows.Forms.PictureBox picBox7;
+        private System.Windows.Forms.PictureBox picBox6;
+        private System.Windows.Forms.PictureBox picBox5;
+        private System.Windows.Forms.PictureBox picBox4;
+        private System.Windows.Forms.PictureBox picBox3;
+        private System.Windows.Forms.PictureBox picBox2;
+        private System.Windows.Forms.PictureBox picBox1;
     }
 }
 

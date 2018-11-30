@@ -18,6 +18,6 @@ namespace Ornaments_Register.Service
         public override Color MenuItemSelected => Color.SaddleBrown;
         public override Color MenuItemSelectedGradientBegin => Color.SaddleBrown;
         public override Color MenuItemSelectedGradientEnd => Color.SaddleBrown;
-        public override Color ToolStripBorder => Color.LimeGreen;
+        
     }
 }

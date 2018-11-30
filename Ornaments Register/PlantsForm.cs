@@ -21,6 +21,7 @@ namespace Ornaments_Register
 
         IConnectionCreater connectionCreater = new SimpleConnectionCreater();
         Alert alert;
+        List<PictureBox> picBoxes = new List<PictureBox>();
 
         public PlantsForm()
         {
@@ -47,6 +48,7 @@ namespace Ornaments_Register
             PlantsTableView.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
             PlantsTableView.DefaultCellStyle.SelectionBackColor = Color.SaddleBrown;
             ChangeBoxColor();
+            FillPicBoxes();
             ViewAll();
         }
 
@@ -710,9 +712,26 @@ namespace Ornaments_Register
             }
         }
 
+        private void FillPicBoxes()
+        {
+
+            picBoxes.Add(picBox1);
+            picBoxes.Add(picBox2);
+            picBoxes.Add(picBox3);
+            picBoxes.Add(picBox4);
+            picBoxes.Add(picBox5);
+            picBoxes.Add(picBox6);
+            picBoxes.Add(picBox7);
+            picBoxes.Add(picBox8);
+            picBoxes.Add(picBox9);
+            picBoxes.Add(picBox10);
+            picBoxes.Add(picBox11);
+            picBoxes.Add(picBox12);
+
+        }
+
         private void OpenPic()
         {
-            Picture picture = null;
             try
             {
                 OpenFileDialog ope = new OpenFileDialog
@@ -725,41 +744,22 @@ namespace Ornaments_Register
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
                     string[] files = ope.FileNames;
-                    int x = pictureBox1.Width + 30;
-                    int y = 20;
-                    int maxHeight = -1;
-
-                    /*foreach (string img in files)
+                    int imageCount = 0;
+                    foreach (PictureBox pic in picBoxes)
+                        if (pic.Image != null)
+                            imageCount++;
+                    if (files.Length + imageCount > 12)
                     {
-                        tablePicPanel.Controls.Add(new PictureBox
-                        {
-                            SizeMode = PictureBoxSizeMode.Zoom,
-                            Image = Image.FromFile(img),
-
-                        });
-                    }*/
-                }
-
-                /*if (ope.ShowDialog() == DialogResult.OK)
-                {
-                    FileInfo info = new FileInfo(ope.FileName);
-                    long fileSize = info.Length;
-
-                    int maxImageSize = (Int32)fileSize;
-
-                    using (FileStream stream = File.Open(ope.FileName, FileMode.Open))
-                    {
-                        BinaryReader br = new BinaryReader(stream);
-                        byte[] data = br.ReadBytes(maxImageSize);
-                        picture = new Picture(ope.FileName, data);
-                        stream.Close();
-                        pictureBox1.ImageLocation = ope.FileName;
+                        MessageBox.Show("You can add max. 12 images to a plant.");
+                        return;
                     }
-
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        picBoxes[i].Image = Image.FromFile(files[i]);
+                        //MessageBox.Show(tableLayPanPic.Controls[i].Name.ToString());
+                    }
                 }
-                return picture;*/
             }
-
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -769,9 +769,8 @@ namespace Ornaments_Register
 
         private void AddPictureToPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture picture = null;
             OpenPic();
-            //pictureBox1.Image = picture;
+            pictureBox1.Image = picBoxes[0].Image;
             //StorePic(picture);
         }
 
@@ -822,6 +821,33 @@ namespace Ornaments_Register
             {
             }
         }
+
+        private void PicBox_Click(object sender, EventArgs e)
+        {
+            PictureBox pic = (PictureBox)sender;
+            pictureBox1.Image = pic.Image;
+        }
+
+        private void PicBox_MouseHover(object sender, EventArgs e)
+        {
+            PictureBox pic = (PictureBox)sender;
+            pic.Cursor = Cursors.Hand;
+        }
+
+        private void PicBox_MouseLeave(object sender, EventArgs e)
+        {
+            PictureBox pic = (PictureBox)sender;
+            pic.Cursor = Cursors.Default;
+        }
+
+
+        /*private void Picbox_MouseHover(object sender, EventArgs e)
+        {
+            PictureBox picBox = (PictureBox)sender;
+            if (picBoxes.Contains(picBox))
+                MessageBox.Show("OK");
+            
+        }*/
     }
 }
 
