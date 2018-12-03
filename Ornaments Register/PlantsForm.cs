@@ -714,8 +714,17 @@ namespace Ornaments_Register
 
         private void FillPicBoxes()
         {
+            int cells = tableLayPanPic.ColumnCount * tableLayPanPic.RowCount;
+            MessageBox.Show("number of cells = " + cells);
+            for (int i = 1; i<=cells; i++)
+            {
 
-            picBoxes.Add(picBox1);
+                var picBox = (PictureBox)PlantsForm.ActiveForm.Controls.Find("picBox" + i, true)[0];
+                MessageBox.Show(picBox.Name);
+                picBoxes.Add(picBox);
+                MessageBox.Show(picBoxes.Count.ToString());
+            }
+            /*picBoxes.Add(picBox1);
             picBoxes.Add(picBox2);
             picBoxes.Add(picBox3);
             picBoxes.Add(picBox4);
@@ -726,7 +735,7 @@ namespace Ornaments_Register
             picBoxes.Add(picBox9);
             picBoxes.Add(picBox10);
             picBoxes.Add(picBox11);
-            picBoxes.Add(picBox12);
+            picBoxes.Add(picBox12);*/
 
         }
 
@@ -789,7 +798,7 @@ namespace Ornaments_Register
         private void AddPictureToPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenPic();
-            pictureBox1.Image = picBoxes[0].Image;
+            //pictureBox1.Image = picBoxes[0].Image;
             //StorePic(picture);
         }
 

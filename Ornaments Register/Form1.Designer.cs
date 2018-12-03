@@ -1033,6 +1033,8 @@
             this.picBox12.TabIndex = 11;
             this.picBox12.TabStop = false;
             this.picBox12.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox12.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox12.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox11
             // 
@@ -1044,6 +1046,8 @@
             this.picBox11.TabIndex = 10;
             this.picBox11.TabStop = false;
             this.picBox11.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox11.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox11.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox10
             // 
@@ -1055,6 +1059,8 @@
             this.picBox10.TabIndex = 9;
             this.picBox10.TabStop = false;
             this.picBox10.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox10.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox10.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox9
             // 
@@ -1066,6 +1072,8 @@
             this.picBox9.TabIndex = 8;
             this.picBox9.TabStop = false;
             this.picBox9.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox9.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox9.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox8
             // 
@@ -1077,6 +1085,8 @@
             this.picBox8.TabIndex = 7;
             this.picBox8.TabStop = false;
             this.picBox8.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox8.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox8.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox7
             // 
@@ -1088,6 +1098,8 @@
             this.picBox7.TabIndex = 6;
             this.picBox7.TabStop = false;
             this.picBox7.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox7.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox7.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox6
             // 
@@ -1099,6 +1111,8 @@
             this.picBox6.TabIndex = 5;
             this.picBox6.TabStop = false;
             this.picBox6.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox6.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox6.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox5
             // 
@@ -1110,6 +1124,8 @@
             this.picBox5.TabIndex = 4;
             this.picBox5.TabStop = false;
             this.picBox5.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox5.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox5.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox4
             // 
@@ -1121,6 +1137,8 @@
             this.picBox4.TabIndex = 3;
             this.picBox4.TabStop = false;
             this.picBox4.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox4.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox4.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox3
             // 
@@ -1132,6 +1150,8 @@
             this.picBox3.TabIndex = 2;
             this.picBox3.TabStop = false;
             this.picBox3.Click += new System.EventHandler(this.PicBox_Click);
+            this.picBox3.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
+            this.picBox3.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
             // picBox2
             // 
