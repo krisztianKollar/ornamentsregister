@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
             this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
@@ -131,6 +131,8 @@
             this.picBox2 = new System.Windows.Forms.PictureBox();
             this.picBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picturesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.picturesTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PicturesTableAdapter();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetForPlantReg)).BeginInit();
@@ -155,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picturesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PlantDetailsBox
@@ -548,7 +551,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(1167, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1201, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -724,15 +727,15 @@
             this.PlantsTableView.BackgroundColor = System.Drawing.Color.Khaki;
             this.PlantsTableView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PlantsTableView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PlantsTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlantsTableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -746,26 +749,26 @@
             this.replantedDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
             this.PlantsTableView.DataSource = this.plantsBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle5;
             this.PlantsTableView.EnableHeadersVisualStyles = false;
             this.PlantsTableView.GridColor = System.Drawing.Color.SaddleBrown;
             this.PlantsTableView.Location = new System.Drawing.Point(8, 35);
             this.PlantsTableView.Name = "PlantsTableView";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PlantsTableView.RowHeadersVisible = false;
             this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PlantsTableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -986,6 +989,7 @@
             this.PictureGroupBox.BackColor = System.Drawing.Color.Transparent;
             this.PictureGroupBox.Controls.Add(this.tableLayPanPic);
             this.PictureGroupBox.Controls.Add(this.pictureBox1);
+            this.PictureGroupBox.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.picturesBindingSource, "PicID", true));
             this.PictureGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PictureGroupBox.Location = new System.Drawing.Point(489, 33);
             this.PictureGroupBox.Name = "PictureGroupBox";
@@ -1190,6 +1194,15 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // picturesBindingSource
+            // 
+            this.picturesBindingSource.DataMember = "Pictures";
+            this.picturesBindingSource.DataSource = this.dataSetForPlantReg;
+            // 
+            // picturesTableAdapter
+            // 
+            this.picturesTableAdapter.ClearBeforeFill = true;
+            // 
             // PlantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1199,7 +1212,7 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1184, 641);
+            this.ClientSize = new System.Drawing.Size(1218, 641);
             this.Controls.Add(this.PictureGroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.PlantsBox);
@@ -1242,6 +1255,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picturesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1347,6 +1361,8 @@
         private System.Windows.Forms.PictureBox picBox3;
         private System.Windows.Forms.PictureBox picBox2;
         private System.Windows.Forms.PictureBox picBox1;
+        private System.Windows.Forms.BindingSource picturesBindingSource;
+        private DataSetForPlantRegTableAdapters.PicturesTableAdapter picturesTableAdapter;
     }
 }
 

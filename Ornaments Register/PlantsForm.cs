@@ -41,7 +41,10 @@ namespace Ornaments_Register
 
         private void PlantsForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSetForPlantReg.Pictures' table. You can move, or remove it, as needed.
+            this.picturesTableAdapter.FillPic(this.dataSetForPlantReg.Pictures);
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
+            this.picturesTableAdapter.FillPic(this.dataSetForPlantReg.Pictures);
             rbAll.Checked = true;
             this.PictureGroupBox.Width = this.Width - (PlantDetailsBox.Width + 55);
             this.PlantsTableView.Width = this.Width - 50;
@@ -715,28 +718,30 @@ namespace Ornaments_Register
         private void FillPicBoxes()
         {
             int cells = tableLayPanPic.ColumnCount * tableLayPanPic.RowCount;
-            MessageBox.Show("number of cells = " + cells);
-            for (int i = 1; i<=cells; i++)
+            for (int i = 1; i <= cells; i++)
             {
-
                 var picBox = (PictureBox)PlantsForm.ActiveForm.Controls.Find("picBox" + i, true)[0];
-                MessageBox.Show(picBox.Name);
                 picBoxes.Add(picBox);
-                MessageBox.Show(picBoxes.Count.ToString());
             }
-            /*picBoxes.Add(picBox1);
-            picBoxes.Add(picBox2);
-            picBoxes.Add(picBox3);
-            picBoxes.Add(picBox4);
-            picBoxes.Add(picBox5);
-            picBoxes.Add(picBox6);
-            picBoxes.Add(picBox7);
-            picBoxes.Add(picBox8);
-            picBoxes.Add(picBox9);
-            picBoxes.Add(picBox10);
-            picBoxes.Add(picBox11);
-            picBoxes.Add(picBox12);*/
+        }
 
+        private void StorePic(Image picture)
+        {
+            int PlantID = Convert.ToInt32(txtID.Text.Trim());
+            //for (int i = 0; i < picBoxes.Count; i++)
+            //{
+            int PicID = Convert.ToInt32(this.picturesTableAdapter.GetLastPicID()) + 1;
+            if (picture != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                picture.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] Data = ms.ToArray();
+                ms.Close();
+                this.picturesTableAdapter.InsertPic(PicID, PlantID, Data);
+            }
+            MessageBox.Show("The picture(s) has successfully saved");
+            //RefreshView();
+            //}
         }
 
         private void OpenPic()
@@ -772,6 +777,7 @@ namespace Ornaments_Register
                                 continue;
                             picBoxes[i].Image = Image.FromFile(file);
                             picNames.Add(file);
+                            StorePic(picBoxes[i].Image);
                             //MessageBox.Show(tableLayPanPic.Controls[i].Name.ToString());
                         }
                     }
@@ -784,22 +790,11 @@ namespace Ornaments_Register
             }
         }
 
-        private void StorePic()
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                if (picBoxes[i].Image != null)
-                {
-
-                }
-            }
-        }
-
         private void AddPictureToPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenPic();
-            //pictureBox1.Image = picBoxes[0].Image;
-            //StorePic(picture);
+            pictureBox1.Image = picBoxes[0].Image;
+            //StorePic();
         }
 
         private void BoxColor_Enter(object sender, EventArgs e)
