@@ -744,19 +744,27 @@ namespace Ornaments_Register
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
                     string[] files = ope.FileNames;
+                    List<string> picNames = new List<string>();
                     int imageCount = 0;
                     foreach (PictureBox pic in picBoxes)
                         if (pic.Image != null)
                             imageCount++;
-                    if (files.Length + imageCount > 12)
+                    if (files.Length + imageCount > picBoxes.Count)
                     {
                         MessageBox.Show("You can add max. 12 images to a plant.");
                         return;
                     }
-                    for (int i = 0; i < files.Length; i++)
+
+                    foreach (String file in files)
                     {
-                        picBoxes[i].Image = Image.FromFile(files[i]);
-                        //MessageBox.Show(tableLayPanPic.Controls[i].Name.ToString());
+                        for (int i = 0; i < picBoxes.Count; i++)
+                        {
+                            if ((picBoxes[i].Image != null) || (picNames.Contains(file)))
+                                continue;
+                            picBoxes[i].Image = Image.FromFile(file);
+                            picNames.Add(file);
+                            //MessageBox.Show(tableLayPanPic.Controls[i].Name.ToString());
+                        }
                     }
                 }
             }
@@ -764,6 +772,17 @@ namespace Ornaments_Register
             {
                 MessageBox.Show(ex.Message);
                 //return null;
+            }
+        }
+
+        private void StorePic()
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                if (picBoxes[i].Image != null)
+                {
+
+                }
             }
         }
 
@@ -817,15 +836,17 @@ namespace Ornaments_Register
                 brush = Brushes.SaddleBrown;
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void PicBox_Click(object sender, EventArgs e)
         {
             PictureBox pic = (PictureBox)sender;
-            pictureBox1.Image = pic.Image;
+            if (pic.Image != null)
+                pictureBox1.Image = pic.Image;
         }
 
         private void PicBox_MouseHover(object sender, EventArgs e)
