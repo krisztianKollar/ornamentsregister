@@ -738,7 +738,7 @@ namespace Ornaments_Register
             {
                 for (int j = 0; j < picturesByPlant.Count; j++)
                 {
-                    picBoxes[j].Image = picturesByPlant[i].Image;
+                    picBoxes[j].Image = picturesByPlant[j].Image;
                 }
             }
             pictureBox1.Image = picBoxes[0].Image;
@@ -764,7 +764,6 @@ namespace Ornaments_Register
                 ms.Close();
                 this.picturesTableAdapter.InsertPic(PicID, PlantID, Data);
             }
-            MessageBox.Show("The picture(s) has successfully saved");
         }
 
         private void OpenPic()
@@ -803,8 +802,9 @@ namespace Ornaments_Register
                             StorePic(picBoxes[i].Image);
                         }
                     }
+                    pictureBox1.Image = picBoxes[0].Image;
+                    MessageBox.Show(files.Length.ToString() + " picture(s) was successfully saved to database");
                 }
-                pictureBox1.Image = picBoxes[0].Image;
             }
             catch (System.Exception ex)
             {
