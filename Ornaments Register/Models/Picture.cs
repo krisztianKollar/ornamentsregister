@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,35 +10,20 @@ namespace Ornaments_Register.Models
     class Picture
     {
         public int PicID { get; set; }
-        public string PicLocation { get; set; }
-        public byte[] Data { get; set; }
+        public int PlantID { get; set; }
+        public Image Image { get; set; }
 
-        public Picture(int picID, string picLocation, byte[] data)
+        public Picture(int picID, int plantID, Image image)
         {
             PicID = picID;
-            PicLocation = picLocation;
-            Data = data;
+            PlantID = plantID;
+            Image = image;
         }
 
-        public Picture(int picID, string picLocation)
+        public Picture(int picID, Image image)
         {
             PicID = picID;
-            PicLocation = picLocation;
-        }
-
-        public Picture(string picLocation, byte[] data) : this(picLocation)
-        {
-            Data = data;
-        }
-
-        public Picture(string picLocation)
-        {
-            PicLocation = picLocation;
-        }
-
-        public override string ToString()
-        {
-            return "Piclocation = " + this.PicLocation.ToString() + " Data = " + this.Data.ToString();
+            Image = image;
         }
     }
 }

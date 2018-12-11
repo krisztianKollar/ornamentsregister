@@ -41,17 +41,16 @@ namespace Ornaments_Register
 
         private void PlantsForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSetForPlantReg.Pictures' table. You can move, or remove it, as needed.
             this.picturesTableAdapter.FillPic(this.dataSetForPlantReg.Pictures);
             this.genusTableAdapter.FillGenus(this.dataSetForPlantReg.Genus);
-            this.picturesTableAdapter.FillPic(this.dataSetForPlantReg.Pictures);
+            //this.picturesTableAdapter.FillPic(this.dataSetForPlantReg.Pictures);
+            FillPicBoxes();
             rbAll.Checked = true;
             this.PictureGroupBox.Width = this.Width - (PlantDetailsBox.Width + 55);
             this.PlantsTableView.Width = this.Width - 50;
             PlantsTableView.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
             PlantsTableView.DefaultCellStyle.SelectionBackColor = Color.SaddleBrown;
             ChangeBoxColor();
-            FillPicBoxes();
             ViewAll();
         }
 
@@ -550,7 +549,7 @@ namespace Ornaments_Register
             }
             catch (System.Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 MessageBox.Show("There is no data from excel.");
 
                 return null;
@@ -725,11 +724,42 @@ namespace Ornaments_Register
             }
         }
 
+        private void FillPicFromDb()
+        {
+            ClearPicBoxes();
+            int PlantID = Convert.ToInt32(txtID.Text.Trim());
+            List<Picture> picturesByPlant = new List<Picture>();
+            DataTable dt = this.picturesTableAdapter.GetDataByPlantID(PlantID);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int picID = Convert.ToInt32(dt.Rows[i]["PicID"]);
+                byte[] Data = (byte[])dt.Rows[i]["Data"];
+                MemoryStream ms = new MemoryStream(Data);
+                Image imageFromArray = Image.FromStream(ms);
+                Picture picture = new Picture(picID, PlantID, imageFromArray);
+                picturesByPlant.Add(picture);
+            }
+            for (int i = 0; i < picturesByPlant.Count; i++)
+            {
+                for (int j = 0; j < picturesByPlant.Count; j++)
+                {
+                    picBoxes[j].Image = picturesByPlant[i].Image;
+                }
+            }
+            pictureBox1.Image = picBoxes[0].Image;
+        }
+
+        private void ClearPicBoxes()
+        {
+            for (int i = 0; i < picBoxes.Count; i++)
+            {
+                picBoxes[i].Image = null;
+            }
+        }
+
         private void StorePic(Image picture)
         {
             int PlantID = Convert.ToInt32(txtID.Text.Trim());
-            //for (int i = 0; i < picBoxes.Count; i++)
-            //{
             int PicID = Convert.ToInt32(this.picturesTableAdapter.GetLastPicID()) + 1;
             if (picture != null)
             {
@@ -740,8 +770,6 @@ namespace Ornaments_Register
                 this.picturesTableAdapter.InsertPic(PicID, PlantID, Data);
             }
             MessageBox.Show("The picture(s) has successfully saved");
-            //RefreshView();
-            //}
         }
 
         private void OpenPic()
@@ -778,10 +806,10 @@ namespace Ornaments_Register
                             picBoxes[i].Image = Image.FromFile(file);
                             picNames.Add(file);
                             StorePic(picBoxes[i].Image);
-                            //MessageBox.Show(tableLayPanPic.Controls[i].Name.ToString());
                         }
                     }
                 }
+                pictureBox1.Image = picBoxes[0].Image;
             }
             catch (System.Exception ex)
             {
@@ -793,8 +821,6 @@ namespace Ornaments_Register
         private void AddPictureToPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenPic();
-            pictureBox1.Image = picBoxes[0].Image;
-            //StorePic();
         }
 
         private void BoxColor_Enter(object sender, EventArgs e)
@@ -863,6 +889,11 @@ namespace Ornaments_Register
         {
             PictureBox pic = (PictureBox)sender;
             pic.Cursor = Cursors.Default;
+        }
+
+        private void TxtID_TextChanged(object sender, EventArgs e)
+        {
+            FillPicFromDb();
         }
 
 

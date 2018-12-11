@@ -24,3 +24,4 @@ namespace Ornaments_Register {
     public partial class DataSetForPlantReg {
     }
 }
+

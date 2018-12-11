@@ -119,6 +119,7 @@
             this.PictureGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayPanPic = new System.Windows.Forms.TableLayoutPanel();
             this.picBox12 = new System.Windows.Forms.PictureBox();
+            this.picturesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.picBox11 = new System.Windows.Forms.PictureBox();
             this.picBox10 = new System.Windows.Forms.PictureBox();
             this.picBox9 = new System.Windows.Forms.PictureBox();
@@ -131,7 +132,6 @@
             this.picBox2 = new System.Windows.Forms.PictureBox();
             this.picBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picturesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.picturesTableAdapter = new Ornaments_Register.DataSetForPlantRegTableAdapters.PicturesTableAdapter();
             this.PlantDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plantsBindingSource)).BeginInit();
@@ -145,6 +145,7 @@
             this.PictureGroupBox.SuspendLayout();
             this.tableLayPanPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picturesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox9)).BeginInit();
@@ -157,7 +158,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picturesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PlantDetailsBox
@@ -262,6 +262,7 @@
             this.txtID.Size = new System.Drawing.Size(91, 20);
             this.txtID.TabIndex = 18;
             this.txtID.TabStop = false;
+            this.txtID.TextChanged += new System.EventHandler(this.TxtID_TextChanged);
             this.txtID.Enter += new System.EventHandler(this.BoxColor_Enter);
             this.txtID.Leave += new System.EventHandler(this.BoxColor_Leave);
             // 
@@ -551,7 +552,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(1201, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1235, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1029,6 +1030,7 @@
             // 
             // picBox12
             // 
+            this.picBox12.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox12.Location = new System.Drawing.Point(321, 155);
             this.picBox12.Name = "picBox12";
@@ -1040,8 +1042,14 @@
             this.picBox12.MouseLeave += new System.EventHandler(this.PicBox_MouseLeave);
             this.picBox12.MouseHover += new System.EventHandler(this.PicBox_MouseHover);
             // 
+            // picturesBindingSource
+            // 
+            this.picturesBindingSource.DataMember = "Pictures";
+            this.picturesBindingSource.DataSource = this.dataSetForPlantReg;
+            // 
             // picBox11
             // 
+            this.picBox11.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox11.Location = new System.Drawing.Point(215, 155);
             this.picBox11.Name = "picBox11";
@@ -1055,6 +1063,7 @@
             // 
             // picBox10
             // 
+            this.picBox10.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox10.Location = new System.Drawing.Point(109, 155);
             this.picBox10.Name = "picBox10";
@@ -1068,6 +1077,7 @@
             // 
             // picBox9
             // 
+            this.picBox9.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox9.Location = new System.Drawing.Point(3, 155);
             this.picBox9.Name = "picBox9";
@@ -1081,6 +1091,7 @@
             // 
             // picBox8
             // 
+            this.picBox8.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox8.Location = new System.Drawing.Point(321, 79);
             this.picBox8.Name = "picBox8";
@@ -1094,6 +1105,7 @@
             // 
             // picBox7
             // 
+            this.picBox7.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox7.Location = new System.Drawing.Point(215, 79);
             this.picBox7.Name = "picBox7";
@@ -1107,6 +1119,7 @@
             // 
             // picBox6
             // 
+            this.picBox6.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox6.Location = new System.Drawing.Point(109, 79);
             this.picBox6.Name = "picBox6";
@@ -1120,6 +1133,7 @@
             // 
             // picBox5
             // 
+            this.picBox5.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox5.Location = new System.Drawing.Point(3, 79);
             this.picBox5.Name = "picBox5";
@@ -1133,6 +1147,7 @@
             // 
             // picBox4
             // 
+            this.picBox4.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox4.Location = new System.Drawing.Point(321, 3);
             this.picBox4.Name = "picBox4";
@@ -1146,6 +1161,7 @@
             // 
             // picBox3
             // 
+            this.picBox3.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox3.Location = new System.Drawing.Point(215, 3);
             this.picBox3.Name = "picBox3";
@@ -1159,6 +1175,7 @@
             // 
             // picBox2
             // 
+            this.picBox2.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox2.Location = new System.Drawing.Point(109, 3);
             this.picBox2.Name = "picBox2";
@@ -1172,6 +1189,7 @@
             // 
             // picBox1
             // 
+            this.picBox1.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.picturesBindingSource, "Data", true));
             this.picBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox1.Location = new System.Drawing.Point(3, 3);
             this.picBox1.Name = "picBox1";
@@ -1194,11 +1212,6 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // picturesBindingSource
-            // 
-            this.picturesBindingSource.DataMember = "Pictures";
-            this.picturesBindingSource.DataSource = this.dataSetForPlantReg;
-            // 
             // picturesTableAdapter
             // 
             this.picturesTableAdapter.ClearBeforeFill = true;
@@ -1212,7 +1225,7 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1218, 641);
+            this.ClientSize = new System.Drawing.Size(1252, 641);
             this.Controls.Add(this.PictureGroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.PlantsBox);
@@ -1243,6 +1256,7 @@
             this.PictureGroupBox.ResumeLayout(false);
             this.tableLayPanPic.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picturesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox9)).EndInit();
@@ -1255,7 +1269,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picturesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
