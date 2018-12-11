@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlantsForm));
             this.PlantDetailsBox = new System.Windows.Forms.GroupBox();
             this.dateTimePickerReplanted = new System.Windows.Forms.DateTimePicker();
@@ -86,6 +86,9 @@
             this.deleteImageFromPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAllImagesFromPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAllImagesFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportPictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportPicturesFromPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportPicturesFromTheWholeDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.PlantsBox = new System.Windows.Forms.GroupBox();
             this.plantsLabelStat = new System.Windows.Forms.Label();
@@ -552,7 +555,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(1235, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1303, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -659,7 +662,10 @@
             this.addPictureToPlantToolStripMenuItem,
             this.deleteImageFromPlantToolStripMenuItem,
             this.deleteAllImagesFromPlantToolStripMenuItem,
-            this.deleteAllImagesFromDatabaseToolStripMenuItem});
+            this.deleteAllImagesFromDatabaseToolStripMenuItem,
+            this.exportPictureToolStripMenuItem,
+            this.exportPicturesFromPlantToolStripMenuItem,
+            this.exportPicturesFromTheWholeDatabaseToolStripMenuItem});
             this.picturesToolStripMenuItem.Name = "picturesToolStripMenuItem";
             this.picturesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.picturesToolStripMenuItem.Text = "Pictures";
@@ -667,27 +673,48 @@
             // addPictureToPlantToolStripMenuItem
             // 
             this.addPictureToPlantToolStripMenuItem.Name = "addPictureToPlantToolStripMenuItem";
-            this.addPictureToPlantToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.addPictureToPlantToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.addPictureToPlantToolStripMenuItem.Text = "Add picture to plant";
             this.addPictureToPlantToolStripMenuItem.Click += new System.EventHandler(this.AddPictureToPlantToolStripMenuItem_Click);
             // 
             // deleteImageFromPlantToolStripMenuItem
             // 
             this.deleteImageFromPlantToolStripMenuItem.Name = "deleteImageFromPlantToolStripMenuItem";
-            this.deleteImageFromPlantToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
-            this.deleteImageFromPlantToolStripMenuItem.Text = "Delete image from plant";
+            this.deleteImageFromPlantToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
+            this.deleteImageFromPlantToolStripMenuItem.Text = "Delete actual image from plant";
+            this.deleteImageFromPlantToolStripMenuItem.Click += new System.EventHandler(this.DeleteImageFromPlantToolStripMenuItem_Click);
             // 
             // deleteAllImagesFromPlantToolStripMenuItem
             // 
             this.deleteAllImagesFromPlantToolStripMenuItem.Name = "deleteAllImagesFromPlantToolStripMenuItem";
-            this.deleteAllImagesFromPlantToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.deleteAllImagesFromPlantToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.deleteAllImagesFromPlantToolStripMenuItem.Text = "Delete all images from plant";
+            this.deleteAllImagesFromPlantToolStripMenuItem.Click += new System.EventHandler(this.DeleteAllImagesFromPlantToolStripMenuItem_Click);
             // 
             // deleteAllImagesFromDatabaseToolStripMenuItem
             // 
             this.deleteAllImagesFromDatabaseToolStripMenuItem.Name = "deleteAllImagesFromDatabaseToolStripMenuItem";
-            this.deleteAllImagesFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.deleteAllImagesFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.deleteAllImagesFromDatabaseToolStripMenuItem.Text = "Delete all images from database";
+            this.deleteAllImagesFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.DeleteAllImagesFromDatabaseToolStripMenuItem_Click);
+            // 
+            // exportPictureToolStripMenuItem
+            // 
+            this.exportPictureToolStripMenuItem.Name = "exportPictureToolStripMenuItem";
+            this.exportPictureToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
+            this.exportPictureToolStripMenuItem.Text = "Export picture";
+            // 
+            // exportPicturesFromPlantToolStripMenuItem
+            // 
+            this.exportPicturesFromPlantToolStripMenuItem.Name = "exportPicturesFromPlantToolStripMenuItem";
+            this.exportPicturesFromPlantToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
+            this.exportPicturesFromPlantToolStripMenuItem.Text = "Export pictures from plant";
+            // 
+            // exportPicturesFromTheWholeDatabaseToolStripMenuItem
+            // 
+            this.exportPicturesFromTheWholeDatabaseToolStripMenuItem.Name = "exportPicturesFromTheWholeDatabaseToolStripMenuItem";
+            this.exportPicturesFromTheWholeDatabaseToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
+            this.exportPicturesFromTheWholeDatabaseToolStripMenuItem.Text = "Export pictures from the whole database";
             // 
             // imageList1
             // 
@@ -728,15 +755,15 @@
             this.PlantsTableView.BackgroundColor = System.Drawing.Color.Khaki;
             this.PlantsTableView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PlantsTableView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.PlantsTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlantsTableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -750,26 +777,26 @@
             this.replantedDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
             this.PlantsTableView.DataSource = this.plantsBindingSource;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlantsTableView.DefaultCellStyle = dataGridViewCellStyle2;
             this.PlantsTableView.EnableHeadersVisualStyles = false;
             this.PlantsTableView.GridColor = System.Drawing.Color.SaddleBrown;
             this.PlantsTableView.Location = new System.Drawing.Point(8, 35);
             this.PlantsTableView.Name = "PlantsTableView";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlantsTableView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.PlantsTableView.RowHeadersVisible = false;
             this.PlantsTableView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PlantsTableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1211,6 +1238,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "";
             // 
             // picturesTableAdapter
             // 
@@ -1225,7 +1253,7 @@
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1252, 641);
+            this.ClientSize = new System.Drawing.Size(1320, 641);
             this.Controls.Add(this.PictureGroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.PlantsBox);
@@ -1376,6 +1404,9 @@
         private System.Windows.Forms.PictureBox picBox1;
         private System.Windows.Forms.BindingSource picturesBindingSource;
         private DataSetForPlantRegTableAdapters.PicturesTableAdapter picturesTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem exportPictureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportPicturesFromPlantToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportPicturesFromTheWholeDatabaseToolStripMenuItem;
     }
 }
 

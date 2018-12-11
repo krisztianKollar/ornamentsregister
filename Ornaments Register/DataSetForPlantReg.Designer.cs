@@ -5398,33 +5398,63 @@ WHERE        (ID = :Original_ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[4];
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[7];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        PicID, PlantID, Data\r\nFROM            Pictures";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        PicID, PlantID, Data\r\nFROM            Pictures\r\nWHERE        (Plant" +
-                "ID = :Param1)";
+            this._commandCollection[1].CommandText = "DELETE FROM Pictures\r\nWHERE        (PicID <> 0)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "DELETE FROM \"main\".\"Pictures\" WHERE (\"PicID\" = :Original_PicID)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_PicID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.Size = 4;
+            param.IsNullable = true;
+            param.SourceColumn = "PicID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "DELETE FROM \"main\".\"Pictures\" WHERE (\"PlantID\" = :Original_PlantID)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_PlantID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.Size = 4;
+            param.IsNullable = true;
+            param.SourceColumn = "PlantID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[4] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT        PicID, PlantID, Data\r\nFROM            Pictures\r\nWHERE        (Plant" +
+                "ID = :Param1)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Param1";
             param.DbType = global::System.Data.DbType.Int32;
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.Size = 4;
             param.IsNullable = true;
             param.SourceColumn = "PlantID";
-            this._commandCollection[1].Parameters.Add(param);
-            this._commandCollection[2] = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        MAX(PicID) AS \"Max\"\r\nFROM            Pictures";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3] = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO \"main\".\"Pictures\" (\"PicID\", \"PlantID\", \"Data\") VALUES (:PicID, :Plant" +
+            this._commandCollection[4].Parameters.Add(param);
+            this._commandCollection[5] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT        MAX(PicID) AS \"Max\"\r\nFROM            Pictures";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "INSERT INTO \"main\".\"Pictures\" (\"PicID\", \"PlantID\", \"Data\") VALUES (:PicID, :Plant" +
                 "ID, :Data)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "PicID";
             param.DbType = global::System.Data.DbType.Int32;
@@ -5432,7 +5462,7 @@ WHERE        (ID = :Original_ID)";
             param.Size = 4;
             param.IsNullable = true;
             param.SourceColumn = "PicID";
-            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[6].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "PlantID";
             param.DbType = global::System.Data.DbType.Int32;
@@ -5440,7 +5470,7 @@ WHERE        (ID = :Original_ID)";
             param.Size = 4;
             param.IsNullable = true;
             param.SourceColumn = "PlantID";
-            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[6].Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Data";
             param.DbType = global::System.Data.DbType.Binary;
@@ -5448,7 +5478,7 @@ WHERE        (ID = :Original_ID)";
             param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceColumn = "Data";
-            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[6].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5480,7 +5510,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByPlantID(DataSetForPlantReg.PicturesDataTable dataTable, int Param1) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Param1));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5494,7 +5524,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetForPlantReg.PicturesDataTable GetDataByPlantID(int Param1) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Param1));
             DataSetForPlantReg.PicturesDataTable dataTable = new DataSetForPlantReg.PicturesDataTable();
             this.Adapter.Fill(dataTable);
@@ -5624,8 +5654,79 @@ WHERE        (ID = :Original_ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object GetLastPicID() {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteAllPicFromDb() {
+            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[1];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteByPicID(int Original_PicID) {
             global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(Original_PicID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteByPlantID(int Original_PlantID) {
+            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[3];
+            command.Parameters[0].Value = ((int)(Original_PlantID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object GetLastPicID() {
+            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[5];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5654,7 +5755,7 @@ WHERE        (ID = :Original_ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertPic(int PicID, int PlantID, byte[] Data) {
-            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[3];
+            global::Devart.Data.SQLite.SQLiteCommand command = this.CommandCollection[6];
             command.Parameters[0].Value = ((int)(PicID));
             command.Parameters[1].Value = ((int)(PlantID));
             if ((Data == null)) {

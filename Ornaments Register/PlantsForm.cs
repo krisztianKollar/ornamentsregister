@@ -22,6 +22,7 @@ namespace Ornaments_Register
         IConnectionCreater connectionCreater = new SimpleConnectionCreater();
         Alert alert;
         List<PictureBox> picBoxes = new List<PictureBox>();
+        List<Picture> picturesByPlant = new List<Picture>();
 
         public PlantsForm()
         {
@@ -52,6 +53,7 @@ namespace Ornaments_Register
             PlantsTableView.DefaultCellStyle.SelectionBackColor = Color.SaddleBrown;
             ChangeBoxColor();
             ViewAll();
+            
         }
 
         private void ChangeBoxColor()
@@ -433,7 +435,7 @@ namespace Ornaments_Register
                     else
                     {
                         this.plantsTableAdapter.DeletePlant(id);
-                        MessageBox.Show("The plant has successfully deleted");
+                        MessageBox.Show("The plant has been successfully deleted");
                         RefreshView();
                     }
                 }
@@ -719,9 +721,8 @@ namespace Ornaments_Register
             }
         }
 
-        private void FillPicFromDb()
+        private List<Picture> PicturesByPlant()
         {
-            ClearPicBoxes();
             int PlantID = Convert.ToInt32(txtID.Text.Trim());
             List<Picture> picturesByPlant = new List<Picture>();
             DataTable dt = this.picturesTableAdapter.GetDataByPlantID(PlantID);
@@ -734,14 +735,23 @@ namespace Ornaments_Register
                 Picture picture = new Picture(picID, PlantID, imageFromArray);
                 picturesByPlant.Add(picture);
             }
+            return picturesByPlant;
+        }
+
+        private void FillPicFromDb()
+        {
+            ClearPicBoxes();
+            picturesByPlant = PicturesByPlant();
             for (int i = 0; i < picturesByPlant.Count; i++)
             {
                 for (int j = 0; j < picturesByPlant.Count; j++)
                 {
                     picBoxes[j].Image = picturesByPlant[j].Image;
+                    picBoxes[j].Tag = picturesByPlant[j].PicID;
                 }
             }
             pictureBox1.Image = picBoxes[0].Image;
+            pictureBox1.Tag = picBoxes[0].Tag;
         }
 
         private void ClearPicBoxes()
@@ -804,6 +814,7 @@ namespace Ornaments_Register
                     }
                     pictureBox1.Image = picBoxes[0].Image;
                     MessageBox.Show(files.Length.ToString() + " picture(s) was successfully saved to database");
+                    FillPicFromDb();
                 }
             }
             catch (System.Exception ex)
@@ -871,7 +882,11 @@ namespace Ornaments_Register
         {
             PictureBox pic = (PictureBox)sender;
             if (pic.Image != null)
+            {
                 pictureBox1.Image = pic.Image;
+                pictureBox1.Tag = pic.Tag;
+            }
+
         }
 
         private void PicBox_MouseHover(object sender, EventArgs e)
@@ -891,14 +906,86 @@ namespace Ornaments_Register
             FillPicFromDb();
         }
 
-
-        /*private void Picbox_MouseHover(object sender, EventArgs e)
+        private void DeleteImageFromPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PictureBox picBox = (PictureBox)sender;
-            if (picBoxes.Contains(picBox))
-                MessageBox.Show("OK");
-            
-        }*/
+            try
+            {
+                int id = (int)pictureBox1.Tag;
+
+                DialogResult res = MessageBox.Show("Are you sure you want to delete the actual picture?", "Delete picture?",
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.No)
+                    return;
+                else
+                {
+                    this.picturesTableAdapter.DeleteByPicID(id);
+                    MessageBox.Show("Picture has been successfully deleted");
+                    FillPicFromDb();
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DeleteAllImagesFromPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(txtID.Text.Trim());
+                if (id == GetNextID())
+                {
+                    MessageBox.Show("This ID doesn't belong to any picture.");
+                    return;
+                }
+                else if (picBoxes[0].Image == null)
+                {
+                    MessageBox.Show("This plant hasn't got any picture.");
+                    return;
+                }
+                else
+                {
+                    DialogResult res = MessageBox.Show("Are you sure you want to delete all picture from this plant?", "Delete picture?",
+                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (res == DialogResult.No)
+                        return;
+                    else
+                    {
+                        this.picturesTableAdapter.DeleteByPlantID(id);
+                        MessageBox.Show("Every picture has been successfully deleted");
+                        FillPicFromDb();
+                        return;
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DeleteAllImagesFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult res = MessageBox.Show("Are you sure you want to delete all picture from the whole database?", "Delete all picture?",
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.No)
+                    return;
+                else
+                {
+                    this.picturesTableAdapter.DeleteAllPicFromDb();
+                    MessageBox.Show("Every picture has been successfully deleted");
+                    FillPicFromDb();
+                    return;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
-
