@@ -584,11 +584,6 @@ namespace Ornaments_Register
             e.Graphics.DrawImage(bitmap, 10, 10);
         }
 
-        private void ButtonCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
